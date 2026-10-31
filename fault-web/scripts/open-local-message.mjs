@@ -1,0 +1,12 @@
+import {readFile} from 'node:fs/promises';
+import {spawnSync} from 'node:child_process';
+const action=process.argv[2];
+if(!['confirm','unsubscribe'].includes(action))throw Error('Specify confirm or unsubscribe');
+const messages=(await readFile('.local/email-spool.jsonl','utf8')).trim().split('\n').map(JSON.parse);
+const last=messages.at(-1);const url=last[action==='confirm'?'confirmationUrl':'unsubscribeUrl'];
+if(!new RegExp(`^http://127\\.0\\.0\\.1:3000/${action}#token=[a-f0-9]{64}$`).test(url))throw Error('Local fixture URL rejected');
+const reset=spawnSync('rtk',['proxy','npx.cmd','--yes','agent-browser','--session','fault-confirm','open','about:blank'],{stdio:'ignore',windowsHide:true,timeout:20000});
+if(reset.status!==0)throw Error('Browser reset failed');
+const result=spawnSync('rtk',['proxy','npx.cmd','--yes','agent-browser','--session','fault-confirm','open',url],{stdio:'ignore',windowsHide:true,timeout:20000});
+if(result.status!==0)throw Error('Browser navigation failed');
+console.log('Opened local simulated message in a separate browser session; token omitted.');

@@ -1,0 +1,1 @@
+# Empty trace used only to verify a nonzero replay exit.

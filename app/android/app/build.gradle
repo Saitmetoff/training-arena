@@ -1,0 +1,139 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+// L06: the native FCM host is compiled into every build, but the Google
+// Services plugin (and therefore any Firebase credential) is applied only
+// when the owner supplies `google-services.json`. Without it the default
+// Firebase app does not initialize, the push bridge degrades to "no push"
+// and no placeholder credential is invented.
+if (file("google-services.json").exists()) {
+    apply plugin: "com.google.gms.google-services"
+}
+
+// Challenge App Links host (task 05). Pass the real domain with
+// `-ParenaLinkHost=arena.example`; it must stay in sync with ARENA_LINK_HOST.
+// The safe default cannot verify and is refused for distributable release
+// builds by the guard below (see decision 05 and docs/release/CONFIGURATION.md).
+def arenaLinkHost = project.findProperty("arenaLinkHost") ?: "example.invalid"
+
+android {
+    namespace = "app.trainingarena.mobile"
+    // Pinned for the Play 2026 target-API-36 requirement (L02); matches the
+    // Flutter 3.47.5 template defaults (see docs/release/CONFIGURATION.md).
+    compileSdk = 36
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlin {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+        }
+    }
+
+    defaultConfig {
+        applicationId = "app.trainingarena.mobile"
+        // Binding platform decision: Android first, minSdk 24.
+        minSdk = 24
+        targetSdk = 36
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        manifestPlaceholders["arenaLinkHost"] = arenaLinkHost
+    }
+
+    // Release signing comes from android/key.properties (owner vault or CI
+    // secret store) and is never committed. When it is absent a release build
+    // fails closed; see the guard below.
+    def keystoreProperties = new Properties()
+    def keystorePropsFile = rootProject.file("key.properties")
+    if (keystorePropsFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropsFile))
+    }
+    // Release builds fail closed: a release artifact is either signed with the
+    // configured release keystore or the build aborts. Non-distributable
+    // compatibility artifacts require an explicit opt-in:
+    //   -PallowDebugSignedRelease=true  debug-signed smoke build
+    //   -PallowUnsignedRelease=true     unsigned AAB/APK for bundle inspection
+    // See docs/release/CONFIGURATION.md.
+    def allowDebugSignedRelease = project.findProperty("allowDebugSignedRelease") == "true"
+    def allowUnsignedRelease = project.findProperty("allowUnsignedRelease") == "true"
+    def nonDistributableOptIn = allowDebugSignedRelease || allowUnsignedRelease
+    def requestedReleaseBuild = gradle.startParameter.taskNames.any {
+        it.toLowerCase().contains("release")
+    }
+    // The placeholder host must block a distributable release build instead of
+    // silently shipping unverifiable App Links. The two non-distributable
+    // opt-ins above remain available for smoke and inspection artifacts.
+    if (requestedReleaseBuild && arenaLinkHost == "example.invalid" && !nonDistributableOptIn) {
+        throw new GradleException(
+                "Release App Links host is the placeholder example.invalid. " +
+                "Pass -ParenaLinkHost=<real-domain> (must match ARENA_LINK_HOST) per " +
+                "docs/release/CONFIGURATION.md. Non-distributable smoke/inspection builds " +
+                "must opt in explicitly with -PallowDebugSignedRelease=true or " +
+                "-PallowUnsignedRelease=true.")
+    }
+    if (requestedReleaseBuild && !keystorePropsFile.exists() && !nonDistributableOptIn) {
+        throw new GradleException(
+                "Release signing is not configured: android/key.properties is missing " +
+                "(storeFile, storePassword, keyAlias, keyPassword). " +
+                "Set it up per docs/release/CONFIGURATION.md, or pass " +
+                "-PallowDebugSignedRelease=true for a non-distributable smoke build " +
+                "or -PallowUnsignedRelease=true for unsigned compatibility inspection.")
+    }
+
+    signingConfigs {
+        if (keystorePropsFile.exists()) {
+            release {
+                keyAlias = keystoreProperties["keyAlias"]
+                keyPassword = keystoreProperties["keyPassword"]
+                storeFile = file(keystoreProperties["storeFile"])
+                storePassword = keystoreProperties["storePassword"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            if (keystorePropsFile.exists()) {
+                signingConfig = signingConfigs.release
+            } else if (allowDebugSignedRelease) {
+                signingConfig = signingConfigs.debug
+            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // Task 03 camera bridge: CameraX for capture and ML Kit Pose Detection for
+    // on-device landmarks. Versions are pinned and documented in
+    // docs/camera/CAMERA_ARCHITECTURE.md; both artifacts run fully on device
+    // and no frame or landmark is uploaded by this layer.
+    implementation "androidx.camera:camera-core:1.4.1"
+    implementation "androidx.camera:camera-camera2:1.4.1"
+    implementation "androidx.camera:camera-lifecycle:1.4.1"
+    implementation "com.google.mlkit:pose-detection:18.0.0-beta5"
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    // Play Install Referrer recovery for challenge links (task 05): the web
+    // landing page sends `referrer=challenge%3D<token>` and the app reads it
+    // once after install. Best effort only.
+    implementation "com.android.installreferrer:installreferrer:2.2"
+    // Task 11 / L06 native FCM host: FirebaseMessagingService, token retrieval
+    // and the data payload behind the existing Dart bridge. Version pinned
+    // (see docs/release/CONFIGURATION.md); the Google Services plugin is
+    // conditional, so this dependency alone never enables delivery.
+    implementation "com.google.firebase:firebase-messaging:25.1.3"
+}

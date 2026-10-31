@@ -1,0 +1,10 @@
+﻿node : warning: release: no --fingerprint/ARENA_RELEASE_CERT_SHA256 supplied; the deployed assetlinks.json cannot be 
+validated
+At line:1 char:289
++ ... TEXITCODE"; node tools/release/check_app_links.mjs --release 2>&1 | O ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: releas...ot be validated:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+app link check failed:
+ - release: --host <domain> (or ARENA_LINK_HOST) is required

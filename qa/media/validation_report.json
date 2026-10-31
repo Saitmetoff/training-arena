@@ -1,0 +1,88 @@
+{
+  "gate": "prototype",
+  "manifest": "app/assets/media/athlete/manifest.json",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "budgets": {
+    "files": {
+      "glb": {
+        "budget": 400000,
+        "count": 3,
+        "largest": 173972
+      },
+      "loop_mp4": {
+        "budget": 450000,
+        "count": 2,
+        "largest": 61609
+      },
+      "loop_webp": {
+        "budget": 900000,
+        "count": 2,
+        "largest": 344054
+      },
+      "poster_webp": {
+        "budget": 90000,
+        "count": 4,
+        "largest": 20280
+      },
+      "poster_png": {
+        "budget": 220000,
+        "count": 4,
+        "largest": 80557
+      },
+      "frame_webp": {
+        "budget": 70000,
+        "count": 6,
+        "largest": 6958
+      },
+      "overlay_webp": {
+        "budget": 60000,
+        "count": 4,
+        "largest": 7350
+      }
+    },
+    "package_total": {
+      "bytes": 1322232,
+      "budget": 3500000,
+      "unique_files": 23
+    }
+  },
+  "fallbacks": {
+    "pushups": {
+      "intact": {
+        "asset": "assets/media/athlete/loops/pushup_loop.mp4",
+        "review_status": "pending_human_review"
+      },
+      "no_video": {
+        "asset": "assets/media/athlete/posters/pushup_start.webp",
+        "review_status": "pending_human_review"
+      },
+      "no_video_no_webp_poster": {
+        "asset": "assets/media/athlete/posters/pushup_start.png",
+        "review_status": "pending_human_review"
+      }
+    },
+    "squats": {
+      "intact": {
+        "asset": "assets/media/athlete/loops/squat_loop.mp4",
+        "review_status": "pending_human_review"
+      },
+      "no_video": {
+        "asset": "assets/media/athlete/posters/squat_start.webp",
+        "review_status": "pending_human_review"
+      },
+      "no_video_no_webp_poster": {
+        "asset": "assets/media/athlete/posters/squat_start.png",
+        "review_status": "pending_human_review"
+      }
+    }
+  },
+  "release_gate": null,
+  "review_status": {
+    "status": "pending_human_review",
+    "release_eligible": false,
+    "checklist": "docs/media/FORM_REVIEW.md",
+    "provenance": "docs/media/PROVENANCE.md"
+  }
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Training Arena · Beta launch board</title>
+<style>
+:root{color-scheme:dark;--bg:#17191a;--panel:#232729;--ink:#f5f6ef;--muted:#b9c0bc;--line:#454c4d;--lime:#d4ff3f;--amber:#ffe080}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:32px 24px 64px}header{padding:12px 0 28px;border-bottom:1px solid var(--line)}h1{font-size:clamp(32px,5vw,54px);line-height:1.08;max-width:800px;margin:12px 0 20px}h2{font-size:25px;margin:34px 0 14px}h3{font-size:20px;margin:0 0 10px}p{margin:8px 0 14px}small,.muted{color:var(--muted)}a{color:var(--lime);overflow-wrap:anywhere}.eyebrow{color:var(--lime);letter-spacing:.12em;font-size:13px;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--panel);padding:22px;border-radius:16px;min-width:0}.status{display:inline-block;color:var(--amber);font-size:13px;border:1px solid var(--line);padding:4px 10px;border-radius:20px}.done{color:var(--lime)}.steps{list-style:none;counter-reset:step;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.steps li{counter-increment:step;border-top:3px solid var(--line);padding-top:12px}.steps li:first-child{border-color:var(--lime)}.steps li:before{content:counter(step,decimal-leading-zero);color:var(--muted);display:block;margin-bottom:10px}.steps strong{display:block}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left}th,td{border-bottom:1px solid var(--line);padding:14px 10px;vertical-align:top}th{color:var(--muted);font-weight:500}label{display:block;margin:12px 0}input{display:block;width:100%;max-width:240px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit;margin-top:4px}button{padding:12px 20px;border:0;border-radius:8px;background:var(--lime);color:#17191a;font:600 16px system-ui;cursor:pointer;min-height:44px}output{display:block;font-size:32px;font-variant-numeric:tabular-nums;color:var(--lime);margin:18px 0 4px}details{border-bottom:1px solid var(--line);padding:15px 0}summary{cursor:pointer;min-height:44px;padding-top:8px}ul,ol{padding-left:22px}li{margin:8px 0}.note{color:var(--amber)}#metrics-error{color:var(--amber)}footer{margin-top:36px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted)}@media(max-width:760px){.grid,.steps{grid-template-columns:1fr 1fr}}@media(max-width:480px){main{padding:24px 16px}.grid,.steps{grid-template-columns:1fr}.card{padding:18px}h1{font-size:34px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow">Training Arena / implementation checkpoint / 30 Sep 2026</div>
+<h1>A useful first set.<br>A reason to challenge a friend.</h1>
+<p>Practice on your own. Challenge a friend to a 60-second battle.</p>
+<span class="status done">Local checks pass</span> <span class="status">Distribution gates open</span>
+<p class="muted">Prepared work below is distinct from live operation. No testers have been recruited, no social posts published, and no device accuracy verified by this checkpoint.</p>
+</header>
+
+<section aria-labelledby="shipping-heading">
+<h2 id="shipping-heading">Shipping sequence</h2>
+<ol class="steps">
+<li><strong>Solo first session</strong><span class="done">Implemented · automated checks pass</span><p>Signed-out start, honest save/retry, seven-day history and source-specific personal bests.</p></li>
+<li><strong>Two-phone camera</strong><span class="note">Device evidence pending</span><p>Shared crop/rotation/mirror metadata implemented. Redmi 10 and another physical Android must validate alignment and counts.</p></li>
+<li><strong>Hosted friend battle</strong><span class="note">Hosting inputs pending</span><p>Local sign-in-to-rematch smoke passes. Real Supabase project, domain, legal/contact values and two real accounts are still needed.</p></li>
+<li><strong>Signed beta</strong><span class="note">Signing pending</span><p>Version 1.0.1+2. Solo/links/sharing on; ranked/push/fixtures/trace off. Camera stays gated. Record actual commit and artifact hashes.</p></li>
+</ol>
+<p><a href="../../docs/release/PILOT_PLAN.md">Pilot protocol</a> · <a href="../camera/beta_device_results.json">Blocked camera evidence</a> · <a href="../../docs/release/CONFIGURATION.md">Hosting and signing inputs</a></p>
+</section>
+
+<section aria-labelledby="cohort-heading">
+<h2 id="cohort-heading">The first cohort: 20 adults, 10 pairs</h2>
+<div class="grid">
+<article class="card"><h3>Recruit while waiting</h3><p>Invite Android users who already have a training partner. Ask about phone model, timezone and availability. Keep contact details outside the repository.</p><p><a href="tester-roster.csv">Blank paired roster</a></p></article>
+<article class="card"><h3>Two windows each week</h3><p>Plan two 30-minute casual battle windows. Confirm local times with pairs before announcing them; UTC+5 is the organizer timezone. Direct invitations work outside the windows too.</p><p class="muted">No empty ranked queue dependency.</p></article>
+<article class="card"><h3>Access before promotion</h3><p>Use a Play test track when available. A private, signed APK is a fallback after release gates pass. Direct installation cannot validate Play Install Referrer.</p><p>Paid advertising budget: <strong>0</strong> during this cohort.</p></article>
+</div>
+</section>
+
+<section aria-labelledby="creative-heading">
+<h2 id="creative-heading">Three original edits per week</h2>
+<p class="muted">Adapt each original to TikTok, Reels and Shorts. Use generated adult actors plus actual product captures; label fictional scenes “Dramatization.”</p>
+<div class="grid">
+<article class="card"><h3>Lost by one rep</h3><p><strong>Hook:</strong> “One more would have tied it.”</p><p>Short side-view exercise shot → actual result capture from a staged test → separate reaction shot: tired pause, glance at the phone, amused frustration → “Again?”</p><p><strong>CTA:</strong> Join the Android test with your training partner.</p></article>
+<article class="card"><h3>First counted set</h3><p><strong>Hook:</strong> “My first set finally has a number.”</p><p>Show real placement instructions, unscored practice and a saved camera result only after physical checks pass. Actor relief is a dramatization; counting proof must be real app capture.</p><p><strong>Before camera approval:</strong> show clearly labelled self-reported solo instead.</p></article>
+<article class="card"><h3>Challenge your partner</h3><p><strong>Hook:</strong> “You have 60 seconds.”</p><p>Two adult actors in separate locations → real copy/share/code recovery → server-confirmed preparation → actual confirmed result → fresh rematch request.</p><p><strong>CTA after access:</strong> Start solo, then invite one friend.</p></article>
+</div>
+<details><summary>Production brief: believable motion and emotion</summary>
+<ol><li>Generate one adult character and location per concept. Start with a still reference; keep clothing, phone placement and light consistent.</li><li>Use a fixed phone-like camera, normal room light, realistic fatigue and complete body mechanics. Avoid long continuous rep sequences; inspect every usable movement for hands, joints, contact and body shape.</li><li>Generate the exercise and reaction separately. Reaction: settle on the floor, check phone, small exhale and half-smile after a close loss. Avoid exaggerated facial acting and motion that exposes generation errors.</li><li>Composite genuine app footage during editing. Do not bake fake counts, skeletons or invented features into generated footage. Clearly identify staged test results and dramatization.</li><li>Export a clean vertical master, then edit platform-specific captions, safe areas and opening cuts. Check music/media rights and generation-tool commercial terms before purchasing production.</li></ol>
+<p>No paid generation is scheduled by this file. Select the engine from a short quality comparison using the same reference and prompt; score usable anatomy, motion continuity, emotion and editing cost. Discard clips that fail inspection.</p>
+</details>
+<details><summary>Weekly production and feedback rhythm</summary>
+<p>Prepare “lost by one” early in the week, “first set” midweek and “partner challenge” before the next casual window. Use original exports rather than watermarked reposts. Review retention and completed-session feedback after each window; replace hooks from observed friction.</p>
+<p>Before a build is available, the CTA recruits paired testers. After access works, link to the actual test entry and explain how a friend joins. Views and share-sheet opens do not establish successful referrals.</p>
+</details>
+</section>
+
+<section aria-labelledby="measurement-heading">
+<h2 id="measurement-heading">Measure use, then improve the next release</h2>
+<p>Enter observed totals for a defined cohort/window. Blank means <strong>unobserved</strong>; zero is a recorded result. These inputs stay in this page and are not sent or saved anywhere.</p>
+<form id="metrics-form">
+<div class="grid">
+<div class="card"><h3>First solo completion</h3><label>Attempted first solo sessions<input name="soloAttempts" type="number" min="0" step="1" inputmode="numeric"></label><label>Completed first solo sessions<input name="soloCompleted" type="number" min="0" step="1" inputmode="numeric"></label><output id="solo-rate">Unobserved</output><small>Tester feedback. Signed-out solo results remain on device.</small></div>
+<div class="card"><h3>Practice abandonment</h3><label>Practice attempts with a known outcome<input name="practiceAttempts" type="number" min="0" step="1" inputmode="numeric"></label><label>Abandoned practice attempts<input name="practiceAbandoned" type="number" min="0" step="1" inputmode="numeric"></label><output id="practice-rate">Unobserved</output><small>Tester feedback; record an explicit outcome and reason.</small></div>
+<div class="card"><h3>Seven-day battle return</h3><label>Players with a full seven-day window<input name="maturePlayers" type="number" min="0" step="1" inputmode="numeric"></label><label>Those players completing another full round<input name="returnedPlayers" type="number" min="0" step="1" inputmode="numeric"></label><output id="return-rate">Unobserved</output><small>Server full-round receipts; exclude immature cohorts, forfeits and no-results.</small></div>
+</div>
+<p id="metrics-error" role="alert"></p><button type="submit">Calculate observed rates</button>
+</form>
+<div class="table-wrap"><table><caption class="muted">Additional evidence · collect after hosted access exists</caption><thead><tr><th>Measure</th><th>Evidence</th><th>Decision it supports</th></tr></thead><tbody>
+<tr><td>First confirmed battle</td><td>Full-round server receipts; separate forfeit/no-result</td><td>Can pairs reach a completed session?</td></tr>
+<tr><td>Invitation conversion</td><td>Accepted / created requests and accepted-to-full-round; tester reports for the shared-link funnel</td><td>Where does invitation recovery fail?</td></tr>
+<tr><td>Support complaints</td><td>Issue reports tied to attempts, device and build</td><td>Which failure deserves the next patch?</td></tr>
+</tbody></table></div>
+<p><a href="server-metrics.sql">Read-only server aggregates</a> · <a href="observations.csv">Blank observation log</a></p>
+</section>
+<footer>Local evidence: Flutter 626 passed / 2 skipped; analyzer clean; Deno 59 passed; pgTAP 212 passed; HTTP smoke 31 checks passed. A server receipt confirms the recorded result and does not independently verify exercise form. Physical camera accuracy, live infrastructure, distribution and acquisition remain unverified.</footer>
+</main>
+<script>
+const form=document.getElementById('metrics-form');
+const pairs=[['soloCompleted','soloAttempts','solo-rate'],['practiceAbandoned','practiceAttempts','practice-rate'],['returnedPlayers','maturePlayers','return-rate']];
+form.addEventListener('submit',event=>{
+  event.preventDefault();
+  const results=pairs.map(([numerator,denominator,id])=>{
+    const n=form.elements.namedItem(numerator).value,d=form.elements.namedItem(denominator).value;
+    if(n===''||d==='')return{id,text:'Unobserved'};
+    const count=Number(n),total=Number(d);
+    if(!Number.isSafeInteger(count)||!Number.isSafeInteger(total)||count<0||total<0||count>total)return{id,text:'Invalid totals',error:true};
+    return{id,text:total===0?'No attempts':`${(100*count/total).toFixed(1)}% · ${count}/${total}`};
+  });
+  document.getElementById('metrics-error').textContent=results.some(r=>r.error)?'Use whole non-negative counts; the numerator cannot exceed its denominator.':'';
+  for(const result of results){const output=document.getElementById(result.id);output.value=result.text;output.setAttribute('aria-live','polite');}
+});
+</script>
+</body>
+</html>

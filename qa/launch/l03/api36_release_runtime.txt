@@ -1,0 +1,22 @@
+﻿== L03 release-equivalent APK on API 36 emulator (cold start, secure-storage plugin runtime check) ==
+device sdk: 36
+page size: 4096
+apk sha256: 760f2ae738b09221fac1b239b8ac3f8ba1093689dc5b7974bf69339b9139ad51
+Starting: Intent { cmp=app.trainingarena.mobile/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: app.trainingarena.mobile/.MainActivity
+TotalTime: 2843
+WaitTime: 2852
+Complete
+app pid: 3677
+
+== startup log scan (no FATAL / missing plugin / secure-storage errors) ==
+(clean: no FATAL, AndroidRuntime, MissingPluginException, secure-storage or dlopen entries)
+
+== top activity ==
+topResumedActivity=ActivityRecord{42744532 u0 app.trainingarena.mobile/.MainActivity t11}
+
+== registered secure-storage plugin in the built app ==
+GeneratedPluginRegistrant.java: com.it_nomads.fluttersecurestorage.FlutterSecureStoragePlugin
+(bundle check: 18 native libs arm64/armv7/x86_64, zipalign -P 16 passed; delivery 20 567 154 bytes for arm64 API 36)

@@ -1,0 +1,12 @@
+﻿Analyzing app...                                                
+
+  error - The type 'BattleFailureKind' is not exhaustively matched by the switch cases since it doesn't match 'BattleFailureKind.permissionDenied' - lib\notifications\notification_request_source.dart:61:7 - non_exhaustive_switch_statement
+  error - The type 'BattleFailureKind' is not exhaustively matched by the switch cases since it doesn't match 'BattleFailureKind.permissionDenied' - lib\notifications\notification_service.dart:409:12 - non_exhaustive_switch_expression
+
+flutter.bat : 2 issues found. (ran in 44.9s)
+At line:1 char:42
++ ... ing\jdk17"; & "D:\Kiro\.tooling\flutter\bin\flutter.bat" analyze 2>&1 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2 issues found. (ran in 44.9s):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

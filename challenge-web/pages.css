@@ -1,0 +1,147 @@
+/*
+ * Long-form styles for the public policy, support and deletion pages.
+ * Reuses the palette and base chrome from styles.css.
+ */
+
+.page {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.page h1 {
+  margin-bottom: 0;
+}
+
+.page h2 {
+  color: var(--soft-white);
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.page p,
+.page li {
+  color: var(--secondary);
+  font-size: 15px;
+}
+
+.page a {
+  color: var(--lime);
+}
+
+.page ul {
+  padding-left: 20px;
+}
+
+.draft {
+  background: var(--graphite);
+  border: 1px solid var(--warning);
+  border-radius: 16px;
+  color: var(--warning);
+  padding: 14px 16px;
+  font-size: 14px;
+}
+
+.draft strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+dl.facts {
+  margin: 0;
+}
+
+dl.facts dt {
+  color: var(--soft-white);
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+dl.facts dd {
+  color: var(--secondary);
+  margin: 2px 0 0;
+}
+
+form.deletion label {
+  color: var(--soft-white);
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 12px 0 6px;
+}
+
+form.deletion input[type="email"],
+form.deletion input[type="text"] {
+  background: var(--charcoal);
+  border: 1px solid var(--raised);
+  border-radius: 12px;
+  color: var(--soft-white);
+  font-size: 17px;
+  padding: 14px;
+  width: 100%;
+}
+
+form.deletion input:focus {
+  border-color: var(--lime);
+  outline: none;
+}
+
+form.deletion .check {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+form.deletion .check input {
+  margin-top: 3px;
+}
+
+form.deletion .check span {
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.status {
+  border-radius: 16px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  font-size: 15px;
+}
+
+.status:empty {
+  display: none;
+}
+
+.status--info {
+  background: var(--graphite);
+  color: var(--secondary);
+}
+
+.status--good {
+  background: var(--graphite);
+  border: 1px solid var(--positive);
+  color: var(--positive);
+}
+
+.status--warn {
+  background: var(--graphite);
+  border: 1px solid var(--warning);
+  color: var(--warning);
+}
+
+.status--bad {
+  background: var(--graphite);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+.step[hidden] {
+  display: none;
+}
+
+.footer a {
+  color: var(--quiet);
+}

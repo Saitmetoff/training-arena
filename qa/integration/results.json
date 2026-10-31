@@ -1,0 +1,377 @@
+{
+  "schema": "app.trainingarena.qa/scenario-results@1",
+  "task": "10_INTEGRATION_AND_DEVICE_QA",
+  "date": "2026-09-18",
+  "artifacts": {
+    "qa_report": "qa/REPORT.md",
+    "evidence_dir": "qa/integration/evidence",
+    "screens_dir": "qa/integration/screens",
+    "tools": [
+      "qa/integration/tools/api_probe.mjs",
+      "qa/integration/tools/alice_heartbeat.mjs"
+    ]
+  },
+  "environment": {
+    "flutter": "3.24.5 / Dart 3.5.4",
+    "jdk": "Temurin 17.0.20.1",
+    "os": "Windows 10.0.26200",
+    "device": "Android emulator ArenaQA (API 34, google_apis, x86_64, 2.5 GB RAM, swiftshader) on WHPX",
+    "physical_device": null,
+    "backend": "Supabase CLI 2.116.0 local stack (project_id TrainingArena), Docker 29.4.2",
+    "backend_base": "http://127.0.0.1:54321 (emulator: http://10.0.2.2:54321)",
+    "app_build": "debug APK, all feature flags on, ARENA_LINK_HOST=example.invalid (D1 open)"
+  },
+  "suites": [
+    {"name": "flutter analyze", "result": "pass", "detail": "No issues found (final)", "evidence": "qa/integration/evidence/flutter_analyze_final.txt"},
+    {"name": "flutter test (unit/widget)", "result": "pass", "detail": "416/416 passed (final)", "evidence": "qa/integration/evidence/flutter_test_final.txt"},
+    {"name": "deno edge function tests", "result": "pass", "detail": "48/48 passed", "evidence": "qa/integration/evidence/deno_edge_tests.txt"},
+    {"name": "supabase db reset (migrations+seed)", "result": "pass", "evidence": "qa/integration/evidence/supabase_db_reset.txt"},
+    {"name": "supabase pgTAP (schema/flow/authz/ops)", "result": "pass", "detail": "4 files, 184 assertions", "evidence": "qa/integration/evidence/supabase_pgtap.txt"},
+    {"name": "local HTTP e2e smoke (arena edge function)", "result": "pass", "detail": "16/16 checks", "evidence": "qa/integration/evidence/arena_smoke_e2e.txt"},
+    {"name": "challenge-web tests", "result": "pass", "detail": "6/6 passed", "evidence": "node --test challenge-web/test/link.test.mjs"},
+    {"name": "prototype design checks", "result": "pass", "detail": "10 check groups passed"},
+    {"name": "release secret scan", "result": "fail", "detail": "3 findings in supabase/functions/arena-dispatcher/tests/fcm_test.ts (synthetic PEM fixtures); see blocker R5"},
+    {"name": "release app links check --release", "result": "fail", "detail": "--host required / example.invalid; expected D1 block; see blocker R2"},
+    {"name": "release artifact identity check", "result": "pass", "detail": "source identity check passed"}
+  ],
+  "scenarios": [
+    {
+      "id": "recipient.signed_in.cold_link",
+      "area": "recipient",
+      "case": "installed + signed-in recipient opens a cold challenge link",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/20_review_signedin.png", "screens/07_small.png", "screens/08_small.png"],
+      "notes": "Link resolved read-only to the exact challenger, sign-in not requested, no tab navigation."
+    },
+    {
+      "id": "recipient.signed_out.cold_link",
+      "area": "recipient",
+      "case": "installed + signed-out recipient opens a cold challenge link",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/02_small.png", "screens/03_small.png"],
+      "notes": "Challenge context kept; email-code sign-in completed and returned to the same token."
+    },
+    {
+      "id": "recipient.warm_link",
+      "area": "recipient",
+      "case": "warm link delivered to the running app interrupts the shell",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/09_small.png"],
+      "notes": "Intent delivered to the top-most instance; persisted pending request resumed after process restart."
+    },
+    {
+      "id": "recipient.not_installed",
+      "area": "recipient",
+      "case": "not-installed recipient follows an HTTPS link and installs via Play",
+      "status": "blocked",
+      "verification": "none",
+      "evidence": ["qa/camera/device_validation_checklist.md", "app/test/linking/install_referrer_test.dart"],
+      "notes": "Emulator image has no Play Store and no real HTTPS host (D1). Install-referrer parsing and recovery copy covered by host tests only. Owner: task 11 (R2/R4)."
+    },
+    {
+      "id": "recipient.auth_return_process_restart",
+      "area": "recipient",
+      "case": "process restart resumes the pending challenge and the stored session",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/09_small.png", "screens/18_small.png", "screens/19_small.png"],
+      "notes": "Stored session restored and profile loaded after restart; pending request context survived."
+    },
+    {
+      "id": "recipient.expired_code_retry",
+      "area": "recipient",
+      "case": "expired email code keeps the challenge and offers a fresh request",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/05_small.png"],
+      "notes": "Showed 'That code is invalid or expired. Request a new one.' with the challenge preserved."
+    },
+    {
+      "id": "recipient.install_referrer",
+      "area": "recipient",
+      "case": "Play Install Referrer recovery",
+      "status": "blocked",
+      "verification": "none",
+      "evidence": ["app/test/linking/install_referrer_test.dart"],
+      "notes": "Requires Play Store install path. Owner: task 11 (R4)."
+    },
+    {
+      "id": "recipient.multiple_revoked_username_expired_completed_blocked_busy",
+      "area": "recipient",
+      "case": "multiple recipients, revoked link, username change, expired request, completed link, blocked user, busy player",
+      "status": "pass",
+      "verification": "host_test",
+      "evidence": ["app/test/linking/", "app/test/account/", "supabase/tests/arena_authz_test.sql"],
+      "notes": "Covered by widget/unit tests and pgTAP adversarial suites. Not re-run on device in this pass."
+    },
+    {
+      "id": "notifications.permission_states_duplicate_tap",
+      "area": "notifications",
+      "case": "notification allowed/denied, duplicate notification tap, challenger offline",
+      "status": "blocked",
+      "verification": "host_test",
+      "evidence": ["app/test/notifications/", "app/test/matchmaking/"],
+      "notes": "No Firebase project or google-services.json in this build (push flag false by design); live push not executable locally. Owner: task 11 (R4)."
+    },
+    {
+      "id": "camera.permission_allowed",
+      "area": "camera",
+      "case": "camera permission allowed and tracking pipeline runs",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/11_small.png", "screens/12_small.png", "screens/14_small.png"],
+      "notes": "CameraX preview + on-device detector started; emulated scene contains no human body, so no rep was produced. Not accuracy evidence."
+    },
+    {
+      "id": "camera.permission_denied",
+      "area": "camera",
+      "case": "camera permission denied",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/36_small.png", "screens/37_small.png"],
+      "notes": "Chip 'Permission denied' plus 'Open Settings and allow the camera' copy."
+    },
+    {
+      "id": "camera.permission_permanently_denied",
+      "area": "camera",
+      "case": "camera permission permanently denied",
+      "status": "not_run",
+      "verification": "host_test",
+      "evidence": ["app/test/camera/camera_session_test.dart"],
+      "notes": "Host tests cover the derived state; device double-denial sequence not executed."
+    },
+    {
+      "id": "camera.no_camera_bad_framing_tracking_loss_practice_reset_lifecycle",
+      "area": "camera",
+      "case": "no camera, bad framing, tracking loss, practice reset, lifecycle pause/resume",
+      "status": "not_run",
+      "verification": "host_test",
+      "evidence": ["app/test/camera/", "docs/camera/CAMERA_QA.md"],
+      "notes": "'Looking for you' framing state observed on device. Other failure paths covered by host tests only."
+    },
+    {
+      "id": "camera.physical_rep_accuracy",
+      "area": "camera",
+      "case": "physical-device rep counting accuracy and false-positive gate",
+      "status": "blocked",
+      "verification": "none",
+      "evidence": ["docs/camera/CAMERA_QA.md", "qa/camera/device_validation_checklist.md"],
+      "notes": "No physical camera device attached. The signed checklist is empty. This blocks enabling camera-counted release. Owner: task 11 (R1)."
+    },
+    {
+      "id": "battle.both_ready_gate",
+      "area": "battle",
+      "case": "both-ready gate",
+      "status": "pass",
+      "verification": "emulator+api",
+      "evidence": ["screens/13_small.png", "qa/integration/evidence/db_match_receipt_evidence.txt"],
+      "notes": "App blocked ready until a practice rep (honest notice). Server countdown started only after both API ready calls; no unattended start."
+    },
+    {
+      "id": "battle.countdown_60s_and_tie",
+      "area": "battle",
+      "case": "countdown, 60-second round and tie",
+      "status": "pass",
+      "verification": "emulator+api",
+      "evidence": ["screens/22_small.png", "qa/integration/evidence/db_match_receipt_evidence.txt"],
+      "notes": "starts_at->ends_at exactly 60.000 s; receipt draw, reason round_complete; both players' last_seen within 1 s of the end."
+    },
+    {
+      "id": "battle.single_player_recovery_shared_failure_no_result",
+      "area": "battle",
+      "case": "single-player 10-second recovery, shared service failure, abandoned preparing",
+      "status": "pass",
+      "verification": "emulator+host_test",
+      "evidence": ["qa/integration/evidence/db_match_receipt_evidence.txt", "app/test/battle/battle_state_machine_test.dart"],
+      "notes": "Leave in preparing produced a no_result receipt with reason abandoned_preparing; 10 s outlier window and shared outage covered by tests."
+    },
+    {
+      "id": "matchmaking.empty_15_60",
+      "area": "matchmaking",
+      "case": "empty ranked matchmaking at 15 s and 60 s",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/38_small.png", "screens/33_small.png"],
+      "notes": "15 s alternative and 60 s stop verified after the queue-anchor fix; retry control present. Counter bug fixed (defect 4)."
+    },
+    {
+      "id": "matchmaking.switch_to_friend_cancels",
+      "area": "matchmaking",
+      "case": "switch to friend cancellation",
+      "status": "pass",
+      "verification": "emulator+db",
+      "evidence": ["qa/integration/evidence/db_match_receipt_evidence.txt"],
+      "notes": "Switch opened the friend challenge and left zero active queue seats for the player."
+    },
+    {
+      "id": "receipts.casual_history_leaderboard_profile",
+      "area": "receipts",
+      "case": "confirmed casual receipt, history/leaderboard/profile updates",
+      "status": "pass",
+      "verification": "emulator+db",
+      "evidence": ["screens/28_small.png", "screens/30_small.png", "screens/19_small.png"],
+      "notes": "History shows both confirmed receipts with the server reason; casual keeps rating unchanged; leaderboard and profile render server values."
+    },
+    {
+      "id": "receipts.ranked_no_double_rating",
+      "area": "receipts",
+      "case": "confirmed ranked receipt and no double rating",
+      "status": "not_run",
+      "verification": "host_test+pgTAP",
+      "evidence": ["app/test/account/", "supabase/tests/arena_flow_test.sql", "supabase/tests/arena_authz_test.sql"],
+      "notes": "Ranked device pairing not executed; Elo/idempotency/one-receipt rules covered by pgTAP and host tests. Pilot item for task 11 (R6)."
+    },
+    {
+      "id": "sharing.preview_copy_system_share",
+      "area": "sharing",
+      "case": "result sharing to destination apps, copy link, URL/QR correctness",
+      "status": "pass",
+      "verification": "emulator",
+      "evidence": ["screens/23_small.png", "screens/24_small.png", "screens/25_copy_link_small.png", "screens/26_system_share_small.png"],
+      "notes": "Preview-first for 1080x1920 and 1080x1350; clipboard overlay showed https://example.invalid/c/<token>; Android chooser opened. Share-sheet opening recorded separately from referral."
+    },
+    {
+      "id": "sharing.no_raw_video_export",
+      "area": "sharing",
+      "case": "no raw video export",
+      "status": "pass",
+      "verification": "host_test",
+      "evidence": ["app/test/sharing/", "docs/SHARING_SPEC.md"],
+      "notes": "Export is a RepaintBoundary PNG only; no camera frames exist on disk by construction and tests."
+    },
+    {
+      "id": "backend.rls_adversarial_idempotency",
+      "area": "backend",
+      "case": "RLS and adversarial API cases, retries, idempotency, no double rating",
+      "status": "pass",
+      "verification": "api_e2e+pgTAP",
+      "evidence": ["qa/integration/evidence/supabase_pgtap.txt", "qa/integration/evidence/arena_smoke_e2e.txt", "supabase/tests/arena_authz_test.sql"],
+      "notes": "Local stack with fake @arena.invalid accounts; 184 pgTAP assertions and 16 HTTP smoke checks passed."
+    },
+    {
+      "id": "metrics.end_to_end_segments",
+      "area": "metrics",
+      "case": "link opened -> sign-in -> request -> accepted -> both ready -> battle completed",
+      "status": "pass",
+      "verification": "emulator+db",
+      "evidence": ["qa/integration/evidence/db_match_receipt_evidence.txt", "qa/integration/evidence/alice_heartbeat2.log"],
+      "notes": "Segments measured; automation latency excluded where separable. See REPORT.md metrics table."
+    }
+  ],
+  "fixed_defects": [
+    {
+      "id": "D1-account-build",
+      "title": "Account feature did not compile (nullable errors, missing imports, missing widget import)",
+      "owner": "task 06 (repaired by task 10)",
+      "repro": "flutter analyze before 2026-09-18 11:34; 23 issues including undefined AccountLoadingRows and ArenaProfile",
+      "fix": "Repaired imports/nullable flows in lib/account; analyzer now clean.",
+      "evidence": ["qa/integration/evidence/flutter_analyze_full.txt", "qa/integration/evidence/flutter_analyze_final.txt"]
+    },
+    {
+      "id": "D2-lazy-durable-link",
+      "title": "New account received link:null from profile and the waiting poll failed malformed, so accepted matches were never detected",
+      "owner": "task 05 (repaired by task 10)",
+      "repro": "Signed-in new user sends a request; fix waits; profile returns link null; client throws malformed_response and never reads active_match_id.",
+      "fix": "accountSnapshot() now calls the documented link_rotate action when no durable link exists; tests added.",
+      "evidence": ["app/lib/linking/arena_challenge_api.dart", "app/test/linking/challenge_api_test.dart"]
+    },
+    {
+      "id": "D3-viewer-notifier-wiring",
+      "title": "BattleRuntime.fromConfig created a different viewer notifier than the controller, so the production battle snapshot never knew the viewer; an absent-viewer receipt rendered as a personal loss",
+      "owner": "task 07 (repaired by task 10)",
+      "repro": "Cold start with a finished receipt; result headline read '@opponent beat me' even when the server winner was the viewer.",
+      "fix": "fromConfig now shares one notifier with the controller; unknown-viewer receipts render neutral, factual copy; regression tests added.",
+      "evidence": ["app/lib/battle/runtime/battle_runtime.dart", "app/lib/battle/ui/battle_flow_page.dart", "app/test/battle/battle_contract_test.dart"]
+    },
+    {
+      "id": "D4-queue-elapsed-anchor",
+      "title": "Ranked search counter stayed at 0 s and the 15 s friend alternative never triggered because queue replies carry no server clock",
+      "owner": "task 08 (repaired by task 10)",
+      "repro": "Battle tab -> Find an opponent; wait 18 s; card still shows 0 s / 60 s.",
+      "fix": "Anchor on the local clock once when the reply has no server_now, reset per search; regression test added; verified on device (16 s / 60 s).",
+      "evidence": ["app/lib/battle/runtime/battle_controller.dart", "app/test/battle/battle_controller_test.dart", "screens/38_small.png"]
+    },
+    {
+      "id": "D5-local-email-otp-template",
+      "title": "Local email sign-in delivered a magic link without a numeric code, so the app's code flow could not complete",
+      "owner": "task 04 (repaired by task 10)",
+      "repro": "Request an email code against the local stack; Mailpit shows only a magic link.",
+      "fix": "Added supabase/templates/magic_link.html with {{ .Token }} and the additive auth.email.template.magic_link config; restarted the local stack; sign-in completed on device.",
+      "evidence": ["supabase/config.toml", "supabase/templates/magic_link.html", "screens/06_small.png"]
+    }
+  ],
+  "blockers": [
+    {
+      "id": "R1",
+      "title": "Physical-device camera rep accuracy is unvalidated",
+      "impact": "Blocks enabling ARENA_FEATURE_CAMERA_COUNTING=true in the pilot; no device accuracy claim may be made.",
+      "owner": "task 11 / product owner",
+      "action": "Execute docs/camera/CAMERA_QA.md section 4 on the physical device matrix and sign qa/camera/device_validation_checklist.md."
+    },
+    {
+      "id": "R2",
+      "title": "Real HTTPS link domain (D1) missing; App Links unverified and release check fails",
+      "impact": "Not-installed recipients cannot be recovered through a verified App Link; release check_app_links --release fails.",
+      "owner": "product owner",
+      "action": "Supply the real domain, assetlinks.json and signing fingerprint; task 11 gate."
+    },
+    {
+      "id": "R3",
+      "title": "Google sign-in credentials/redirect not configured",
+      "impact": "Google auth return path not executable locally; only email-code sign-in was exercised.",
+      "owner": "task 11 / product owner",
+      "action": "Configure the Supabase Google provider and ARENA_AUTH_REDIRECT_URL; run the cold/warm redirect QA."
+    },
+    {
+      "id": "R4",
+      "title": "Push notifications and Play Install Referrer cannot be exercised locally",
+      "impact": "Notification allowed/denied/duplicate-tap and not-installed recovery have host-test evidence only.",
+      "owner": "task 11",
+      "action": "Configure FCM, google-services.json, a test track install and run the notification/referrer matrix."
+    },
+    {
+      "id": "R5",
+      "title": "Release secret scan fails on synthetic PEM fixtures",
+      "impact": "CI release gate is red until resolved; material is explicitly synthetic test data, so secret exposure risk is low.",
+      "owner": "task 11 (scanner) / task 08 (fixture)",
+      "action": "Exclude known test fixture paths or replace the PEM-shaped fixtures with scanner-safe markers; re-run secret_scan.mjs."
+    },
+    {
+      "id": "R6",
+      "title": "Ranked queue pairing and ranked receipt not exercised on a device with two live clients",
+      "impact": "Ranked device path (paired queue, rating update, rematch) rests on host tests and pgTAP, not device evidence.",
+      "owner": "task 11 pilot",
+      "action": "Run a coordinated two-device ranked match in the invited-pair pilot and record receipts."
+    },
+    {
+      "id": "R7",
+      "title": "Device matrix limited to a single API 34 emulator",
+      "impact": "API 24-26 behaviour, low-end performance and the Pixel 6/Tensor beta5 crash risk are unverified.",
+      "owner": "task 11 / owner hardware",
+      "action": "Run the physical matrix including a low-end API 24-26 device and the Tensor checkpoint."
+    },
+    {
+      "id": "R8",
+      "title": "Shared checkout remains uncommitted",
+      "impact": "All task work is uncommitted on the shared branch; a reset could lose the integrated fixes.",
+      "owner": "task 11",
+      "action": "Commit the integrated tree after the release checks pass; task 10 does not commit by policy."
+    }
+  ],
+  "metrics": {
+    "request_send_latency_ms": 350,
+    "request_sent_to_accepted_seconds": 19.73,
+    "both_ready_to_countdown_start_seconds": 4.93,
+    "countdown_start_to_round_end_seconds": 60.0,
+    "round_end_to_receipt_ms": 203,
+    "matchmaking_empty_window_seconds": 60.0,
+    "matchmaking_alternative_seconds": 15,
+    "first_battle_completion_seconds_observed": 130.2,
+    "rematch_rate_observed": "0 of 1 session; sample not meaningful",
+    "share_sheet_opened": true,
+    "confirmed_referrals_from_share": 0
+  }
+}

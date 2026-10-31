@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-30",
+  "version": "1.0.1+2",
+  "counter_version": "arena-counter/1.2.1",
+  "scope": "Local implementation checkpoint; not a distributable beta or a physical accuracy result",
+  "checks": [
+    {"command": "flutter test --no-pub --reporter expanded", "cwd": "app", "passed": 626, "skipped": 2, "failed": 0, "exit": 0},
+    {"command": "flutter analyze --no-pub", "cwd": "app", "issues": 0, "exit": 0},
+    {"command": "npx --yes deno@2 test --allow-env --allow-net supabase/functions/arena/tests supabase/functions/arena-dispatcher/tests", "passed": 59, "failed": 0, "exit": 0},
+    {"command": "supabase test db --local", "files": 6, "assertions": 212, "failed": 0, "exit": 0},
+    {"command": "node backend/e2e/arena_smoke.mjs", "environment": "local persisted Supabase; fixture accounts, maintenance secret supplied from ignored environment file", "checks_passed": 31, "exit": 0},
+    {"command": "node --test tools/release/test/check_release_flags.test.mjs tools/release/test/check_android_bundle.test.mjs tools/release/test/check_camera_evidence.test.mjs challenge-web/test/link.test.mjs challenge-web/test/public_pages.test.mjs", "passed": 37, "failed": 0, "exit": 0},
+    {"command": "node tools/release/secret_scan.mjs", "exit": 0},
+    {"command": "node challenge-web/scripts/check.mjs", "exit": 0},
+    {"command": "node tools/release/check_release_flags.mjs", "exit": 0},
+    {"command": "node tools/release/check_artifact_identity.mjs", "exit": 0},
+    {"command": "node tools/release/check_app_links.mjs", "exit": 0, "caveat": "Development mode allows example.invalid; real domain verification remains blocked"},
+    {"command": "node qa/beta/check-board.mjs", "cases_passed": 3, "exit": 0},
+    {"command": "psql -v ON_ERROR_STOP=1 < qa/beta/server-metrics.sql", "environment": "local database, read-only transaction rolled back", "exit": 0, "caveat": "Compilation check only; output is not customer analytics"},
+    {"command": "node tools/release/check_camera_evidence.mjs", "exit": 1, "expected": "Blocks incomplete two-phone evidence"}
+  ],
+  "regressions_observed_red_then_green": [
+    "Signed-out solo starts above ordinary home notices",
+    "Failed persistence retains result/retry and never reports Saved",
+    "Delayed history preserves prior results and source-specific best",
+    "Rematch action returns a pending request and does not reuse a match",
+    "Auth bearer refresh preserves the rematch request direction",
+    "Preview geometry parsing and singular-transform rejection",
+    "Bottom-dwell rejection coaching does not claim unmeasured shallow depth",
+    "Busy-player copy asks the athlete to wait"
+  ],
+  "external_gates": {
+    "physical_camera": "No physical round recorded; Redmi 10 connected, second phone unavailable",
+    "hosted_backend_auth": "No TrainingArena hosted project identified; unrelated projects left untouched",
+    "domain_public_pages": "Real host and legal/contact configuration not supplied",
+    "signing": "No release key.properties or owner keystore configuration supplied",
+    "media_review": "Existing release human-review gate remains open",
+    "recruitment": "Blank roster prepared; no adult tester contacted",
+    "social": "Three recurring dramatization concepts prepared; nothing generated or published"
+  }
+}

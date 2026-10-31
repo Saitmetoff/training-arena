@@ -1,0 +1,71 @@
+name: training_arena
+description: Fault - camera-counted push-up and squat battles.
+publish_to: "none"
+version: 1.0.1+2
+
+# Toolchain pin (L02, 2026-09-20): Flutter 3.47.5 / Dart 3.13.4 stable,
+# targetSdk 36. See docs/release/CONFIGURATION.md for why.
+environment:
+  sdk: ">=3.13.0 <4.0.0"
+  flutter: ">=3.47.5"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Task 05: challenge links, install recovery, share sheet, durable pending
+  # context and the read-only link resolve.
+  # app_links 7.x: AGP 9-compatible Android module; >=6.2 compiles against
+  # current AndroidX (the 6.1.3 pin failed the API 36 AAR metadata check).
+  app_links: ^7.2.1
+  # Task 06: PKCE challenge hashing for the Supabase auth redirect.
+  crypto: ^3.0.7
+  http: ^1.6.0
+  # Task 09: deterministic QR matrices for the challenge URL on share cards.
+  qr: ^3.0.2
+  # share_plus 13.x: AGP 9/Gradle 9-compatible Android module; migrated to
+  # the SharePlus/ShareParams API in this task.
+  share_plus: ^13.3.0
+  shared_preferences: ^2.5.3
+  # L03: Android Keystore-backed session/PKCE storage (EncryptedSharedPreferences
+  # on Android 6+, hardware-backed key where available). Chosen over a
+  # home-grown bridge: it is the maintained, audited implementation.
+  flutter_secure_storage: ^11.2.0
+  url_launcher: ^6.3.1
+  # F3: app-private directory for the debug-only landmark trace export
+  # (ARENA_FEATURE_CAMERA_TRACE). Already present in the lock and in
+  # GeneratedPluginRegistrant as a transitive dependency of share_plus; this
+  # promotion adds no package to the build.
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # L03: on-device exercise of the real Keystore-backed session store.
+  integration_test:
+    sdk: flutter
+  flutter_lints: 4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/media/athlete/manifest.json
+    - assets/media/athlete/models/
+    - assets/media/athlete/loops/
+    - assets/media/athlete/frames/
+    - assets/media/athlete/overlays/
+    - assets/media/athlete/posters/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inter-Black.ttf
+          weight: 900

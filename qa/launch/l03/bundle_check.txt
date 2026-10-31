@@ -1,0 +1,47 @@
+aab manifest: app.trainingarena.mobile 1.0.0+1 minSdk 24 targetSdk 36 extractNativeLibs=false
+aab manifest: permissions android.permission.ACCESS_NETWORK_STATE, android.permission.CAMERA, android.permission.FOREGROUND_SERVICE, android.permission.INTERNET, android.permission.POST_NOTIFICATIONS, android.permission.RECEIVE_BOOT_COMPLETED, android.permission.WAKE_LOCK, app.trainingarena.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION, com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+aab manifest: features android.hardware.camera, android.hardware.camera.any, android.hardware.camera.autofocus
+aab: 18 native libraries, ABIs: arm64-v8a, armeabi-v7a, x86_64
+  base/lib/arm64-v8a/libapp.so (aarch64, compressed, p_align 65536)
+  base/lib/arm64-v8a/libdatastore_shared_counter.so (aarch64, compressed, p_align 16384)
+  base/lib/arm64-v8a/libflutter.so (aarch64, compressed, p_align 65536)
+  base/lib/arm64-v8a/libimage_processing_util_jni.so (aarch64, compressed, p_align 16384)
+  base/lib/arm64-v8a/libsurface_util_jni.so (aarch64, compressed, p_align 16384)
+  base/lib/arm64-v8a/libxeno_native.so (aarch64, compressed, p_align 16384)
+  base/lib/armeabi-v7a/libapp.so (arm, compressed, p_align 16384)
+  base/lib/armeabi-v7a/libdatastore_shared_counter.so (arm, compressed, p_align 16384)
+  base/lib/armeabi-v7a/libflutter.so (arm, compressed, p_align 65536)
+  base/lib/armeabi-v7a/libimage_processing_util_jni.so (arm, compressed, p_align 16384)
+  base/lib/armeabi-v7a/libsurface_util_jni.so (arm, compressed, p_align 16384)
+  base/lib/armeabi-v7a/libxeno_native.so (arm, compressed, p_align 4096)
+  base/lib/x86_64/libapp.so (x86_64, compressed, p_align 65536)
+  base/lib/x86_64/libdatastore_shared_counter.so (x86_64, compressed, p_align 16384)
+  base/lib/x86_64/libflutter.so (x86_64, compressed, p_align 65536)
+  base/lib/x86_64/libimage_processing_util_jni.so (x86_64, compressed, p_align 16384)
+  base/lib/x86_64/libsurface_util_jni.so (x86_64, compressed, p_align 16384)
+  base/lib/x86_64/libxeno_native.so (x86_64, compressed, p_align 16384)
+bundle delivery sizes (arm64-v8a, en-US, 420dpi, API 36):
+SDK,ABI,SCREEN_DENSITY,LANGUAGE,TEXTURE_COMPRESSION_FORMAT,DEVICE_GROUP,DEVICE_TIER,COUNTRY_SET,SDK_RUNTIME,MIN,MAX
+36,arm64-v8a,420,en-US,,,,,Not Required,20567154,20567154
+note: AAB signer not pinned (no --expect-uploader-sha256); unsigned AAB is expected until the owner provides the upload key.
+apk: 18 native libraries, ABIs: arm64-v8a, armeabi-v7a, x86_64
+  lib/arm64-v8a/libapp.so (aarch64, stored, p_align 65536)
+  lib/arm64-v8a/libdatastore_shared_counter.so (aarch64, stored, p_align 16384)
+  lib/arm64-v8a/libflutter.so (aarch64, stored, p_align 65536)
+  lib/arm64-v8a/libimage_processing_util_jni.so (aarch64, stored, p_align 16384)
+  lib/arm64-v8a/libsurface_util_jni.so (aarch64, stored, p_align 16384)
+  lib/arm64-v8a/libxeno_native.so (aarch64, stored, p_align 16384)
+  lib/armeabi-v7a/libapp.so (arm, stored, p_align 16384)
+  lib/armeabi-v7a/libdatastore_shared_counter.so (arm, stored, p_align 16384)
+  lib/armeabi-v7a/libflutter.so (arm, stored, p_align 65536)
+  lib/armeabi-v7a/libimage_processing_util_jni.so (arm, stored, p_align 16384)
+  lib/armeabi-v7a/libsurface_util_jni.so (arm, stored, p_align 16384)
+  lib/armeabi-v7a/libxeno_native.so (arm, stored, p_align 4096)
+  lib/x86_64/libapp.so (x86_64, stored, p_align 65536)
+  lib/x86_64/libdatastore_shared_counter.so (x86_64, stored, p_align 16384)
+  lib/x86_64/libflutter.so (x86_64, stored, p_align 65536)
+  lib/x86_64/libimage_processing_util_jni.so (x86_64, stored, p_align 16384)
+  lib/x86_64/libsurface_util_jni.so (x86_64, stored, p_align 16384)
+  lib/x86_64/libxeno_native.so (x86_64, stored, p_align 16384)
+apk: zipalign -P 16 verification passed (build-tools 36.0.0)
+android bundle check passed

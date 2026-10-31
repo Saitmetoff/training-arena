@@ -1,0 +1,33 @@
+﻿Analyzing app...                                                
+
+  error - A rethrow must be inside of a catch clause - lib\account\auth\supabase_auth_gateway.dart:282:9 - rethrow_outside_catch
+   info - The 'if' statement could be replaced by a null-aware assignment - lib\account\challenge\account_challenge_auth.dart:68:5 - prefer_conditional_assignment
+  error - The property 'username' can't be unconditionally accessed because the receiver can be 'null' - lib\account\challenge\account_challenge_auth.dart:76:20 - unchecked_use_of_nullable_value
+  error - The property 'username' can't be unconditionally accessed because the receiver can be 'null' - lib\account\challenge\account_challenge_auth.dart:76:48 - unchecked_use_of_nullable_value
+  error - A value of type 'ArenaProfile?' can't be returned from the method '_run' because it has a return type of 'Future<ArenaProfile>' - lib\account\challenge\account_challenge_auth.dart:102:12 - return_of_invalid_type
+  error - The property 'accessToken' can't be unconditionally accessed because the receiver can be 'null' - lib\account\runtime\account_controller.dart:328:26 - unchecked_use_of_nullable_value
+   info - Unnecessary braces in a string interpolation - lib\account\ui\account_widgets.dart:333:14 - unnecessary_brace_in_string_interps
+warning - Unused import: '../models/account_models.dart' - lib\account\ui\leaderboard_tab.dart:14:8 - unused_import
+warning - Unused import: '../../domain/arena_types.dart' - lib\account\ui\player_card_sheet.dart:15:8 - unused_import
+   info - Use 'const' with the constructor to improve performance - lib\account\ui\player_card_sheet.dart:158:20 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\account\ui\player_card_sheet.dart:160:22 - prefer_const_constructors
+  error - The name 'AccountLoadingRows' isn't a class - lib\account\ui\player_card_sheet.dart:234:42 - creation_with_non_type
+  error - The name 'AccountEmptyPanel' isn't a class - lib\account\ui\player_card_sheet.dart:235:42 - creation_with_non_type
+  error - The method 'AccountProblemPanel' isn't defined for the type '_PlayerCardSheetState' - lib\account\ui\player_card_sheet.dart:240:34 - undefined_method
+warning - Unused import: '../models/account_models.dart' - lib\account\ui\profile_tab.dart:13:8 - unused_import
+warning - This 'onError' handler must return a value assignable to 'ArenaProfile', but ends without returning a value - lib\account\ui\profile_tab.dart:112:61 - body_might_complete_normally_catch_error
+warning - This 'onError' handler must return a value assignable to 'ArenaProfile', but ends without returning a value - lib\account\ui\profile_tab.dart:182:65 - body_might_complete_normally_catch_error
+  error - The name 'ArenaProfile' isn't a type, so it can't be used as a type argument - lib\account\ui\settings_page.dart:32:8 - non_type_as_type_argument
+  error - The name 'ArenaProfile' isn't a type, so it can't be used as a type argument - lib\account\ui\settings_page.dart:32:40 - non_type_as_type_argument
+  error - Undefined class 'ArenaProfile' - lib\account\ui\settings_page.dart:65:25 - undefined_class
+   info - Use 'const' with the constructor to improve performance - lib\account\ui\settings_page.dart:102:20 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\account\ui\settings_page.dart:104:22 - prefer_const_constructors
+   info - Don't use 'BuildContext's across async gaps - lib\account\ui\sign_in_flow.dart:86:46 - use_build_context_synchronously
+
+flutter.bat : 23 issues found. (ran in 39.3s)
+At line:1 char:139
++ ... ing\jdk17"; & "D:\Kiro\.tooling\flutter\bin\flutter.bat" analyze 2>&1 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (23 issues found. (ran in 39.3s):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

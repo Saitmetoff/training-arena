@@ -1,0 +1,35 @@
+﻿== L08 release-equivalent APK device smoke ==
+device: 16 API 36 abi x86_64
+Performing Streamed Install
+Success
+install wall time: 4.3 s
+Starting: Intent { cmp=app.trainingarena.mobile/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: app.trainingarena.mobile/.MainActivity
+TotalTime: 6187
+WaitTime: 6190
+Complete
+am start -W wall time: 6.5 s
+logcat: no FATAL/AndroidRuntime-crash/MissingPluginException lines
+Starting: Intent { act=android.intent.action.VIEW dat=trainingarena://challenge/... pkg=app.trainingarena.mobile }
+Status: ok
+LaunchState: COLD
+Activity: app.trainingarena.mobile/.MainActivity
+TotalTime: 4466
+WaitTime: 4502
+Complete
+resumed after force-stop + deep link:     topResumedActivity=ActivityRecord{145950715 u0 app.trainingarena.mobile/.MainActivity t20}
+Starting: Intent { cmp=app.trainingarena.mobile/.MainActivity }
+adb : Warning: Activity not started, its current task has been brought to the front
+At line:1 char:749
++ ... -Seconds 2; adb -s emulator-5554 shell am start -n app.trainingarena. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: Activi...ht to the front:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+    topResumedActivity=ActivityRecord{145950715 u0 app.trainingarena.mobile/.MainActivity t20}
+
+
+logcat after force-stop/deep-link/background: no FATAL/MissingPluginException

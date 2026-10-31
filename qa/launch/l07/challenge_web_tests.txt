@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: tokenFromPath reads /c/<token> with fake tokens
+ok 1 - tokenFromPath reads /c/<token> with fake tokens
+  ---
+  duration_ms: 0.968
+  type: 'test'
+  ...
+# Subtest: tokenFromQuery supports code fallback
+ok 2 - tokenFromQuery supports code fallback
+  ---
+  duration_ms: 0.2292
+  type: 'test'
+  ...
+# Subtest: readableCode groups tokens for reading aloud
+ok 3 - readableCode groups tokens for reading aloud
+  ---
+  duration_ms: 0.8356
+  type: 'test'
+  ...
+# Subtest: withReferrer encodes the install recovery token
+ok 4 - withReferrer encodes the install recovery token
+  ---
+  duration_ms: 0.356
+  type: 'test'
+  ...
+# Subtest: statusFromResolution fails closed for revoked and unknown input
+ok 5 - statusFromResolution fails closed for revoked and unknown input
+  ---
+  duration_ms: 0.1544
+  type: 'test'
+  ...
+# Subtest: usernameOf only reads a public owner name
+ok 6 - usernameOf only reads a public owner name
+  ---
+  duration_ms: 0.0858
+  type: 'test'
+  ...
+# Subtest: rejects a malformed email without any network call
+ok 7 - rejects a malformed email without any network call
+  ---
+  duration_ms: 1.0428
+  type: 'test'
+  ...
+# Subtest: is not configured without an apiBase and anon key
+ok 8 - is not configured without an apiBase and anon key
+  ---
+  duration_ms: 0.2226
+  type: 'test'
+  ...
+# Subtest: requests the code with create_user:false and the project anon key
+ok 9 - requests the code with create_user:false and the project anon key
+  ---
+  duration_ms: 0.8385
+  type: 'test'
+  ...
+# Subtest: maps a rate limit to a retryable error
+ok 10 - maps a rate limit to a retryable error
+  ---
+  duration_ms: 0.2522
+  type: 'test'
+  ...
+# Subtest: verifies the code and deletes with the verified session bearer
+ok 11 - verifies the code and deletes with the verified session bearer
+  ---
+  duration_ms: 0.5323
+  type: 'test'
+  ...
+# Subtest: an expired code is reported and no session is kept
+ok 12 - an expired code is reported and no session is kept
+  ---
+  duration_ms: 0.192
+  type: 'test'
+  ...
+# Subtest: a network failure keeps the verified session so the retry is safe
+ok 13 - a network failure keeps the verified session so the retry is safe
+  ---
+  duration_ms: 0.3449
+  type: 'test'
+  ...
+# Subtest: a dead session after deletion is not presented as a retryable failure
+ok 14 - a dead session after deletion is not presented as a retryable failure
+  ---
+  duration_ms: 0.2328
+  type: 'test'
+  ...
+# Subtest: the shipped deletion script never logs and never persists
+ok 15 - the shipped deletion script never logs and never persists
+  ---
+  duration_ms: 0.652
+  type: 'test'
+  ...
+# Subtest: every owner field used by a page exists in config.js
+ok 16 - every owner field used by a page exists in config.js
+  ---
+  duration_ms: 1.048
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 118.5488

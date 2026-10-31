@@ -1,0 +1,50 @@
+  pass  landing shows the challenger
+  pass  landing shows the exercise explanation
+  pass  landing shows the privacy note
+  pass  landing offers one accept action
+  pass  landing: every control has an accessible name
+  pass  landing: has exactly one h1
+  pass  landing: has a main landmark
+  pass  first Tab reaches the skip link
+  pass  accept opens preparation
+  pass  preparation reveals one exercise
+  pass  preparation keeps the demo placeholder honest
+  pass  preparation labels the camera placeholder
+  pass  ready is blocked before the practice rep
+  pass  preparation: every control has an accessible name
+  pass  preparation: has exactly one h1
+  pass  preparation: has a main landmark
+  pass  blocked ready keeps the reviewer on preparation
+  pass  practice rep counts once
+  pass  ready check shows the unattended rule
+  pass  live shows two score panels
+  pass  live: every control has an accessible name
+  pass  live: has exactly one h1
+  pass  live: has a main landmark
+  pass  result is factual
+  pass  result confirms the server receipt
+  pass  result does not promise a replay
+  pass  result exposes the share action
+  pass  result: every control has an accessible name
+  pass  result: has exactly one h1
+  pass  result: has a main landmark
+  pass  share screen opens
+  pass  share screen shows honest notes
+  pass  story/feed toggle exists
+  pass  share: every control has an accessible name
+  pass  share: has exactly one h1
+  pass  share: has a main landmark
+  pass  feed export can be previewed
+  pass  simulated share sheet opens
+  pass  Escape closes the dialogs
+  pass  new challenge returns to Battle
+  pass  battle: every control has an accessible name
+  pass  battle: has exactly one h1
+  pass  battle: has a main landmark
+  pass  preview panel opens
+  pass  preview panel closes with Escape
+  pass  join with code explains the simulation
+  pass  ranked search claims nobody is promised online
+  pass  no uncaught page exceptions
+
+48 smoke checks passed.

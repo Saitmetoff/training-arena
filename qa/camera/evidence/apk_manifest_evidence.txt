@@ -1,0 +1,56 @@
+﻿# Task 03 camera APK manifest evidence
+# Toolchain: Flutter 3.47.5 stable / Dart 3.13.4 · aapt build-tools 36.0.0
+# Date: 2026-09-22 · Base commit 15616739b57b4ea05dc4fa65cd764fe100d8854a
+# Artifact: app-debug.apk, 222290969 bytes,
+#           SHA-256 133207CDEA039FE9B046FEC5815409048C5681FE7575BE2046E84B1C2C3E4E4D
+
+== aapt dump badging (filtered) ==
+package: name='app.trainingarena.mobile' versionCode='1' versionName='1.0.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+sdkVersion:'24'
+targetSdkVersion:'36'
+application-label:'Training Arena'
+  uses-feature-not-required: name='android.hardware.camera'
+  uses-feature-not-required: name='android.hardware.camera.any'
+  uses-feature-not-required: name='android.hardware.camera.autofocus'
+  uses-feature: name='android.hardware.faketouch'
+
+== aapt dump permissions ==
+package: app.trainingarena.mobile
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.CAMERA'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.WAKE_LOCK'
+uses-permission: name='com.google.android.c2dm.permission.RECEIVE'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+uses-permission: name='android.permission.FOREGROUND_SERVICE'
+permission: app.trainingarena.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission: name='app.trainingarena.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+uses-permission: name='com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE'
+
+== merged manifest uses-feature ==
+<uses-feature android:name="android.hardware.camera.any" android:required="false" />
+<uses-feature android:name="android.hardware.camera" android:required="false" />
+<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+== ML Kit pose assets in APK ==
+assets/mlkit_pose/benchmark_breaking1.data (18 KiB)
+assets/mlkit_pose/benchmark_breaking2.data (28 KiB)
+assets/mlkit_pose/benchmark_halfbody.data (35 KiB)
+assets/mlkit_pose/benchmark_jump.data (15 KiB)
+assets/mlkit_pose/benchmark_plant.data (19 KiB)
+assets/mlkit_pose/bundled_allowlist.binarypb (0 KiB)
+assets/mlkit_pose/pose_landmark_detector_lite_f16_inf.tflite (2748 KiB)
+assets/mlkit_pose/pose_non_tracking_graph.binarypb (0 KiB)
+assets/mlkit_pose/pose_non_tracking_graph_gpu.binarypb (1 KiB)
+assets/mlkit_pose/pose_non_tracking_graph_nnapi.binarypb (1 KiB)
+assets/mlkit_pose/pose_person_detector_f16.tflite (2893 KiB)
+assets/mlkit_pose/pose_tracking_graph.binarypb (0 KiB)
+assets/mlkit_pose/pose_tracking_graph_gpu.binarypb (1 KiB)
+assets/mlkit_pose/pose_tracking_graph_nnapi.binarypb (1 KiB)
+
+The camera permission is the only camera-relevant permission. Camera features
+are explicitly optional, so camera-less devices still install and receive the
+actionable no-camera error. The pose model is bundled in the APK
+(`pose_landmark_detector_lite_f16_inf.tflite`), so inference is on-device and
+needs no runtime model download.

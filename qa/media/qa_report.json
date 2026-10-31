@@ -1,0 +1,86 @@
+{
+  "contact_sheet": "qa\\media\\contact_sheet_athlete.png",
+  "identity_strip": "qa\\media\\identity_strip.png",
+  "poster_sheet": "qa\\media\\contact_sheet_posters.png",
+  "legibility": {
+    "widths_px": {
+      "screen_360dp": 360.0,
+      "media_card_328dp": 328.0
+    },
+    "text": [
+      {
+        "text": "label START/BOTTOM",
+        "px_at_512": 30,
+        "screen_360dp": 22.9,
+        "screen_360dp_meets_14dp": true,
+        "media_card_328dp": 20.8,
+        "media_card_328dp_meets_14dp": true
+      },
+      {
+        "text": "cue body",
+        "px_at_512": 26,
+        "screen_360dp": 18.3,
+        "screen_360dp_meets_14dp": true,
+        "media_card_328dp": 16.7,
+        "media_card_328dp_meets_14dp": true
+      },
+      {
+        "text": "micro caption",
+        "px_at_512": 22,
+        "screen_360dp": 16.5,
+        "screen_360dp_meets_14dp": true,
+        "media_card_328dp": 15.0,
+        "media_card_328dp_meets_14dp": true
+      },
+      {
+        "text": "micro body",
+        "px_at_512": 22,
+        "screen_360dp": 15.5,
+        "screen_360dp_meets_14dp": true,
+        "media_card_328dp": 14.1,
+        "media_card_328dp_meets_14dp": true
+      },
+      {
+        "text": "header title",
+        "px_at_512": 26,
+        "screen_360dp": 19.1,
+        "screen_360dp_meets_14dp": true,
+        "media_card_328dp": 17.4,
+        "media_card_328dp_meets_14dp": true
+      },
+      {
+        "image": "qa/media/legibility_360dp.png"
+      }
+    ]
+  },
+  "glb_roundtrip": {
+    "worst_error_m": 1.2659198400655214e-07,
+    "samples": [
+      {
+        "clip": "PushUp_Demo",
+        "pose": "start",
+        "max_vertex_error_m": 1.2659198400655214e-07
+      },
+      {
+        "clip": "PushUp_Demo",
+        "pose": "end",
+        "max_vertex_error_m": 1.1041608338757669e-07
+      },
+      {
+        "clip": "Squat_Demo",
+        "pose": "start",
+        "max_vertex_error_m": 1.2194395959674864e-07
+      },
+      {
+        "clip": "Squat_Demo",
+        "pose": "end",
+        "max_vertex_error_m": 9.335117244838043e-08
+      }
+    ],
+    "image": "qa\\media\\glb_roundtrip_check.png"
+  },
+  "loop_keyframes": [
+    "qa\\media\\loop_keyframes_pushup.png",
+    "qa\\media\\loop_keyframes_squat.png"
+  ]
+}

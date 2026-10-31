@@ -1,0 +1,333 @@
+# Release checks for Training Arena.
+#
+# Blocking on every push/PR:
+#   analyzer, unit/widget tests, secret scan, App Link manifest consistency,
+#   artifact identity, and the release-equivalent APK + unsigned AAB path with
+#   16 KB native (ELF/ZIP) and delivery-size checks.
+#
+# The manual `release-candidate` job builds and verifies signed release AAB
+# and APK artifacts. It requires repository secrets and is the only job
+# allowed to produce a distributable artifact; it never publishes to Play or
+# deploys infrastructure.
+#
+# Toolchain pins (L02, see docs/release/CONFIGURATION.md): Flutter 3.47.5,
+# Gradle 9.3.1, AGP 9.1.0, Kotlin 2.4.0, compile/target SDK 36,
+# bundletool 1.18.2 (SHA-256 pinned in tools/release/check_android_bundle.mjs).
+name: release-checks
+
+on:
+  push:
+    branches:
+      - codex/training-arena
+      - 'codex/launch-*'
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      release_candidate:
+        description: Build and verify a signed release candidate (requires release secrets)
+        type: boolean
+        default: false
+      enable_camera_counting:
+        description: Enable the camera counter (requires the signed device validation checklist)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  FLUTTER_VERSION: 3.47.5
+
+jobs:
+  fault-web:
+    name: Fault waitlist typecheck, tests and production build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fault-web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: fault-web/package-lock.json
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  backend:
+    name: Arena and dispatcher native Deno tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.9.6
+      - run: deno check --node-modules-dir=none supabase/functions/arena/index.ts supabase/functions/arena-dispatcher/index.ts
+      - run: deno test supabase/functions/arena/tests supabase/functions/arena-dispatcher/tests
+
+  development-launcher:
+    name: Windows development launcher modes
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tools/release/test/run_dev.test.mjs
+
+  verify:
+    name: analyzer, tests, secret scan, links, artifact identity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Android SDK 36 (pinned)
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Flutter dependencies
+        working-directory: app
+        run: flutter pub get
+
+      - name: Analyzer
+        working-directory: app
+        run: flutter analyze
+
+      - name: Tests
+        working-directory: app
+        run: flutter test
+
+      - name: Challenge landing and public page checks
+        run: |
+          node challenge-web/scripts/check.mjs
+          node --test challenge-web/test/*.test.mjs
+
+      - name: Release hold and bundletool checks
+        run: |
+          node tools/release/check_release_flags.mjs
+          node --test tools/release/test/check_release_flags.test.mjs \
+            tools/release/test/check_android_bundle.test.mjs \
+            tools/release/test/check_camera_evidence.test.mjs \
+            tools/release/test/check_public_output.test.mjs
+
+      - name: Debug APK build (identity pipeline)
+        working-directory: app
+        run: flutter build apk --debug
+
+      - name: Release-equivalent APK (debug-signed smoke) and unsigned AAB
+        working-directory: app
+        run: |
+          flutter build apk --release -PallowDebugSignedRelease=true
+          flutter build appbundle --release -PallowUnsignedRelease=true
+
+      - name: Repository secret scan
+        run: node tools/release/secret_scan.mjs
+
+      - name: App Link manifest check
+        run: node tools/release/check_app_links.mjs
+
+      - name: Source identity check
+        run: node tools/release/check_artifact_identity.mjs
+
+      - name: Artifact identity (debug APK)
+        run: |
+          node tools/release/check_artifact_identity.mjs \
+            --apk app/build/app/outputs/flutter-apk/app-debug.apk
+
+      - name: Release-equivalent APK identity (smoke, not distributable)
+        run: |
+          node tools/release/check_artifact_identity.mjs \
+            --apk app/build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Android bundle manifest, native 16 KB and delivery-size checks
+        run: |
+          node tools/release/check_android_bundle.mjs \
+            --aab app/build/app/outputs/bundle/release/app-release.aab \
+            --apk app/build/app/outputs/flutter-apk/app-release.apk \
+            --expect-version-name 1.0.1 --expect-version-code 2
+
+      - name: Artifact secret scan
+        run: node tools/release/secret_scan.mjs --artifacts
+
+  release-candidate:
+    name: signed release candidate (manual, owner-approved)
+    if: github.event_name == 'workflow_dispatch' && inputs.release_candidate
+    needs: [verify, fault-web, backend, development-launcher]
+    runs-on: ubuntu-latest
+    environment: release-candidate
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Device evidence names an earlier tested commit; compare app sources.
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Android SDK 36 (pinned)
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Require release secrets (fail closed)
+        env:
+          ARENA_LINK_HOST: ${{ secrets.ARENA_LINK_HOST }}
+          ARENA_PUBLIC_URL: ${{ secrets.ARENA_PUBLIC_URL }}
+          ARENA_SUPABASE_URL: ${{ secrets.ARENA_SUPABASE_URL }}
+          ARENA_SUPABASE_ANON_KEY: ${{ secrets.ARENA_SUPABASE_ANON_KEY }}
+          ARENA_AUTH_REDIRECT_URL: ${{ secrets.ARENA_AUTH_REDIRECT_URL }}
+          ARENA_RELEASE_CERT_SHA256: ${{ secrets.ARENA_RELEASE_CERT_SHA256 }}
+          ARENA_PLAY_APP_SIGNING_CERT_SHA256: ${{ secrets.ARENA_PLAY_APP_SIGNING_CERT_SHA256 }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          missing=""
+          for name in ARENA_LINK_HOST ARENA_PUBLIC_URL ARENA_SUPABASE_URL \
+            ARENA_SUPABASE_ANON_KEY ARENA_AUTH_REDIRECT_URL \
+            ARENA_RELEASE_CERT_SHA256 ARENA_PLAY_APP_SIGNING_CERT_SHA256 \
+            ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD \
+            ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
+            if [ -z "${!name}" ]; then missing="$missing $name"; fi
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Release candidate refused: missing repository secrets:$missing"
+            echo "See docs/release/CONFIGURATION.md. No credentials are invented here."
+            exit 1
+          fi
+          if [ "$ARENA_LINK_HOST" = "example.invalid" ]; then
+            echo "::error::Release candidate refused: ARENA_LINK_HOST is the placeholder example.invalid"
+            echo "Supply the owner's real HTTPS domain (D1) per docs/release/CONFIGURATION.md."
+            exit 1
+          fi
+
+      - name: Materialize release signing (from CI secret store)
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+          cat > app/android/key.properties <<EOF
+          storeFile=$RUNNER_TEMP/release.keystore
+          storePassword=$ANDROID_KEYSTORE_PASSWORD
+          keyAlias=$ANDROID_KEY_ALIAS
+          keyPassword=$ANDROID_KEY_PASSWORD
+          EOF
+          chmod 600 app/android/key.properties "$RUNNER_TEMP/release.keystore"
+
+      - name: Flutter dependencies
+        working-directory: app
+        run: flutter pub get
+
+      - name: Require reviewed two-phone evidence before enabling camera
+        if: inputs.enable_camera_counting
+        run: node tools/release/check_camera_evidence.mjs
+
+      - name: Reject owner placeholders in public web output
+        run: node tools/release/check_public_output.mjs
+
+      - name: Build signed release AAB and APK
+        working-directory: app
+        env:
+          ARENA_LINK_HOST: ${{ secrets.ARENA_LINK_HOST }}
+          ARENA_PUBLIC_URL: ${{ secrets.ARENA_PUBLIC_URL }}
+          ARENA_SUPABASE_URL: ${{ secrets.ARENA_SUPABASE_URL }}
+          ARENA_SUPABASE_ANON_KEY: ${{ secrets.ARENA_SUPABASE_ANON_KEY }}
+          ARENA_AUTH_REDIRECT_URL: ${{ secrets.ARENA_AUTH_REDIRECT_URL }}
+          ARENA_PLAY_STORE_URL: ${{ secrets.ARENA_PLAY_STORE_URL }}
+        run: |
+          dart_defines=(
+            --dart-define=ARENA_LINK_HOST="$ARENA_LINK_HOST"
+            --dart-define=ARENA_PUBLIC_URL="$ARENA_PUBLIC_URL"
+            --dart-define=ARENA_SUPABASE_URL="$ARENA_SUPABASE_URL"
+            --dart-define=ARENA_SUPABASE_ANON_KEY="$ARENA_SUPABASE_ANON_KEY"
+            --dart-define=ARENA_AUTH_REDIRECT_URL="$ARENA_AUTH_REDIRECT_URL"
+            --dart-define=ARENA_PLAY_STORE_URL="${ARENA_PLAY_STORE_URL:-https://play.google.com/store/apps/details?id=app.trainingarena.mobile}"
+            --dart-define=ARENA_FEATURE_CAMERA_COUNTING=${{ inputs.enable_camera_counting }}
+            --dart-define=ARENA_FEATURE_CHALLENGE_LINKS=true
+            --dart-define=ARENA_FEATURE_RANKED_MATCHMAKING=false
+            --dart-define=ARENA_FEATURE_RESULT_SHARING=true
+            --dart-define=ARENA_FEATURE_PUSH_NOTIFICATIONS=false
+            --dart-define=ARENA_FEATURE_PREVIEW_FIXTURES=false
+            --dart-define=ARENA_FEATURE_SOLO_MODE=true
+            --dart-define=ARENA_FEATURE_CAMERA_TRACE=false
+          )
+          # -P goes through Flutter's --android-project-arg; ORG_GRADLE_PROJECT_*
+          # env vars do not reach the Gradle project through `flutter build`.
+          flutter build appbundle --release -ParenaLinkHost="$ARENA_LINK_HOST" "${dart_defines[@]}"
+          flutter build apk --release -ParenaLinkHost="$ARENA_LINK_HOST" "${dart_defines[@]}"
+
+      - name: Release App Link gate (real domain + Play app-signing certificate)
+        env:
+          ARENA_LINK_HOST: ${{ secrets.ARENA_LINK_HOST }}
+          ARENA_PLAY_APP_SIGNING_CERT_SHA256: ${{ secrets.ARENA_PLAY_APP_SIGNING_CERT_SHA256 }}
+        run: |
+          node tools/release/check_app_links.mjs --release \
+            --host "$ARENA_LINK_HOST" \
+            --fingerprint "${ARENA_PLAY_APP_SIGNING_CERT_SHA256}" \
+            --fetch-assetlinks
+
+      - name: Release AAB inspection (upload key pinned, 16 KB native, sizes)
+        env:
+          ARENA_RELEASE_CERT_SHA256: ${{ secrets.ARENA_RELEASE_CERT_SHA256 }}
+        run: |
+          node tools/release/check_android_bundle.mjs \
+            --aab app/build/app/outputs/bundle/release/app-release.aab \
+            --expect-uploader-sha256 "$ARENA_RELEASE_CERT_SHA256"
+
+      - name: Release APK identity (upload key pinned)
+        env:
+          ARENA_RELEASE_CERT_SHA256: ${{ secrets.ARENA_RELEASE_CERT_SHA256 }}
+        run: |
+          node tools/release/check_artifact_identity.mjs --release \
+            --apk app/build/app/outputs/flutter-apk/app-release.apk \
+            --expect-signer-sha256 "$ARENA_RELEASE_CERT_SHA256"
+
+      - name: Artifact secret scan
+        run: node tools/release/secret_scan.mjs --artifacts
+
+      - name: Record candidate identity
+        run: |
+          {
+            printf 'commit: '; git rev-parse HEAD
+            printf 'version: '; sed -n 's/^version: //p' app/pubspec.yaml
+            printf 'camera: %s\n' '${{ inputs.enable_camera_counting }}'
+            printf 'solo=true links=true sharing=true ranked=false push=false fixtures=false trace=false\n'
+            sha256sum app/build/app/outputs/bundle/release/app-release.aab app/build/app/outputs/flutter-apk/app-release.apk
+          } > release-candidate.txt
+
+      - name: Upload verified release candidate (AAB + APK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: training-arena-release-candidate
+          path: |
+            app/build/app/outputs/bundle/release/app-release.aab
+            app/build/app/outputs/flutter-apk/app-release.apk
+            release-candidate.txt
+          if-no-files-found: error

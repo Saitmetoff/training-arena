@@ -1,0 +1,21 @@
+﻿node.exe : Connecting to local database...
+At C:\Users\ADMIN\AppData\Roaming\npm\supabase.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/supabase/dist/supabase.js" $ ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Connecting to local database...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+psql:/TrainingArena/supabase/tests/arena_authz_test.sql:10: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_authz_test.sql ... ok
+psql:/TrainingArena/supabase/tests/arena_flow_test.sql:10: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_flow_test.sql .... ok
+psql:/TrainingArena/supabase/tests/arena_ops_test.sql:8: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_ops_test.sql ..... ok
+psql:/TrainingArena/supabase/tests/arena_schema_test.sql:7: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_schema_test.sql .. ok
+All tests successful.
+Files=4, Tests=184,  2 wallclock secs ( 0.12 usr  0.06 sys +  0.06 cusr  0.09 csys =  0.33 CPU)
+Result: PASS
+A new version of Supabase CLI is available: v2.117.0 (currently installed v2.116.0)
+We recommend updating regularly for new features and bug fixes: 
+https://supabase.com/docs/guides/cli/getting-started#updating-the-supabase-cli

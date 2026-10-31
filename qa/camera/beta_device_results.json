@@ -1,0 +1,9 @@
+{
+  "status": "blocked",
+  "tested_commit": null,
+  "counter_version": "arena-counter/1.2.1",
+  "reviewer": null,
+  "reviewed_at": null,
+  "devices": [],
+  "note": "No physical exercise, alignment or two-phone count validation has been completed for the new camera geometry. Follow device_validation_checklist.md and record each observation; never infer accuracy from fixture tests."
+}

@@ -1,0 +1,21 @@
+﻿== L06 release-equivalent APK on API 35 16 KB page-size emulator (cold start; native FCM host degrade path) ==
+device sdk: 35
+page size: 16384
+apk sha256: 3e776250bc220ad94c59e9b92dacc988c075fe6ddbc6a49d62854317abe35df7
+Starting: Intent { cmp=app.trainingarena.mobile/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: app.trainingarena.mobile/.MainActivity
+TotalTime: 1456
+WaitTime: 1497
+Complete
+app pid: 4696
+
+== top activity ==
+topResumedActivity=ActivityRecord{6ea8b36 u0 app.trainingarena.mobile/.MainActivity t14}
+
+== arena notification channels (must be absent: no Firebase config => no push surfaces) ==
+(none)
+
+== startup log scan (no FATAL / AndroidRuntime / MissingPluginException) ==
+(clean)

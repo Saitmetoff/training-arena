@@ -1,0 +1,15 @@
+{
+  "iteration": "2026-10-04-01",
+  "snapshot_utc": "2026-10-04T17:02:02.802495Z",
+  "production_database": {"rows":0,"pending":0,"ever_confirmed":0,"currently_subscribed":0,"eligible":0,"unsubscribed":0,"suppressed":0,"abuse":0,"internal_tests":0,"active_known_suppressions":0,"mail_jobs":0,"webhook_receipts":0},
+  "preview_eligible_excluded": 0,
+  "baseline_utc": "2026-10-04T16:24:11.797532Z",
+  "baseline_eligible": 0,
+  "net_eligible_change_since_baseline": 0,
+  "posthog": {"project":272861,"taxonomy_snapshot_utc":"2026-10-04T17:02:41.874172Z","taxonomy_window":"preceding 30 days","fault_events_observed":false,"saved_funnel":"BtxaDFUN","saved_funnel_result":"No data recorded for this time period","coverage":"development/preview; consented analytics only; not all traffic"},
+  "resend": {"domains":0,"webhooks":0,"sent_emails":0,"checked_utc":"2026-10-04T17:02Z"},
+  "video": {"connected_analytics_tool":false,"owner_view_export_supplied":false,"approved_current_footage":false,"views":null},
+  "rates": {"visit_per_view":null,"valid_submission_per_visit":null,"confirmation_per_valid_creation":null,"unsubscribe":null,"suppression":null},
+  "release": {"public":false,"collection_enabled":false,"protected_preview":true,"missing":"server database credential, verified email sender/API/webhook, operator/policy information; real product footage"},
+  "notes": ["Zero recorded analytics is not zero actual visits.","Zero denominators make rates undefined, not zero percent.","Snapshot net change is a 38-minute observation, not daily growth.","No subscriber-level records, addresses, tokens or credentials are included."]
+}

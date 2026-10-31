@@ -1,0 +1,12 @@
+import {readFile,mkdir,writeFile} from 'node:fs/promises';
+const env=Object.fromEntries((await readFile('.env.local','utf8')).trim().split('\n').map(l=>{const i=l.indexOf('=');return[l.slice(0,i),l.slice(i+1)];}));
+if(env.FAULT_LOCAL_TEST_MODE!=='true'||env.FAULT_SITE_URL!=='http://127.0.0.1:3000')throw Error('Loopback simulation required');
+const response=await fetch(`${env.FAULT_SITE_URL}/api/internal/dispatch`,{method:'POST',headers:{authorization:`Bearer ${env.FAULT_DISPATCH_SECRET}`}});
+if(!response.ok)throw Error('Dispatch failed');
+const dispatch=await response.json();
+const events=(await readFile('.local/analytics-spool.jsonl','utf8')).trim().split('\n').map(JSON.parse);
+const counts=Object.fromEntries(['landing_view','waitlist_submit','waitlist_confirmed'].map(name=>[name,events.filter(e=>e.event===name).length]));
+const confirmed=events.find(e=>e.event==='waitlist_confirmed');
+const submitted=events.find(e=>e.event==='waitlist_submit');
+const evidence={mode:'Local PostgreSQL; simulated provider delivery. No live email or PostHog ingestion.',events:counts,sourceRetained:confirmed?.properties?.creative_id==='fault-dev-test-a',sameAnonymousIdentity:submitted?.distinct_id===confirmed?.distinct_id,rawEmailOrTokenInAnalytics:/@|#token=|"email"|"token"/.test(JSON.stringify(events)),databaseMetric:dispatch.counts};
+await mkdir('test-results',{recursive:true});await writeFile('test-results/local-browser-flow.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));

@@ -1,0 +1,32 @@
+WCAG contrast (canvas #17191A reference)
+  pass  #F6F7F2 on #17191A: 16.39:1 (min 4.5) — body text
+  pass  #F6F7F2 on #242729: 13.96:1 (min 4.5) — body text on surface
+  pass  #F6F7F2 on #303537: 11.54:1 (min 4.5) — body text on cards
+  pass  #B6BDB9 on #17191A: 9.21:1 (min 4.5) — secondary copy
+  pass  #B6BDB9 on #242729: 7.85:1 (min 4.5) — secondary copy on surface
+  pass  #B6BDB9 on #303537: 6.49:1 (min 4.5) — secondary copy on cards
+  pass  #9BA59E on #17191A: 6.95:1 (min 4.5) — meta copy
+  pass  #9BA59E on #242729: 5.92:1 (min 4.5) — meta copy on surface
+  pass  #9BA59E on #303537: 4.89:1 (min 4.5) — meta copy on cards
+  pass  #D6FF3F on #17191A: 15.32:1 (min 4.5) — player identity and links
+  pass  #D6FF3F on #242729: 13.05:1 (min 4.5) — player identity on surface
+  pass  #D6FF3F on #303537: 10.79:1 (min 4.5) — player identity on cards
+  pass  #17191A on #D6FF3F: 15.32:1 (min 4.5) — primary button label
+  pass  #BEA1FF on #17191A: 8.17:1 (min 4.5) — opponent identity
+  pass  #BEA1FF on #242729: 6.96:1 (min 4.5) — opponent identity on surface
+  pass  #BEA1FF on #303537: 5.76:1 (min 4.5) — opponent identity on cards
+  pass  #17191A on #BEA1FF: 8.17:1 (min 4.5) — opponent identity chip label
+  pass  #7AE5A0 on #17191A: 11.38:1 (min 4.5) — success and online state
+  pass  #7AE5A0 on #242729: 9.69:1 (min 4.5) — success on surface
+  pass  #FFD66E on #17191A: 12.68:1 (min 4.5) — warning and reconnecting state
+  pass  #FFD66E on #242729: 10.80:1 (min 4.5) — warning on surface
+  pass  #FF807C on #17191A: 7.25:1 (min 4.5) — danger and tracking loss
+  pass  #FF807C on #242729: 6.18:1 (min 4.5) — danger on surface
+  pass  #6F787A on #17191A: 3.90:1 (min 3) — input and control boundaries
+  pass  #6F787A on #242729: 3.32:1 (min 3) — input boundaries on surface
+  pass  #D6FF3F on #2A2F1B: 11.99:1 (min 4.5) — player text on lime-tinted wash
+  pass  #BEA1FF on #2B2637: 6.78:1 (min 4.5) — opponent text on violet-tinted wash
+  pass  #F6F7F2 on #2A2F1B: 12.82:1 (min 4.5) — body text on lime-tinted wash
+  pass  #F6F7F2 on #2B2637: 13.59:1 (min 4.5) — body text on violet-tinted wash
+
+10 check group(s) passed.

@@ -1,0 +1,1 @@
+﻿[media-validate] PASS (prototype gate): 25 entries, 1291 KiB total; report: qa\media\validation_report.json

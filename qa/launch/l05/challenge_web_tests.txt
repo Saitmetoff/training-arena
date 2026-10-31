@@ -1,0 +1,46 @@
+﻿TAP version 13
+# Subtest: tokenFromPath reads /c/<token> with fake tokens
+ok 1 - tokenFromPath reads /c/<token> with fake tokens
+  ---
+  duration_ms: 1.6705
+  type: 'test'
+  ...
+# Subtest: tokenFromQuery supports code fallback
+ok 2 - tokenFromQuery supports code fallback
+  ---
+  duration_ms: 0.2901
+  type: 'test'
+  ...
+# Subtest: readableCode groups tokens for reading aloud
+ok 3 - readableCode groups tokens for reading aloud
+  ---
+  duration_ms: 1.8795
+  type: 'test'
+  ...
+# Subtest: withReferrer encodes the install recovery token
+ok 4 - withReferrer encodes the install recovery token
+  ---
+  duration_ms: 1.0025
+  type: 'test'
+  ...
+# Subtest: statusFromResolution fails closed for revoked and unknown input
+ok 5 - statusFromResolution fails closed for revoked and unknown input
+  ---
+  duration_ms: 0.1981
+  type: 'test'
+  ...
+# Subtest: usernameOf only reads a public owner name
+ok 6 - usernameOf only reads a public owner name
+  ---
+  duration_ms: 0.1017
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 95.0661

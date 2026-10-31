@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Arena launch splash: charcoal surface with the centered app mark.
+     Mirrors ArenaColors.charcoal so the native splash hands off to Flutter
+     without a color flash. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/arena_charcoal" />
+    <item>
+        <bitmap
+            android:src="@mipmap/ic_launcher_foreground"
+            android:gravity="center" />
+    </item>
+</layer-list>

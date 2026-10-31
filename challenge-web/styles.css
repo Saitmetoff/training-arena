@@ -1,0 +1,210 @@
+/*
+ * Training Arena landing styles.
+ * Colors mirror design/arena/tokens.json (task 01 owns the palette).
+ */
+
+:root {
+  --charcoal: #17191a;
+  --graphite: #242729;
+  --raised: #303537;
+  --lime: #d6ff3f;
+  --violet: #bea1ff;
+  --soft-white: #f6f7f2;
+  --secondary: #b6bdb9;
+  --quiet: #9ba59e;
+  --positive: #7ae5a0;
+  --warning: #ffd66e;
+  --danger: #ff807c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--charcoal);
+  color: var(--soft-white);
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.45;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 40px;
+}
+
+.shell {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 8px 0 0;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.lead {
+  color: var(--secondary);
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.identity__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--raised);
+  color: var(--violet);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  flex: none;
+}
+
+.identity__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.identity__text strong {
+  font-size: 20px;
+}
+
+.identity__text small {
+  color: var(--quiet);
+  font-size: 13px;
+}
+
+.banner {
+  background: var(--graphite);
+  border: 1px solid var(--raised);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.banner strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.banner p {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.banner--positive {
+  border-color: var(--positive);
+}
+
+.banner--positive strong {
+  color: var(--positive);
+}
+
+.banner--warning {
+  border-color: var(--warning);
+}
+
+.banner--warning strong {
+  color: var(--warning);
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.btn--primary {
+  background: var(--lime);
+  color: var(--charcoal);
+}
+
+.btn--secondary {
+  background: transparent;
+  border: 1px solid var(--raised);
+  color: var(--soft-white);
+  font-size: 16px;
+}
+
+.card {
+  background: var(--graphite);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.card--flat {
+  background: var(--graphite);
+}
+
+.card--code {
+  background: var(--raised);
+}
+
+.code {
+  color: var(--soft-white) !important;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 6px 0 8px !important;
+}
+
+.note {
+  color: var(--quiet) !important;
+  font-size: 12px !important;
+}
+
+.footer {
+  max-width: 460px;
+  margin-top: 24px;
+  color: var(--quiet);
+  font-size: 12px;
+  text-align: center;
+}
+
+.noscript {
+  max-width: 460px;
+  color: var(--warning);
+}
+
+@media (min-width: 720px) {
+  body {
+    padding-top: 48px;
+  }
+}

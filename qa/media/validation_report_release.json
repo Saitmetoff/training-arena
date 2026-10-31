@@ -1,0 +1,120 @@
+{
+  "gate": "release",
+  "manifest": "app/assets/media/athlete/manifest.json",
+  "ok": false,
+  "errors": [
+    "release gate: unreviewed media present and must be excluded from release builds: models.athlete, exercises.pushups.assets.glb, exercises.pushups.assets.loop_mp4, exercises.pushups.assets.loop_webp, exercises.pushups.assets.frame_start, exercises.pushups.assets.frame_mid, exercises.pushups.assets.frame_end, exercises.pushups.assets.overlay_start, exercises.pushups.assets.overlay_end, exercises.pushups.assets.poster_start, exercises.pushups.assets.poster_end, exercises.pushups.assets.poster_start_png, exercises.pushups.assets.poster_end_png, exercises.squats.assets.glb, exercises.squats.assets.loop_mp4, exercises.squats.assets.loop_webp, exercises.squats.assets.frame_start, exercises.squats.assets.frame_mid, exercises.squats.assets.frame_end, exercises.squats.assets.overlay_start, exercises.squats.assets.overlay_end, exercises.squats.assets.poster_start, exercises.squats.assets.poster_end, exercises.squats.assets.poster_start_png, exercises.squats.assets.poster_end_png"
+  ],
+  "warnings": [],
+  "budgets": {
+    "files": {
+      "glb": {
+        "budget": 400000,
+        "count": 3,
+        "largest": 173972
+      },
+      "loop_mp4": {
+        "budget": 450000,
+        "count": 2,
+        "largest": 61609
+      },
+      "loop_webp": {
+        "budget": 900000,
+        "count": 2,
+        "largest": 344054
+      },
+      "poster_webp": {
+        "budget": 90000,
+        "count": 4,
+        "largest": 20280
+      },
+      "poster_png": {
+        "budget": 220000,
+        "count": 4,
+        "largest": 80557
+      },
+      "frame_webp": {
+        "budget": 70000,
+        "count": 6,
+        "largest": 6958
+      },
+      "overlay_webp": {
+        "budget": 60000,
+        "count": 4,
+        "largest": 7350
+      }
+    },
+    "package_total": {
+      "bytes": 1322232,
+      "budget": 3500000,
+      "unique_files": 23
+    }
+  },
+  "fallbacks": {
+    "pushups": {
+      "intact": {
+        "asset": "assets/media/athlete/loops/pushup_loop.mp4",
+        "review_status": "pending_human_review"
+      },
+      "no_video": {
+        "asset": "assets/media/athlete/posters/pushup_start.webp",
+        "review_status": "pending_human_review"
+      },
+      "no_video_no_webp_poster": {
+        "asset": "assets/media/athlete/posters/pushup_start.png",
+        "review_status": "pending_human_review"
+      }
+    },
+    "squats": {
+      "intact": {
+        "asset": "assets/media/athlete/loops/squat_loop.mp4",
+        "review_status": "pending_human_review"
+      },
+      "no_video": {
+        "asset": "assets/media/athlete/posters/squat_start.webp",
+        "review_status": "pending_human_review"
+      },
+      "no_video_no_webp_poster": {
+        "asset": "assets/media/athlete/posters/squat_start.png",
+        "review_status": "pending_human_review"
+      }
+    }
+  },
+  "release_gate": {
+    "approved": [],
+    "pending": [
+      "models.athlete",
+      "exercises.pushups.assets.glb",
+      "exercises.pushups.assets.loop_mp4",
+      "exercises.pushups.assets.loop_webp",
+      "exercises.pushups.assets.frame_start",
+      "exercises.pushups.assets.frame_mid",
+      "exercises.pushups.assets.frame_end",
+      "exercises.pushups.assets.overlay_start",
+      "exercises.pushups.assets.overlay_end",
+      "exercises.pushups.assets.poster_start",
+      "exercises.pushups.assets.poster_end",
+      "exercises.pushups.assets.poster_start_png",
+      "exercises.pushups.assets.poster_end_png",
+      "exercises.squats.assets.glb",
+      "exercises.squats.assets.loop_mp4",
+      "exercises.squats.assets.loop_webp",
+      "exercises.squats.assets.frame_start",
+      "exercises.squats.assets.frame_mid",
+      "exercises.squats.assets.frame_end",
+      "exercises.squats.assets.overlay_start",
+      "exercises.squats.assets.overlay_end",
+      "exercises.squats.assets.poster_start",
+      "exercises.squats.assets.poster_end",
+      "exercises.squats.assets.poster_start_png",
+      "exercises.squats.assets.poster_end_png"
+    ],
+    "release_eligible": false
+  },
+  "review_status": {
+    "status": "pending_human_review",
+    "release_eligible": false,
+    "checklist": "docs/media/FORM_REVIEW.md",
+    "provenance": "docs/media/PROVENANCE.md"
+  }
+}

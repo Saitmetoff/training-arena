@@ -1,0 +1,7 @@
+<!-- androidTest-only manifest: some plugin androidTest AARs still declare
+     a minSdk lower than the app's. The app enforces minSdk 24 (binding
+     platform decision), so restate it here to keep test APK manifest
+     merging clean. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk android:minSdkVersion="24" />
+</manifest>

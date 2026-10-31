@@ -1,0 +1,35 @@
+# Flutter/Dart build and tool output.
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Android build output.
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/.gradle
+/android/local.properties
+/android/key.properties
+**/*.keystore
+**/*.jks
+
+# Firebase/FCM credentials (task 08/11). The live project config is supplied
+# locally or through CI secrets and is never committed.
+**/google-services.json
+**/GoogleService-Info.plist
+**/firebase_options.dart
+/serviceAccountKey*.json
+**/.env.local
+
+# IDE and OS noise.
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.DS_Store
+*.swp
+*.log

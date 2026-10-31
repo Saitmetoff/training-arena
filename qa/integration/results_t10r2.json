@@ -1,0 +1,65 @@
+{
+  "schema": "app.trainingarena.qa/scenario-results@1",
+  "task": "10_INTEGRATION_AND_DEVICE_QA",
+  "round": 2,
+  "date": "2026-09-24",
+  "report": "qa/integration/REPORT_T10R2.md",
+  "round_1": "qa/integration/results.json",
+  "evidence_dir": "qa/integration/evidence/t10r2",
+  "environment": {
+    "device": "Android emulator ArenaQA (API 34, google_apis, x86_64) on WHPX",
+    "physical_device": null,
+    "backend": "Supabase CLI 2.116.0 local stack TrainingArena, ports 54521+",
+    "app_build": "release-equivalent APK (debug-signed, non-distributable), camera/links/ranked/share on, push off, ARENA_LINK_HOST=arena.pilot.example"
+  },
+  "suites": [
+    {"name": "flutter analyze", "result": "pass", "detail": "No issues found", "evidence": "qa/integration/REPORT_T10R2.md"},
+    {"name": "flutter test (unit/widget)", "result": "pass", "detail": "593 passed, 2 skipped", "evidence": "qa/integration/REPORT_T10R2.md"},
+    {"name": "supabase db reset (migrations+seed)", "result": "pass", "detail": "20260924090000_arena_live_start_presence.sql applied from scratch", "evidence": "qa/integration/evidence/t10r2/supabase_db_reset.txt"},
+    {"name": "supabase pgTAP", "result": "pass", "detail": "4 files, 194 assertions", "evidence": "qa/integration/evidence/t10r2/supabase_pgtap.txt"},
+    {"name": "local HTTP e2e smoke (arena + dispatcher)", "result": "pass", "detail": "24/24 checks with ARENA_DISPATCHER_SECRET", "evidence": "qa/integration/evidence/t10r2/arena_smoke_e2e.txt"},
+    {"name": "QA APK build", "result": "pass", "detail": "91 729 591 bytes, SHA-256 4BF32EA03707C2D9701B9A6C2882FE1E28203A4EFBD37DB555031309D2714C7F", "evidence": "qa/integration/evidence/t10r2/apk_build_qa_release.txt"},
+    {"name": "deno edge function tests", "result": "not_run", "detail": "deno not available in this shell; supabase/functions unchanged in round 2", "evidence": "qa/launch/l08/deno_arena.txt"},
+    {"name": "emulator walkthrough (link -> sign-in -> request -> accept -> preparation -> camera -> ready gate)", "result": "pass", "detail": "captured 2026-09-24 12:22-12:32, before the two fixes", "evidence": "qa/integration/evidence/t10r2/01..13"}
+  ],
+  "defects": [
+    {
+      "id": "D6",
+      "title": "An early-ready player was forfeited at live start (opponent_absent 0.44 s after starts_at)",
+      "owner": "task 04 (repaired by task 10 round 2)",
+      "repro": "Both players ready; one readied >10 s before the countdown ended; live starts and the first tick closes the match as opponent_absent/win.",
+      "fix": "arena_match_tick lifts both active players' presence to the live start (greatest(last_seen_at, starts_at)) at the countdown -> live promotion; mid-round and end-of-round absence rules unchanged.",
+      "evidence": [
+        "supabase/migrations/20260924090000_arena_live_start_presence.sql",
+        "supabase/tests/arena_flow_test.sql",
+        "qa/integration/evidence/t10r2/defect_prelive_forfeit_match.txt"
+      ]
+    },
+    {
+      "id": "D7",
+      "title": "A forfeit receipt rendered as a zero-margin score (\"@x beat me by 0\")",
+      "owner": "task 07 (repaired by task 10 round 2)",
+      "repro": "Server closes a match with reason opponent_absent and equal scores; the result headline claimed a 0-margin loss.",
+      "fix": "The result body recognises opponent_absent/abandoned_preparing/service_outage and uses forfeit copy instead of a score margin; widget regression added.",
+      "evidence": [
+        "app/lib/battle/ui/battle_flow_page.dart",
+        "app/test/battle/battle_contract_test.dart",
+        "qa/integration/evidence/t10r2/14_result_opponent_absent_defect.png"
+      ]
+    }
+  ],
+  "not_run": [
+    {
+      "id": "D7-device",
+      "case": "re-capture the fixed forfeit result screen on the emulator",
+      "reason": "supabase db reset (smoke prerequisite) invalidated the QA account session created during the walkthrough; the rebuilt APK is ready (4BF32EA0...)",
+      "owner": "task 10 round 3"
+    }
+  ],
+  "blockers": [
+    {"id": "R1", "status": "open", "title": "Physical-device camera rep accuracy unvalidated", "action": "F3 traced session on the Redmi 10 (qa/competitive/f3/RUNSHEET.md) and the signed checklist"},
+    {"id": "R2", "status": "open", "title": "Real HTTPS link domain (D1) missing", "action": "owner supplies domain + assetlinks fingerprint"},
+    {"id": "R6", "status": "open", "title": "Ranked pairing not exercised on two live clients", "action": "invited-pair pilot round"},
+    {"id": "R7", "status": "open", "title": "Device matrix limited to one API 34 emulator", "action": "physical matrix incl. API 24-26 and the Tensor checkpoint"}
+  ]
+}

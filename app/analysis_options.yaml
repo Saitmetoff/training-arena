@@ -1,0 +1,16 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+  language:
+    strict-casts: true
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    # Dart 3.13 fires this for the project's public-named-parameter
+    # constructors; the existing style is intentional and migrating all 47
+    # constructors is out of scope for the Android toolchain task (L02).
+    prefer_initializing_formals: false

@@ -1,0 +1,9 @@
+{
+ "approved":false,"build":null,"device":null,"rights":null,"evidenceTake":null,
+ "stages":[
+  {"id":"set","label":"Set","title":"Do the set.","caption":"Complete your push-ups. Actual movement footage is still to be recorded.","poster":"/media/solo/set.webp","source":null,"kind":"video","crop":{"desktop":"50% 50%","mobile":"50% 50%"}},
+  {"id":"enter","label":"Enter","title":"Enter your count.","caption":"Enter the reps yourself. The current manual-entry capture is still needed.","poster":"/media/solo/enter.webp","source":null,"kind":"image","crop":{"desktop":"50% 50%","mobile":"50% 50%"}},
+  {"id":"save","label":"Save","title":"Keep the record.","caption":"Save a self-reported set on your phone. The successful-save capture is still needed.","poster":"/media/solo/save.webp","source":null,"kind":"image","crop":{"desktop":"50% 50%","mobile":"50% 50%"}},
+  {"id":"review","label":"Review","title":"Come back to it.","caption":"Review your saved sets on the same phone. Current history and personal-best captures are still needed.","poster":"/media/solo/review.webp","source":null,"kind":"image","crop":{"desktop":"50% 50%","mobile":"50% 50%"}}
+ ]
+}

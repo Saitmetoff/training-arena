@@ -1,0 +1,73 @@
+/*
+ * Training Arena — prototype token mirror.
+ * Canonical source: design/arena/tokens.json (documented in design/arena/DESIGN_SYSTEM.md).
+ * Do not add colour values here that are not in tokens.json; check.mjs fails on drift.
+ */
+
+:root {
+  /* colour */
+  --c-canvas: #17191A;
+  --c-surface: #242729;
+  --c-raised: #303537;
+  --c-line: #3B4245;
+  --c-line-strong: #6F787A;
+  --c-player: #D6FF3F;
+  --c-player-ink: #17191A;
+  --c-player-wash: #2A2F1B;
+  --c-opponent: #BEA1FF;
+  --c-opponent-ink: #17191A;
+  --c-opponent-wash: #2B2637;
+  --c-text: #F6F7F2;
+  --c-text-secondary: #B6BDB9;
+  --c-text-quiet: #9BA59E;
+  --c-positive: #7AE5A0;
+  --c-warning: #FFD66E;
+  --c-danger: #FF807C;
+  --c-focus: #F6F7F2;
+  --c-overlay: rgba(23,25,26,0.78);
+
+  /* space */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  /* radius */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-pill: 999px;
+
+  /* type */
+  --font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --type-display: 4.5rem;
+  --type-score: 3.25rem;
+  --type-h1: 2.125rem;
+  --type-h2: 1.5rem;
+  --type-h3: 1.125rem;
+  --type-body: 1rem;
+  --type-small: 0.875rem;
+  --type-micro: 0.75rem;
+
+  /* motion */
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --motion-slow: 260ms;
+  --motion-easing: cubic-bezier(0.2, 0, 0, 1);
+
+  /* layout */
+  --content-max-mobile: 560px;
+  --content-max-desktop: 1040px;
+  --desktop: 900px;
+  --safe-inset: clamp(16px, 5vw, 24px);
+  --target-min: 48px;
+  --bottom-nav-height: 64px;
+
+  /* focus */
+  --focus-ring: 3px solid var(--c-focus);
+  --focus-offset: 2px;
+}

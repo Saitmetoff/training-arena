@@ -1,0 +1,339 @@
+{
+  "schema": "app.trainingarena.media/athlete-manifest@1",
+  "package_version": "1.0.0",
+  "generated_at": "2026-09-17T00:00:00Z",
+  "generator": "qa/media/tools/build.py",
+  "athlete": {
+    "id": "arena-mannequin-v1",
+    "name": "Arena Mannequin Athlete v1",
+    "description": "Single rigged mannequin athlete shared by every demonstration.",
+    "height_m": 1.75
+  },
+  "review": {
+    "status": "pending_human_review",
+    "release_eligible": false,
+    "checklist": "docs/media/FORM_REVIEW.md",
+    "provenance": "docs/media/PROVENANCE.md"
+  },
+  "identity": {
+    "palette_source": "design/arena/tokens.json",
+    "canvas": "#17191A",
+    "kit_top": "#3A4145",
+    "kit_bottom": "#2B3033",
+    "accent": "#D6FF3F",
+    "note": "violet (#BEA1FF) is reserved for the opponent and is never used in athlete media"
+  },
+  "camera": {
+    "view": "three_quarter_right",
+    "azimuth_deg": 70.0,
+    "elevation_deg": 9.0,
+    "fov_deg": 30.0,
+    "distance_m": 4.218,
+    "frame_px": 512,
+    "shared_across_exercises": true,
+    "policy": "identical azimuth, elevation, lens, distance and scale in both exercises; the aim point is recentred per exercise so neither pose is pushed into a corner",
+    "targets": {
+      "pushups": {
+        "target": [
+          0.947,
+          0.395,
+          0.0
+        ]
+      },
+      "squats": {
+        "target": [
+          -0.193,
+          0.869,
+          0.089
+        ]
+      }
+    }
+  },
+  "models": {
+    "athlete": {
+      "asset": "assets/media/athlete/models/athlete_mannequin_v1.glb",
+      "type": "model",
+      "bytes": 173972,
+      "sha256": "380f94a0a2f9d199f42c08fd4887864ec4991eee2637cd978c8f67400f3d04f3",
+      "review_status": "pending_human_review",
+      "format": "glb",
+      "clips": [
+        "PushUp_Demo",
+        "Squat_Demo"
+      ]
+    }
+  },
+  "exercises": {
+    "pushups": {
+      "wire": "pushups",
+      "label": "Push-up",
+      "clip": "PushUp_Demo",
+      "duration_s": 2.4,
+      "loops": true,
+      "pose_names": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "assets": {
+        "glb": {
+          "asset": "assets/media/athlete/models/athlete_mannequin_v1.glb",
+          "type": "model",
+          "bytes": 173972,
+          "sha256": "380f94a0a2f9d199f42c08fd4887864ec4991eee2637cd978c8f67400f3d04f3",
+          "review_status": "pending_human_review",
+          "format": "glb",
+          "clips": [
+            "PushUp_Demo",
+            "Squat_Demo"
+          ]
+        },
+        "loop_mp4": {
+          "asset": "assets/media/athlete/loops/pushup_loop.mp4",
+          "type": "video",
+          "bytes": 42538,
+          "sha256": "552d982c3ee1fe594ce756cfb89d18cc42214ee53e15ab933de4f1b0eddbd36c",
+          "review_status": "pending_human_review"
+        },
+        "loop_webp": {
+          "asset": "assets/media/athlete/loops/pushup_loop.webp",
+          "type": "video",
+          "bytes": 279918,
+          "sha256": "749b23ba1f9df08c25e2bc51c9b55aaa08d5b6646d72c0fc8216cc856ae7407f",
+          "review_status": "pending_human_review"
+        },
+        "frame_start": {
+          "asset": "assets/media/athlete/frames/pushup_start.webp",
+          "type": "image",
+          "bytes": 6794,
+          "sha256": "6e3a80e874bfdae70b4f603da93a89eabb2ed61db52918bf574d3fff201c7dc2",
+          "review_status": "pending_human_review"
+        },
+        "frame_mid": {
+          "asset": "assets/media/athlete/frames/pushup_mid.webp",
+          "type": "image",
+          "bytes": 6526,
+          "sha256": "a195e81fe557d47dc2afab69b80e02e0e26ad7af92b50ef05dc680ae7233f174",
+          "review_status": "pending_human_review"
+        },
+        "frame_end": {
+          "asset": "assets/media/athlete/frames/pushup_end.webp",
+          "type": "image",
+          "bytes": 6256,
+          "sha256": "3f50b71fbd2042d28907db926bbe6208c0ccbab258b059d7492a056cdeaace4e",
+          "review_status": "pending_human_review"
+        },
+        "overlay_start": {
+          "asset": "assets/media/athlete/overlays/pushup_start.webp",
+          "type": "overlay",
+          "bytes": 6316,
+          "sha256": "98f7ef25a4c2bb056cec379c33dfc52cf096ea2fa8cb09fe4a790543d65c17fa",
+          "review_status": "pending_human_review"
+        },
+        "overlay_end": {
+          "asset": "assets/media/athlete/overlays/pushup_end.webp",
+          "type": "overlay",
+          "bytes": 7350,
+          "sha256": "f05c4e51b4089f648d428c61c8253d9974bd064930640ab89c38bea4fbb0964b",
+          "review_status": "pending_human_review"
+        },
+        "poster_start": {
+          "asset": "assets/media/athlete/posters/pushup_start.webp",
+          "type": "poster",
+          "bytes": 20168,
+          "sha256": "9d0265e369e1098d73eb6e8c1cdace056f2c3d0bd93e97a9338a401b5ffee9a5",
+          "review_status": "pending_human_review"
+        },
+        "poster_end": {
+          "asset": "assets/media/athlete/posters/pushup_end.webp",
+          "type": "poster",
+          "bytes": 19846,
+          "sha256": "0c8f5cc3bbb0ce1fa6d43247280fa7d26bc2aa2a2d38292c9f2569d7edcbc9eb",
+          "review_status": "pending_human_review"
+        },
+        "poster_start_png": {
+          "asset": "assets/media/athlete/posters/pushup_start.png",
+          "type": "poster",
+          "bytes": 69928,
+          "sha256": "6685633174a69f0c3c290a8c21dd2ad84ceff57e79602bf598332a3abddc2a04",
+          "review_status": "pending_human_review",
+          "role": "guaranteed_decode"
+        },
+        "poster_end_png": {
+          "asset": "assets/media/athlete/posters/pushup_end.png",
+          "type": "poster",
+          "bytes": 71963,
+          "sha256": "d48d6af703dc764d996457737c95b15894001389120a0ad19e8e1fc736448398",
+          "review_status": "pending_human_review",
+          "role": "guaranteed_decode"
+        }
+      },
+      "fallback_chain": [
+        "exercises.pushups.assets.loop_mp4",
+        "exercises.pushups.assets.loop_webp",
+        "exercises.pushups.assets.poster_start",
+        "exercises.pushups.assets.poster_start_png",
+        "placeholder"
+      ],
+      "review": {
+        "status": "pending_human_review",
+        "reviewer": null,
+        "reviewed_at": null,
+        "form_review": "docs/media/FORM_REVIEW.md#pushups",
+        "asset_sha256": {
+          "poster_start": "9d0265e369e1098d73eb6e8c1cdace056f2c3d0bd93e97a9338a401b5ffee9a5",
+          "poster_end": "0c8f5cc3bbb0ce1fa6d43247280fa7d26bc2aa2a2d38292c9f2569d7edcbc9eb",
+          "glb": "380f94a0a2f9d199f42c08fd4887864ec4991eee2637cd978c8f67400f3d04f3",
+          "loop_mp4": "552d982c3ee1fe594ce756cfb89d18cc42214ee53e15ab933de4f1b0eddbd36c"
+        }
+      }
+    },
+    "squats": {
+      "wire": "squats",
+      "label": "Squat",
+      "clip": "Squat_Demo",
+      "duration_s": 3.0,
+      "loops": true,
+      "pose_names": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "assets": {
+        "glb": {
+          "asset": "assets/media/athlete/models/athlete_mannequin_v1.glb",
+          "type": "model",
+          "bytes": 173972,
+          "sha256": "380f94a0a2f9d199f42c08fd4887864ec4991eee2637cd978c8f67400f3d04f3",
+          "review_status": "pending_human_review",
+          "format": "glb",
+          "clips": [
+            "PushUp_Demo",
+            "Squat_Demo"
+          ]
+        },
+        "loop_mp4": {
+          "asset": "assets/media/athlete/loops/squat_loop.mp4",
+          "type": "video",
+          "bytes": 61609,
+          "sha256": "b760fdcdbc6bf5901d5dfde7e46575f4fd3c2fbc4742bb6de47d44bc320c7137",
+          "review_status": "pending_human_review"
+        },
+        "loop_webp": {
+          "asset": "assets/media/athlete/loops/squat_loop.webp",
+          "type": "video",
+          "bytes": 344054,
+          "sha256": "489e3ec6a699b4a6c7dd3443f8880224f2dbab211e88092077ae68f991c9354a",
+          "review_status": "pending_human_review"
+        },
+        "frame_start": {
+          "asset": "assets/media/athlete/frames/squat_start.webp",
+          "type": "image",
+          "bytes": 5512,
+          "sha256": "e3ae5e5894c14666e337e47a95c837cd522bbf13d71e4099e04204c7f9d3b73d",
+          "review_status": "pending_human_review"
+        },
+        "frame_mid": {
+          "asset": "assets/media/athlete/frames/squat_mid.webp",
+          "type": "image",
+          "bytes": 6958,
+          "sha256": "49f8ade0c1248ce944f2cf4e40825b8fdf48df45462b0af107fc31f05259d0a6",
+          "review_status": "pending_human_review"
+        },
+        "frame_end": {
+          "asset": "assets/media/athlete/frames/squat_end.webp",
+          "type": "image",
+          "bytes": 6780,
+          "sha256": "367ee3699ad9e2b2aa40cdbbd3a6498b00f7fbb761cc9dfb666330e15e8f2709",
+          "review_status": "pending_human_review"
+        },
+        "overlay_start": {
+          "asset": "assets/media/athlete/overlays/squat_start.webp",
+          "type": "overlay",
+          "bytes": 6168,
+          "sha256": "60a5cffab557468a91b81bfb2a17be45c94400a3480ba726c8eadc1fe8c08f1c",
+          "review_status": "pending_human_review"
+        },
+        "overlay_end": {
+          "asset": "assets/media/athlete/overlays/squat_end.webp",
+          "type": "overlay",
+          "bytes": 6986,
+          "sha256": "c2292ec0ab779c4c5bfa4432dd8d3b7e047f8c05ecea7f278e914380b931deb5",
+          "review_status": "pending_human_review"
+        },
+        "poster_start": {
+          "asset": "assets/media/athlete/posters/squat_start.webp",
+          "type": "poster",
+          "bytes": 15546,
+          "sha256": "935891dadf9c18aac2f86ee1c5b146b5b8c42efa6322ae112bacea3130c80b2a",
+          "review_status": "pending_human_review"
+        },
+        "poster_end": {
+          "asset": "assets/media/athlete/posters/squat_end.webp",
+          "type": "poster",
+          "bytes": 20280,
+          "sha256": "be1a5eecc366fa2485b3acec3f2fbd20cb209678844586a77f3a93c5e8275e47",
+          "review_status": "pending_human_review"
+        },
+        "poster_start_png": {
+          "asset": "assets/media/athlete/posters/squat_start.png",
+          "type": "poster",
+          "bytes": 56207,
+          "sha256": "087b16ffc832a013a1b48e093c507589bc4b232006110c38d6bc884c7ceed00a",
+          "review_status": "pending_human_review",
+          "role": "guaranteed_decode"
+        },
+        "poster_end_png": {
+          "asset": "assets/media/athlete/posters/squat_end.png",
+          "type": "poster",
+          "bytes": 80557,
+          "sha256": "e276d58a3eaf1665a06bf1f52d73d1787ca2a9fc109e327a416fd1c05d5fa0b8",
+          "review_status": "pending_human_review",
+          "role": "guaranteed_decode"
+        }
+      },
+      "fallback_chain": [
+        "exercises.squats.assets.loop_mp4",
+        "exercises.squats.assets.loop_webp",
+        "exercises.squats.assets.poster_start",
+        "exercises.squats.assets.poster_start_png",
+        "placeholder"
+      ],
+      "review": {
+        "status": "pending_human_review",
+        "reviewer": null,
+        "reviewed_at": null,
+        "form_review": "docs/media/FORM_REVIEW.md#squats",
+        "asset_sha256": {
+          "poster_start": "935891dadf9c18aac2f86ee1c5b146b5b8c42efa6322ae112bacea3130c80b2a",
+          "poster_end": "be1a5eecc366fa2485b3acec3f2fbd20cb209678844586a77f3a93c5e8275e47",
+          "glb": "380f94a0a2f9d199f42c08fd4887864ec4991eee2637cd978c8f67400f3d04f3",
+          "loop_mp4": "b760fdcdbc6bf5901d5dfde7e46575f4fd3c2fbc4742bb6de47d44bc320c7137"
+        }
+      }
+    }
+  },
+  "always_present": [
+    "assets/media/athlete/posters/pushup_start.png",
+    "assets/media/athlete/posters/squat_start.png"
+  ],
+  "missing_media_policy": {
+    "rule": "resolve in fallback_chain order; never render a blank frame",
+    "placeholder": {
+      "kind": "ui",
+      "title": "Form guide pending review",
+      "body": "Demonstration media ships only after a human form review (docs/media/FORM_REVIEW.md)."
+    },
+    "release_builds": "omit any asset whose review_status is not approved"
+  },
+  "budgets": {
+    "package_total": 3500000,
+    "glb": 400000,
+    "loop_mp4": 450000,
+    "loop_webp": 900000,
+    "poster_webp": 90000,
+    "poster_png": 220000,
+    "frame_webp": 70000,
+    "overlay_webp": 60000
+  }
+}

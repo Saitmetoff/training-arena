@@ -1,0 +1,20 @@
+﻿== L06 push-enabled debug APK on API 36 emulator (PlatformPushTransport active; no Firebase config) ==
+apk sha256: f0571c94e9d52d7b27848cbfe35300f963e2843289ce5d49d922fee7a4652de4
+build defines: ARENA_FEATURE_PUSH_NOTIFICATIONS=true, ARENA_SUPABASE_URL=:, ARENA_SUPABASE_ANON_KEY=:
+Starting: Intent { cmp=app.trainingarena.mobile/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: app.trainingarena.mobile/.MainActivity
+TotalTime: 7929
+WaitTime: 7946
+Complete
+app pid: 4625
+
+== top activity ==
+topResumedActivity=ActivityRecord{103887494 u0 app.trainingarena.mobile/.MainActivity t15}
+
+== arena notification channels (must be absent: bridge degrades to no push) ==
+(none)
+
+== startup log scan (no FATAL / AndroidRuntime / MissingPluginException / Unhandled Exception) ==
+(clean)

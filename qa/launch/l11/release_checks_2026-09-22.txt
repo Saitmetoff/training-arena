@@ -1,0 +1,162 @@
+Training Arena task 11 — release verification transcript
+Date: 2026-09-22
+Tree: branch codex/training-arena, HEAD 1561673 (L08 docs) + uncommitted
+review-fix Batch A/B patch set (L08 product freeze 1de6127)
+Toolchain: Flutter 3.47.5 / Dart 3.13.4 (D:\toolchains), Node v22.22.2,
+Java 17 (D:\Kiro\.tooling\jdk17, read-only), Gradle 9.3.1 / AGP 9.1.0
+No publishing, deployment, notification, credential rotation or keystore
+creation was performed.
+
+1) flutter analyze  (workdir app)
+   > flutter analyze
+   Analyzing app...
+   No issues found! (ran in 1.7s)
+   exit 0
+
+2) flutter test  (workdir app)
+   > flutter test
+   ... 492 tests ...
+   00:13 +492: All tests passed!
+   exit 0
+
+3) Repository secret scan
+   > node tools/release/secret_scan.mjs
+   secret scan passed: no credential, key or forbidden file found
+   exit 0
+
+4) Build artifact secret scan (current debug APK + historical L02/L08 artifacts)
+   > node tools/release/secret_scan.mjs --artifacts
+   secret scan passed: no credential, key or forbidden file found
+   exit 0
+
+5) Ignored local file audit
+   > node tools/release/secret_scan.mjs --all --json
+   { "ok": false, "findings": [
+       { "file": "supabase\\.env.local", "why": "environment secret files must not be committed" },
+       { "file": "supabase\\.temp\\...\\docker.env", "why": "JWT carrying the service_role claim" }
+   ] }
+   exit 1 — both files are gitignored (supabase/.gitignore) and uncommitted;
+   this is the documented R12 local-only state, not a repository leak.
+
+6) App Link manifest check (default, placeholder intentionally allowed)
+   > node tools/release/check_app_links.mjs
+   warning: challenge host is still the placeholder example.invalid; App Links cannot verify
+   app link check passed (placeholder host intentionally allowed)
+   exit 0
+
+7) App Link release gate (must fail without a real host)
+   > node tools/release/check_app_links.mjs --release
+   app link check failed: - release: --host <domain> (or ARENA_LINK_HOST) is required
+   exit 1
+
+8) App Link release gate (must fail on the placeholder)
+   > node tools/release/check_app_links.mjs --release --host example.invalid --fingerprint 000...000
+   app link check failed: - release: "example.invalid" is not a real HTTPS challenge domain
+   exit 1
+
+9) App Link release gate (real-format host, no fingerprint supplied)
+   > node tools/release/check_app_links.mjs --release --host arena.example.com
+   warning: release: no --fingerprint/ARENA_RELEASE_CERT_SHA256 supplied; the deployed assetlinks.json cannot be validated
+   app link check passed for release host arena.example.com
+   exit 0
+
+10) Release-hold check (ranked/push/preview pinned off, camera choice explicit)
+    > node tools/release/check_release_flags.mjs
+    release flag check passed
+    exit 0
+
+11) Release tool regressions
+    > node --test tools/release/test/check_release_flags.test.mjs tools/release/test/check_android_bundle.test.mjs
+    12 tests, 12 pass, 0 fail
+    exit 0
+
+12) Source identity
+    > node tools/release/check_artifact_identity.mjs
+    source identity check passed
+    exit 0
+
+13) Debug APK identity (QA evidence only; debuggable, not distributable)
+    > node tools/release/check_artifact_identity.mjs --apk app/build/app/outputs/flutter-apk/app-debug.apk
+    artifact sha256: 6ea276e0b2f90fd6265cec5db45d6587502817c9fa927a516c7af5fba46c2366
+    artifact bytes: 222290406
+    artifact identity: app.trainingarena.mobile 1.0.0+1 minSdk 24 targetSdk 36 label "Training Arena" [debuggable]
+    artifact identity check passed
+    exit 0
+    (Rebuilt 2026-09-22 after the Batch A/B source edits; the L02/L08 release
+    artifacts predate them and are historical.)
+
+14) Challenge-web checks
+    > node challenge-web/scripts/check.mjs
+    challenge-web check passed
+    exit 0
+    > node challenge-web/scripts/check.mjs --release
+    challenge-web check failed:
+     - --release requires owner values in config.js; still pending: legalEntity, legalAddress,
+       privacyEmail, supportEmail, supportResponseTime, effectiveDate, childrenPolicy, emailProvider,
+       retentionMatchHistory, retentionAnalytics, retentionModeration, retentionBackups
+     - --release requires a real apiBase in config.js
+     - --release requires the project anon key in config.js
+    exit 1 (by design until the owner supplies the L07 values — R16)
+
+15) Challenge-web tests
+    > node --test challenge-web/test/link.test.mjs challenge-web/test/public_pages.test.mjs
+    21 tests, 21 pass, 0 fail
+    exit 0
+
+16) Prototype checks
+    > node prototype/scripts/check.mjs
+    10 check group(s) passed.
+    exit 0
+
+17) Gradle placeholder-host release guard (added 2026-09-22, build.gradle)
+    > flutter build apk --release            (no keystore, no host, no opt-in)
+    FAILURE: Build failed with an exception.
+    * Where: Build file 'app/android/app/build.gradle' line: 76
+    > Release App Links host is the placeholder example.invalid. Pass
+      -ParenaLinkHost=<real-domain> (must match ARENA_LINK_HOST) per
+      docs/release/CONFIGURATION.md. Non-distributable smoke/inspection builds
+      must opt in explicitly with -PallowDebugSignedRelease=true or
+      -PallowUnsignedRelease=true.
+    BUILD FAILED in 7s
+    exit 1
+    `check_app_links.mjs` now also asserts this guard, the shared
+    `arenaLinkHost` default (example.invalid) and the manifest placeholder
+    wiring, so the protection cannot be silently removed.
+
+18) Release-equivalent APK on the current tree (debug-signed smoke; NON-DISTRIBUTABLE)
+    > flutter build apk --release -PallowDebugSignedRelease=true
+    ✓ Built build\app\outputs\flutter-apk\app-release.apk (86.2MB)
+    exit 0
+    > node tools/release/check_artifact_identity.mjs --release \
+        --apk app/build/app/outputs/flutter-apk/app-release.apk
+    artifact sha256: b4813c0bf5924fc56bb2b50da2e4ba0eb3a6d30df07e768e8109746c4c75efed
+    artifact bytes: 90402075
+    artifact identity: app.trainingarena.mobile 1.0.0+1 minSdk 24 targetSdk 36 label "Training Arena"
+    artifact identity check passed
+    exit 0
+    (Not debuggable, but signed with the local debug key — must not be handed
+    to testers. Supersedes the L08 release-equivalent hash for this tree.)
+    Artifact secret scan re-run after this build: pass (exit 0).
+
+19) Android bundle check (historical L08 AAB; tool path validated end to end
+    after the Batch B bundletool-integrity fix)
+    > node tools/release/check_android_bundle.mjs \
+        --aab app/build/app/outputs/bundle/release/app-release.aab \
+        --expect-version-name 1.0.0 --expect-version-code 1
+    aab: 18 native libraries, ABIs: arm64-v8a, armeabi-v7a, x86_64 (16 KB
+    alignment checked per library)
+    bundle delivery sizes (arm64-v8a, en-US, 420dpi, API 36): 20723380 B
+    note: AAB signer not pinned (no --expect-uploader-sha256); unsigned AAB is
+    expected until the owner provides the upload key.
+    android bundle check passed
+    exit 0
+    (The AAB itself predates the review-fix source changes; a distribution
+    candidate must be rebuilt from the committed tree.)
+
+20) Not re-run in this session
+    - Deno edge tests (48 + 10 on the L08 freeze): no backend file changed and
+      Deno is not installed in this session.
+    - pgTAP 184/184 and HTTP e2e 24/24: L08 freeze evidence; no migration or
+      function changed since.
+    - Physical-device, camera-accuracy, live FCM and Play referrer rows remain
+      blocked with named owners (qa/REPORT.md §6, GO_NO_GO.md §4).

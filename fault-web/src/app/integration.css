@@ -1,0 +1,12 @@
+.honeypot {position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;}
+.preview-banner {margin:0;padding:8px 24px;background:var(--raised);color:var(--muted);font-size:14px;}
+.action-page {padding-top:64px;padding-bottom:96px;max-width:880px;}
+.action-page p {max-width:640px;color:var(--muted);}
+.primary-button,.secondary-button {min-height:48px;border-radius:14px;padding:12px 24px;font:inherit;font-weight:700;cursor:pointer;}
+.primary-button {background:var(--action);color:var(--action-ink);border:1px solid var(--action);}
+.secondary-button {background:var(--surface);color:var(--ink);border:1px solid var(--control-border);}
+.primary-button:disabled {opacity:.6;cursor:default;}
+.signup .is-error {color:var(--danger);}
+.signup input[type=email] {min-width:0;}
+.signup button {white-space:nowrap;}
+@media(prefers-reduced-motion:reduce) {* {animation:none!important;transition:none!important;scroll-behavior:auto!important;}}

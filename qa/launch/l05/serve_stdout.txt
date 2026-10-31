@@ -1,0 +1,4 @@
+2026-09-20T17:36:26.315979341Z Serving functions on http://127.0.0.1:54321/functions/v1/<function-name>
+2026-09-20T17:36:26.316048576Z  - http://127.0.0.1:54321/functions/v1/arena
+2026-09-20T17:36:26.316052672Z  - http://127.0.0.1:54321/functions/v1/arena-dispatcher
+2026-09-20T17:36:26.316054196Z Using supabase-edge-runtime-1.74.3 (compatible with Deno v2.1.4)

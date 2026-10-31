@@ -1,0 +1,16 @@
+ok   - shipped deletion client is configured
+ok   - test account exists before the deletion flow
+ok   - deletion page requested a code with create_user:false
+ok   - deletion code readable from the local mail catcher
+ok   - deletion page verified the email code
+ok   - verified session kept in memory for the retry
+ok   - delete_account completed through the public page client
+ok   - session cleared after the deletion
+ok   - auth user is gone after the deletion
+--- request trace (method, path, status only) ---
+POST /auth/v1/admin/users -> 200
+POST /auth/v1/otp -> 200
+POST /auth/v1/verify -> 200
+POST /functions/v1/arena -> 200
+GET /auth/v1/user -> 403
+PASS deletion route e2e

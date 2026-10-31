@@ -1,0 +1,2 @@
+icon-512.png              32295 bytes sha256=872ec303adca12cbd7c97903e9976499778804cabd005d7eb6dda49a701d1a0f
+feature-graphic-1024x500.png 39559 bytes sha256=f78e2713ea851c2eb05b1d758ecd8d49a0633ccd9f11193c575ffbef4e459eec

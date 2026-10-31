@@ -1,0 +1,40 @@
+﻿diff --git a/app/lib/battle/ui/battle_athlete_demo.dart b/app/lib/battle/ui/battle_athlete_demo.dart
+index 476bc2a..472171a 100644
+--- a/app/lib/battle/ui/battle_athlete_demo.dart
++++ b/app/lib/battle/ui/battle_athlete_demo.dart
+@@ -4,7 +4,10 @@
+ /// (`app/assets/media/athlete/manifest.json`) and renders the first decodable
+ /// asset. The demonstration is instructional only: it never counts reps and
+ /// never verifies form. Missing media falls back to the documented
+-/// placeholder text rather than a blank frame.
++/// placeholder text rather than a blank frame, and an asset whose
++/// `review_status` is not `approved` is never rendered (the manifest's
++/// `missing_media_policy.release_builds` rule; the release gate in
++/// `qa/media/tools/validate_media_package.py` enforces the same policy).
+ library;
+ 
+ import 'dart:convert';
+@@ -68,8 +71,9 @@ class _BattleAthleteDemoState extends State<BattleAthleteDemo> {
+ 
+   Future<_DemoCandidate?> _resolve() async {
+     try {
+-      final raw = await rootBundle.loadString(
+-        'assets/media/athlete/manifest.json',
++      final data = await _load('assets/media/athlete/manifest.json');
++      final raw = utf8.decode(
++        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+       );
+       final decoded = json.decode(raw) as Map<String, dynamic>;
+       final exercises = decoded['exercises'] as Map<String, dynamic>?;
+@@ -91,6 +95,11 @@ class _BattleAthleteDemoState extends State<BattleAthleteDemo> {
+         if (path == null) {
+           continue;
+         }
++        // Human-reviewed only: an unreviewed asset must fall through to the
++        // placeholder instead of shipping unreviewed instruction.
++        if (asset?['review_status'] != 'approved') {
++          continue;
++        }
+         final candidate = _DemoCandidate(path, animated: entry.value);
+         try {
+           final bytes = await _load(path);

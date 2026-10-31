@@ -1,0 +1,34 @@
+﻿== API 36 emulator (google_apis, x86_64) — release-equivalent APK (debug-signed smoke) ==
+device sdk: 36
+page size: 4096
+install: package:/data/app/~~QFqj5olUvkvnv-S63D7WEQ==/app.trainingarena.mobile-nbfNHfENARzCC1l0vpVUHA==/base.apk
+pid: 6378
+
+== focused window / edge-to-edge frames ==
+mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+isOnScreen=true
+mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+isOnScreen=true
+mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+isOnScreen=false
+mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+isOnScreen=true
+mHasSurface=false isReadyForDisplay()=false mWindowRemovalAllowed=false
+isOnScreen=false
+mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+isOnScreen=true
+
+== crash/ML Kit scan since launch ==
+(no FATAL, AndroidRuntime, ComponentDiscovery, dlopen or E/flutter entries)
+
+== resume state ==
+* Task{aa5a335 #9 type=standard I=app.trainingarena.mobile/.MainActivity U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+topResumedActivity=ActivityRecord{66040172 u0 app.trainingarena.mobile/.MainActivity t9}
+* Hist  #0: ActivityRecord{66040172 u0 app.trainingarena.mobile/.MainActivity t9}
+packageName=app.trainingarena.mobile processName=app.trainingarena.mobile
+app=ProcessRecord{8ccc204 6378:app.trainingarena.mobile/u0a216}
+
+== permissions ==
+versionCode=1 minSdk=24 targetSdk=36
+android.permission.POST_NOTIFICATIONS: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+android.permission.CAMERA: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]

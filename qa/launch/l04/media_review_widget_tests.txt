@@ -1,0 +1,5 @@
+﻿00:00 +0: loading D:/TrainingArena/app/test/battle/battle_athlete_demo_review_test.dart
+00:00 +0: unreviewed assets render the placeholder
+00:00 +1: approved assets render
+00:00 +2: an approved fallback is used when the preferred asset is unreviewed
+00:01 +3: All tests passed!

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/legacy/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fault support</title>
+  <meta name="description" content="Get help with Fault sign-in, challenge links, battles, reports and account deletion.">
+  <meta name="theme-color" content="#17191A">
+  <meta name="robots" content="index">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./pages.css">
+</head>
+<body>
+  <main class="page">
+    <h1>Fault support</h1>
+    <p class="lead">Contact us for sign-in trouble, challenge links, battle problems, reports or account deletion.</p>
+
+    <p class="draft" data-arena-draft hidden>
+      <strong>Draft — not yet in force</strong>
+      The support address and response commitment are owner inputs and are
+      still missing, so this page must not be published.
+    </p>
+
+    <section class="card">
+      <h2>Contact</h2>
+      <p>
+        Email
+        <a data-arena-field="supportEmail" data-arena-field-link="mailto:" href="mailto:">[[OWNER: support email]]</a>.
+        We reply within
+        <span data-arena-field="supportResponseTime">[[OWNER: support response commitment]]</span>.
+      </p>
+      <p>
+        <strong>We never ask for your password or for a sign-in code.</strong>
+        Support will also never ask you to install something outside Google
+        Play. Treat any message that does as fraudulent.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What to include</h2>
+      <ul>
+        <li>Your Fault username (never your email password).</li>
+        <li>Your device model and Android version.</li>
+        <li>The app version from Google Play or the Settings screen.</li>
+        <li>What you expected, what happened, and when.</li>
+        <li>A screenshot if it shows the problem — never a screenshot that contains a sign-in code.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Sign-in</h2>
+      <p>
+        Fault signs you in with an email one-time code. If a code does
+        not arrive, request a new one after a few minutes, check the spam
+        folder, and confirm the address has no typo. Codes expire; an expired
+        code shows an honest message and no session is created.
+      </p>
+      <p>
+        If you opened a challenge link before signing in, the pending challenge
+        is kept on your device and you return to it after sign-in.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Challenge links and battles</h2>
+      <ul>
+        <li>A challenge link only creates something after the recipient accepts it in the app.</li>
+        <li>If a link does not reopen the app, install from Google Play and reopen the link, or use <strong>Join with code</strong> with the short code shown on the page.</li>
+        <li>Rounds that cannot be confirmed end as <em>no result</em> and change no rating. That is deliberate: the server never invents a winner.</li>
+        <li>There are no bots and no offline or asynchronous scored challenges.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Reporting and blocking a player</h2>
+      <p>
+        Open the player's card in the app and use <strong>Report</strong> or
+        <strong>Block</strong>. Blocking stops invitations and ranked pairing
+        between you both; you can undo it in <strong>Profile → Settings →
+        Blocked players</strong>. Reports are reviewed manually by the operator
+        — the app never enforces anything automatically from a report.
+      </p>
+      <p>
+        For abuse that needs a human decision, email us with the username and
+        the approximate time of the match instead of relying on the report
+        alone.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Delete your account</h2>
+      <p>
+        Delete in the app under <strong>Profile → Settings → Delete account</strong>,
+        or use the <a href="./delete-account.html">account deletion page</a> if
+        you no longer have the app installed. Both paths are real deletion; the
+        app is never just deactivated or frozen.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Privacy</h2>
+      <p>
+        What the app collects, and where camera frames go, is described in the
+        <a href="./privacy.html">privacy policy</a>. Camera frames and pose
+        landmarks never leave your device.
+      </p>
+    </section>
+
+    <nav class="footer">
+      <p>
+        <a href="./privacy.html">Privacy policy</a> ·
+        <a href="./delete-account.html">Delete your account</a> ·
+        <a href="./index.html">Fault</a>
+      </p>
+    </nav>
+  </main>
+  <script src="./config.js"></script>
+  <script src="./pages.js"></script>
+</body>
+</html>

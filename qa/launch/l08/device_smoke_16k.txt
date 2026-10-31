@@ -1,0 +1,22 @@
+﻿== L08 release-equivalent APK smoke on 16 KB page-size runtime ==
+device: API 35 abi x86_64 pagesize 16384 tags dev-keys
+Performing Streamed Install
+Success
+install wall time: 7.9 s
+Starting: Intent { cmp=app.trainingarena.mobile/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: app.trainingarena.mobile/.MainActivity
+TotalTime: 5446
+WaitTime: 5494
+Complete
+am start -W wall time: 6 s
+topResumedActivity=ActivityRecord{850f6ec u0 app.trainingarena.mobile/.MainActivity t16}
+logcat filter (case-sensitive) on logcat_cold_start_16k.txt:
+  FATAL EXCEPTION = 0
+  UnsatisfiedLinkError = 0
+  MissingPluginException = 0
+  Fatal signal = 0
+  ANR in app.trainingarena = 0
+note: an earlier loose filter matched only a system Wellbeing TileServices
+debug line; no app failure.

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/legacy/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fault challenge</title>
+  <meta name="description" content="Check a Fault challenge link. Availability is shown only after the challenge service responds.">
+  <meta name="theme-color" content="#17191A">
+  <!-- Passive, generic social preview: no challenger identity, no token and
+       no per-user rendering. The card is intentionally the same for every
+       link so sharing cannot leak who challenged whom. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fault challenge">
+  <meta property="og:description" content="Check a Fault challenge link. Availability is shown only after the challenge service responds.">
+  <meta property="og:site_name" content="Fault">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Fault challenge">
+  <meta name="twitter:description" content="Check a Fault challenge link. Availability is shown only after the challenge service responds.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="challenge-app" class="shell" aria-live="polite">
+    <h1 id="screen-title" tabindex="-1">Opening challenge link…</h1>
+    <p class="lead">Checking challenge availability. Opening this page does not send a challenge.</p>
+  </main>
+  <footer class="footer">
+    <p>Fault challenge links · opening a link sends no challenge.</p>
+  </footer>
+  <noscript>
+    <p class="noscript">JavaScript is required to check this challenge link. Availability has not been checked and nothing was sent.</p>
+  </noscript>
+  <!-- Runtime values only; no secrets and no service-role keys. -->
+  <script src="./config.js"></script>
+  <script src="./link.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

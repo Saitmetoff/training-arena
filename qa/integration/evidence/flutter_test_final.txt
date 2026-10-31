@@ -1,0 +1,418 @@
+﻿00:00 +0: loading D:/TrainingArena/app/test/account/account_api_test.dart
+00:00 +0: D:/TrainingArena/app/test/account/account_api_test.dart: envelope and transport fetchProfile posts the action envelope with bearer and anon key
+00:00 +1: D:/TrainingArena/app/test/account/account_api_test.dart: envelope and transport unconfigured builds never touch the network
+00:00 +2: D:/TrainingArena/app/test/account/account_api_test.dart: envelope and transport a missing token fails closed as unauthenticated
+00:00 +3: D:/TrainingArena/app/test/account/account_api_test.dart: envelope and transport transport failures surface as retryable network errors
+00:00 +4: D:/TrainingArena/app/test/account/account_api_test.dart: envelope and transport 401 answers are unauthenticated; 500 answers are retryable
+00:00 +5: D:/TrainingArena/app/test/account/account_api_test.dart: envelope and transport business errors use the server code and actionable copy
+00:00 +6: D:/TrainingArena/app/test/account/account_api_test.dart: envelope and transport server messages mentioning tokens are replaced
+00:00 +7: D:/TrainingArena/app/test/account/account_api_test.dart: profile mutations profile_update normalizes nothing and sends the given name
+00:00 +8: D:/TrainingArena/app/test/account/account_api_test.dart: profile mutations avatar_update sends base64 and mime_type from the picker
+00:00 +9: D:/TrainingArena/app/test/account/account_api_test.dart: leaderboard and history parsing leaderboard keeps only rows with an id and a positive rank
+00:00 +10: D:/TrainingArena/app/test/account/account_api_test.dart: leaderboard and history parsing history parses a ranked receipt and drops malformed rows
+00:00 +11: D:/TrainingArena/app/test/account/account_api_test.dart: leaderboard and history parsing a win without a winner id is dropped
+00:00 +12: D:/TrainingArena/app/test/account/account_api_test.dart: public profile, report and block publicProfile never surfaces extra private fields
+00:00 +13: D:/TrainingArena/app/test/account/account_api_test.dart: public profile, report and block report sends target, optional match and the reason
+00:00 +14: D:/TrainingArena/app/test/account/account_api_test.dart: public profile, report and block block, unblock and blocked use the documented actions
+00:00 +15: D:/TrainingArena/app/test/account/account_api_test.dart: public profile, report and block deleteAccount posts the documented action
+00:00 +16: D:/TrainingArena/app/test/account/account_controller_test.dart: session lifecycle no stored session lands signed out with no profile
+00:00 +17: D:/TrainingArena/app/test/account/account_controller_test.dart: session lifecycle a restored session loads the authoritative profile
+00:00 +18: D:/TrainingArena/app/test/account/account_controller_test.dart: session lifecycle a profile that cannot load keeps the session and stays retryable
+00:00 +19: D:/TrainingArena/app/test/account/account_controller_test.dart: session lifecycle a rejected session fails closed to signed out with plain copy
+00:00 +20: D:/TrainingArena/app/test/account/account_controller_test.dart: session lifecycle expired local sessions refresh through the gateway
+00:00 +21: D:/TrainingArena/app/test/account/account_controller_test.dart: session lifecycle accessToken returns the stored token when refresh is offline
+00:00 +22: D:/TrainingArena/app/test/account/account_controller_test.dart: session lifecycle a refused refresh ends the session and drops the token
+00:00 +23: D:/TrainingArena/app/test/account/account_controller_test.dart: sign-in Google sign-in loads the profile and refreshes the viewer
+00:00 +24: D:/TrainingArena/app/test/account/account_controller_test.dart: sign-in a first sign-in without a username stays in the username step
+00:00 +25: D:/TrainingArena/app/test/account/account_controller_test.dart: sign-in email-code sign-in asks for the code and never keeps the address
+00:00 +26: D:/TrainingArena/app/test/account/account_controller_test.dart: sign-in cancellation surfaces the plain provider message
+00:00 +27: D:/TrainingArena/app/test/account/account_controller_test.dart: username claim normalizes before sending and updates the viewer
+00:00 +28: D:/TrainingArena/app/test/account/account_controller_test.dart: username claim an unchanged name is a no-op without a round trip
+00:00 +29: D:/TrainingArena/app/test/account/account_controller_test.dart: username claim a server race reports an actionable duplicate message
+00:00 +30: D:/TrainingArena/app/test/account/account_controller_test.dart: username claim invalid local input never reaches the backend
+00:00 +31: D:/TrainingArena/app/test/account/account_controller_test.dart: username claim claiming before sign-in fails closed
+00:00 +32: D:/TrainingArena/app/test/account/account_controller_test.dart: avatar accepts a valid image and sends sniffed base64
+00:00 +33: D:/TrainingArena/app/test/account/account_controller_test.dart: avatar rejects camera frames before any upload
+00:00 +34: D:/TrainingArena/app/test/account/account_controller_test.dart: avatar rejects oversized images before any upload
+00:00 +35: D:/TrainingArena/app/test/account/account_controller_test.dart: avatar a rejected image keeps the profile and reports the reason
+00:00 +36: D:/TrainingArena/app/test/account/account_controller_test.dart: avatar remove is available with and without an avatar
+00:00 +37: D:/TrainingArena/app/test/account/account_controller_test.dart: sign-out and deletion sign-out clears local state even when the server call fails
+00:00 +38: D:/TrainingArena/app/test/account/account_controller_test.dart: sign-out and deletion deleteAccount clears local state and reports the result
+00:00 +39: D:/TrainingArena/app/test/account/account_controller_test.dart: sign-out and deletion a failed deletion keeps the session for a retry
+00:00 +40: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaUsername normalize trims only surrounding whitespace
+00:00 +41: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaUsername isSame compares normalized names without case
+00:00 +42: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaUsername valid names pass at both length bounds
+00:00 +43: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaUsername empty, short, long, bad characters and reserved names fail
+00:00 +44: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaUsername normalized input is what the backend receives
+00:00 +45: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaEmail normalizes and validates the address shape
+00:00 +46: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaAvatarLimits sniffs JPEG, PNG and WebP signatures
+00:00 +47: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaAvatarLimits camera-like raw bytes are never a supported image
+00:00 +48: D:/TrainingArena/app/test/account/account_models_test.dart: ArenaAvatarLimits validation messages are actionable and catch every rejection
+00:00 +49: D:/TrainingArena/app/test/account/account_models_test.dart: AccountException classifies unauthenticated and retryable failures
+00:00 +50: D:/TrainingArena/app/test/account/account_models_test.dart: AccountException toString never carries a message, token or email
+00:00 +51: D:/TrainingArena/app/test/account/account_models_test.dart: leaderboard and public player view objects leaderboard rows know the viewer and compare by value
+00:00 +52: D:/TrainingArena/app/test/account/account_models_test.dart: leaderboard and public player view objects public player falls back to a safe display name
+00:00 +53: D:/TrainingArena/app/test/account/challenge_continuity_test.dart: Google sign-in returns to the same challenge and claims a username
+00:01 +54: D:/TrainingArena/app/test/account/challenge_continuity_test.dart: email-code sign-in keeps the same token through both prompts
+00:01 +55: D:/TrainingArena/app/test/account/challenge_continuity_test.dart: a duplicate username re-prompts without losing the challenge
+00:01 +56: D:/TrainingArena/app/test/account/challenge_continuity_test.dart: restart restores the waiting challenge with the same token
+00:01 +57: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: LeaderboardController loads exactly the confirmed rows
+00:01 +58: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: LeaderboardController an empty ladder is an honest empty state, not an error
+00:01 +59: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: LeaderboardController the viewer row outside the top page is surfaced as-is
+00:01 +60: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: LeaderboardController an offline refresh keeps the last confirmed page
+00:01 +61: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: LeaderboardController a server error is not retryable and keeps the confirmed page
+00:01 +62: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: LeaderboardController an unconfigured build reports the flag without inventing rows
+00:01 +63: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: LeaderboardController reset drops every row and goes back to initial
+00:01 +64: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: BattleHistoryController loads confirmed receipts unchanged
+00:01 +65: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: BattleHistoryController an empty history is an honest empty state
+00:01 +66: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: BattleHistoryController an offline refresh keeps the last confirmed receipts
+00:01 +67: D:/TrainingArena/app/test/account/leaderboard_history_controller_test.dart: BattleHistoryController reset drops every receipt on sign-out
+00:01 +68: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +69: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +70: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +71: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +72: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +73: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +74: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +75: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +76: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +77: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +78: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +79: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +80: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +81: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +82: D:/TrainingArena/app/test/account/profile_surfaces_test.dart: ProfileTab shows exactly the contract fields and actions
+00:02 +83: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:02 +84: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:02 +85: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:02 +86: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:02 +87: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:02 +88: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:02 +89: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:02 +90: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +91: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +92: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +93: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +94: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +95: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +96: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +97: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +98: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +99: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +100: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +101: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +102: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +103: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +104: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +105: D:/TrainingArena/app/test/arena_shell_smoke_test.dart: shell shows Leaderboard/Battle/Profile and opens on Battle
+00:03 +106: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +107: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +108: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +109: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +110: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +111: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +112: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +113: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +114: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +115: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +116: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +117: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +118: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +119: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +120: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +121: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +122: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +123: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +124: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +125: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +126: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +127: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +128: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +129: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +130: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +131: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +132: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +133: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +134: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +135: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +136: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +137: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +138: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +139: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +140: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +141: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +142: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +143: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +144: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +145: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +146: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +147: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +148: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +149: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +150: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +151: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:03 +152: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +153: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +154: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +155: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +156: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +157: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +158: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +159: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +160: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +161: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +162: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +163: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +164: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +165: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +166: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a finished match without a receipt never renders a result
+00:04 +167: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:04 +168: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +169: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +170: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +171: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +172: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +173: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +174: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +175: D:/TrainingArena/app/test/battle/battle_widget_test.dart: Battle home hierarchy incoming request, hero, ranked and code render in order
+00:05 +176: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +177: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +178: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +179: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +180: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +181: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +182: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +183: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +184: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +185: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +186: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +187: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +188: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +189: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +190: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +191: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +192: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:05 +193: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +194: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +195: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +196: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +197: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +198: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +199: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +200: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +201: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +202: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +203: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +204: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +205: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +206: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +207: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +208: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +209: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +210: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +211: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +212: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +213: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +214: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +215: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +216: D:/TrainingArena/app/test/battle/battle_contract_test.dart: a link landing hands the confirmed match to the battle flow
+00:05 +217: D:/TrainingArena/app/test/battle/battle_widget_test.dart: ranked search UI search never claims anyone is online and offers the friend alternative after 15 seconds
+00:06 +218: D:/TrainingArena/app/test/battle/battle_contract_test.dart: draws stay ties
+00:06 +219: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow accepting a request opens preparation, never live play
+00:06 +220: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow accepting a request opens preparation, never live play
+00:06 +221: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow accepting a request opens preparation, never live play
+00:06 +222: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow accepting a request opens preparation, never live play
+00:06 +223: D:/TrainingArena/app/test/battle/battle_contract_test.dart: losses are viewer-relative
+00:06 +224: D:/TrainingArena/app/test/battle/battle_contract_test.dart: losses are viewer-relative
+00:06 +225: D:/TrainingArena/app/test/battle/battle_contract_test.dart: losses are viewer-relative
+00:06 +226: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow practice rep gates ready; both-ready gates the countdown
+00:06 +227: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow practice rep gates ready; both-ready gates the countdown
+00:07 +228: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow practice rep gates ready; both-ready gates the countdown
+00:07 +229: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow practice rep gates ready; both-ready gates the countdown
+00:07 +230: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow practice rep gates ready; both-ready gates the countdown
+00:07 +231: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +232: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +233: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +234: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +235: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +236: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +237: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +238: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +239: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +240: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +241: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +242: D:/TrainingArena/app/test/linking/arena_app_link_test.dart: ArenaApp opens a cold challenge link before the shell
+00:07 +243: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:07 +244: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:07 +245: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +246: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +247: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +248: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +249: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +250: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +251: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +252: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +253: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +254: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +255: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +256: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +257: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +258: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +259: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +260: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow live round shows server scores and the tracking banner
+00:08 +261: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during preparation confirms before leaving
+00:08 +262: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during preparation confirms before leaving
+00:08 +263: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during preparation confirms before leaving
+00:08 +264: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during preparation confirms before leaving
+00:08 +265: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during preparation confirms before leaving
+00:08 +266: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during preparation confirms before leaving
+00:08 +267: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during preparation confirms before leaving
+00:09 +268: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: cold link lands on the challenger without visiting a tab
+00:09 +269: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: cold link lands on the challenger without visiting a tab
+00:09 +270: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: cold link lands on the challenger without visiting a tab
+00:09 +271: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: cold link lands on the challenger without visiting a tab
+00:09 +272: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: cold link lands on the challenger without visiting a tab
+00:09 +273: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: cold link lands on the challenger without visiting a tab
+00:09 +274: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +275: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +276: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +277: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +278: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +279: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +280: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +281: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +282: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +283: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow back during a live round explains the forfeit honestly
+00:09 +284: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: disabled links offer Play, reopen instruction and short code
+00:09 +285: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow declining a request confirms and creates nothing
+00:09 +286: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow declining a request confirms and creates nothing
+00:10 +287: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow declining a request confirms and creates nothing
+00:10 +288: D:/TrainingArena/app/test/battle/battle_widget_test.dart: match flow declining a request confirms and creates nothing
+00:10 +289: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: Challenge a friend shares the exact message then waits
+00:10 +290: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: Challenge a friend shares the exact message then waits
+00:10 +291: D:/TrainingArena/app/test/linking/challenge_entry_widget_test.dart: Challenge a friend shares the exact message then waits
+00:10 +292: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility score panels carry full semantic labels
+00:10 +293: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility score panels carry full semantic labels
+00:10 +294: D:/TrainingArena/app/test/matchmaking/ranked_search_test.dart: truthful ranked search window 15-second alternative is offered once and tracked once
+00:10 +295: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +296: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +297: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +298: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +299: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +300: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +301: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +302: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +303: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +304: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +305: D:/TrainingArena/app/test/battle/battle_widget_test.dart: accessibility reduced motion removes the phase transition animation
+00:10 +306: D:/TrainingArena/app/test/battle/battle_widget_test.dart: request inbox states loading skeleton shows until the inbox answers
+00:11 +307: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +308: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +309: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +310: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +311: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +312: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +313: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +314: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +315: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: a pending request renders with accept and decline actions
+00:11 +316: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: an unavailable request renders the explanation and back
+00:12 +317: D:/TrainingArena/app/test/notifications/notification_service_test.dart: permission asked in context on the first request allowed path registers only the device token and preserves the request
+00:12 +318: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +319: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +320: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +321: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +322: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +323: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +324: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +325: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +326: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +327: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +328: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +329: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +330: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +331: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +332: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +333: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +334: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +335: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +336: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +337: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +338: D:/TrainingArena/app/test/notifications/notification_gate_test.dart: the permission rationale reports allow and not-now
+00:12 +339: D:/TrainingArena/app/test/notifications/platform_push_transport_test.dart: reads permission, token and cold-start taps from the native bridge
+00:12 +340: D:/TrainingArena/app/test/notifications/platform_push_transport_test.dart: a missing native bridge degrades to no-push instead of throwing
+00:12 +341: D:/TrainingArena/app/test/notifications/platform_push_transport_test.dart: event streams parse foreground messages, taps and token refreshes
+00:12 +342: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +343: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +344: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +345: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +346: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +347: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +348: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +349: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +350: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +351: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +352: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories card renders every mandatory element
+00:13 +353: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories keeps mandatory content inside the safe area
+00:13 +354: D:/TrainingArena/app/test/sharing/result_share_card_view_test.dart: Stories renders every fixture without overflow
+00:13 +355: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +356: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +357: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +358: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +359: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +360: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +361: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +362: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +363: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +364: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:13 +365: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +366: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +367: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +368: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +369: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +370: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +371: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +372: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +373: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +374: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +375: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +376: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +377: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +378: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +379: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +380: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +381: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +382: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +383: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +384: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +385: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +386: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +387: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +388: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +389: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: stories export is exactly 1080x1920
+00:14 +390: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +391: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +392: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +393: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +394: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +395: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +396: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +397: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +398: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:14 +399: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:15 +400: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:15 +401: D:/TrainingArena/app/test/sharing/result_share_preview_test.dart: preview renders the exact card and all three actions
+00:15 +402: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:15 +403: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:15 +404: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:15 +405: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +406: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +407: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +408: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +409: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +410: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +411: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +412: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +413: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +414: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: every fixture exports at both exact sizes
+00:16 +415: D:/TrainingArena/app/test/sharing/result_share_export_test.dart: capture without a mounted preview fails with preview_required
+00:16 +416: All tests passed!

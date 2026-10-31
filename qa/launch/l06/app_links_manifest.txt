@@ -1,0 +1,8 @@
+﻿node : warning: challenge host is still the placeholder example.invalid; App Links cannot verify
+At line:4 char:7
++ $o3 = node tools/release/check_app_links.mjs 2>&1; $c3=$LASTEXITCODE; ...
++       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: challe...s cannot verify:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+app link check passed (placeholder host intentionally allowed)

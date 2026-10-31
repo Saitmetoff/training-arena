@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Native splash mirrors the Dart token file
+         (lib/theme/arena_tokens.dart): ArenaColors.charcoal #17191A. -->
+    <color name="arena_charcoal">#17191A</color>
+</resources>

@@ -1,0 +1,14 @@
+﻿== L06 release-equivalent APK manifest (post-R8) ==
+apk sha256: 3e776250bc220ad94c59e9b92dacc988c075fe6ddbc6a49d62854317abe35df7
+
+A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.POST_NOTIFICATIONS" (Raw: "android.permission.POST_NOTIFICATIONS")
+A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.google.firebase.messaging.default_notification_channel_id" (Raw: "com.google.firebase.messaging.default_notification_channel_id")
+A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.google.firebase.messaging.default_notification_icon" (Raw: "com.google.firebase.messaging.default_notification_icon")
+A: http://schemas.android.com/apk/res/android:name(0x01010003)="app.trainingarena.mobile.push.ArenaMessagingService" (Raw: "app.trainingarena.mobile.push.ArenaMessagingService")
+A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.google.firebase.MESSAGING_EVENT" (Raw: "com.google.firebase.MESSAGING_EVENT")
+A: http://schemas.android.com/apk/res/android:launchMode(0x0101001d)=1
+A: http://schemas.android.com/apk/res/android:name(0x01010003)="flutter_deeplinking_enabled" (Raw: "flutter_deeplinking_enabled")
+A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.google.firebase.MESSAGING_EVENT" (Raw: "com.google.firebase.MESSAGING_EVENT")
+
+== google_app_id / default_web_client_id resources (must be absent without owner config) ==
+(none)

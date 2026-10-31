@@ -1,0 +1,71 @@
+﻿== API 35 16 KB page-size emulator (google_apis_ps16k, x86_64) — release-equivalent APK ==
+page size: 16384
+sdk: 35
+
+Performing Streamed Install
+Success
+
+Starting: Intent { cmp=app.trainingarena.mobile/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: app.trainingarena.mobile/.MainActivity
+TotalTime: 4313
+WaitTime: 4322
+Complete
+
+pid: 2825
+
+== loaded native mappings (first 15) ==
+awk: syntax error at source line 1
+ context is
+	 >>> {print <<< 
+awk: illegal statement at source line 1
+	missing }
+cat: /proc/2825/maps: Permission denied
+
+== crash/native-link scan ==
+09-20 13:26:49.416  1713  1960 D nativeloader: Load libgeller_jni_lib_split.so using ns product-clns-7 from class loader (caller=/product/priv-app/Velvet/Velvet.apk!classes6.dex): dlopen failed: library "libgeller_jni_lib_split.so" not found
+09-20 13:27:05.388   450   450 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(861):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+09-20 13:27:05.405   450   450 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(861):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+09-20 13:27:27.590  3380  3505 D nativeloader: Load libcurve25519.so using ns product-clns-8 from class loader (caller=/product/priv-app/PrebuiltBugle/PrebuiltBugle.apk!classes6.dex): dlopen failed: library "libcurve25519.so" not found
+
+== top activity ==
+topResumedActivity=ActivityRecord{ead1c5a u0 app.trainingarena.mobile/.MainActivity t8}
+
+== arena-process logcat scan (pid 2825) ==
+--------- beginning of main
+09-20 13:26:53.588  2825  2825 I ingarena.mobile: Using CollectorTypeCMC GC.
+09-20 13:26:53.589  2825  2825 W ingarena.mobile: Unexpected CPU variant for x86: x86_64.
+09-20 13:26:53.589  2825  2825 W ingarena.mobile: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+09-20 13:26:53.597  2825  2825 E ingarena.mobile: Not starting debugger since process cannot load the jdwp agent.
+09-20 13:26:53.599  2825  2825 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+09-20 13:26:53.822  2825  2825 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+09-20 13:26:53.822  2825  2825 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+09-20 13:26:53.824  2825  2825 D nativeloader: Configuring clns-7 for other apk /data/app/~~DtX4t_ZIuYPmj4WVS3ff4w==/app.trainingarena.mobile-SngEtHsL2PiZv8_dsayXFQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~DtX4t_ZIuYPmj4WVS3ff4w==/app.trainingarena.mobile-SngEtHsL2PiZv8_dsayXFQ==/lib/x86_64:/data/app/~~DtX4t_ZIuYPmj4WVS3ff4w==/app.trainingarena.mobile-SngEtHsL2PiZv8_dsayXFQ==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/app.trainingarena.mobile
+09-20 13:26:53.835  2825  2825 V GraphicsEnvironment: Currently set values for:
+09-20 13:26:53.835  2825  2825 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+09-20 13:26:53.835  2825  2825 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+09-20 13:26:53.835  2825  2825 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+09-20 13:26:53.835  2825  2825 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+09-20 13:26:53.858  2825  2825 D WM-WrkMgrInitializer: Initializing WorkManager with default configuration.
+--------- beginning of system
+09-20 13:26:54.192  2825  2825 V ActivityThread: getPackageInfo() caused update to cached ApplicationInfo for package app.trainingarena.mobile
+09-20 13:26:54.291  2825  2861 D nativeloader: Load /data/app/~~DtX4t_ZIuYPmj4WVS3ff4w==/app.trainingarena.mobile-SngEtHsL2PiZv8_dsayXFQ==/base.apk!/lib/x86_64/libflutter.so using ns clns-7 from class loader (caller=/data/app/~~DtX4t_ZIuYPmj4WVS3ff4w==/app.trainingarena.mobile-SngEtHsL2PiZv8_dsayXFQ==/base.apk): ok
+09-20 13:26:54.315  2825  2862 D skia    : [SkFontMgr Android Parser] '/product/etc/fonts_customization.xml' could not be opened
+09-20 13:26:54.328  2825  2863 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+09-20 13:26:54.329  2825  2863 I EGL_emulation: Opening libGLESv2_emulation.so
+09-20 13:26:54.320  2825  2825 W ingarena.mobile: type=1400 audit(0.0:34): avc:  denied  { read } for  name="max_map_count" dev="proc" ino=19340 scontext=u:r:untrusted_app:s0:c207,c256,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=app.trainingarena.mobile
+09-20 13:26:54.430  2825  2863 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+09-20 13:26:54.838  2825  2825 W HWUI    : Unknown dataspace 0
+09-20 13:26:54.944  2825  2825 I WindowExtensionsImpl: Initializing Window Extensions, vendor API level=6, activity embedding enabled=true
+09-20 13:26:55.005  2825  2855 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+09-20 13:26:55.261  2825  2863 I Gralloc4: mapper 4.x is not supported
+09-20 13:26:56.258  2825  2825 I Choreographer: Skipped 77 frames!  The application may be doing too much work on its main thread.
+09-20 13:26:59.569  2825  3023 D ProfileInstaller: Installing profile for app.trainingarena.mobile
+
+== primaryCpuAbi ==
+primaryCpuAbi=x86_64
+secondaryCpuAbi=null
+versionCode=1 minSdk=24 targetSdk=36
+
+Note: the dlopen lines seen during boot belong to system apps (Velvet, WVCdm, PrebuiltBugle), not to app.trainingarena.mobile.

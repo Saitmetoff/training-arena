@@ -1,0 +1,5 @@
+﻿artifact: D:\TrainingArena\app\build\app\outputs\flutter-apk\app-release.apk
+artifact sha256: 53d6bafb5e17a53bbd3af74e3d9d441d68d02b6d58616b9285a2a68032ec8951
+artifact bytes: 91444249
+artifact identity: app.trainingarena.mobile 1.0.0+1 minSdk 24 targetSdk 36 label "Training Arena"
+artifact identity check passed

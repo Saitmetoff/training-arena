@@ -1,0 +1,61 @@
+﻿# Task 03 camera evidence - Toolchain: Flutter 3.47.5 stable / Dart 3.13.4 ·
+# Date: 2026-09-22 · Base commit 15616739b57b4ea05dc4fa65cd764fe100d8854a
+# Working tree additionally carries the camera paused-state hardening plus other tasks' uncommitted changes.
+# Command: flutter test test/camera
+
+00:00 +0: loading D:/TrainingArena/app/test/camera/camera_bridge_test.dart
+00:00 +0: D:/TrainingArena/app/test/camera/camera_bridge_test.dart: permission states map from native wire values
+00:00 +1: D:/TrainingArena/app/test/camera/camera_bridge_test.dart: native permission errors become typed bridge exceptions
+00:00 +2: D:/TrainingArena/app/test/camera/camera_bridge_test.dart: startPreview sends the exercise wire value and returns the texture
+00:00 +3: D:/TrainingArena/app/test/camera/camera_bridge_test.dart: pause, resume, torch and stop reach the device channel
+00:00 +4: D:/TrainingArena/app/test/camera/camera_bridge_test.dart: runtime info exposes the documented detector versions
+00:00 +5: D:/TrainingArena/app/test/camera/camera_bridge_test.dart: dispose releases once and blocks later calls
+00:00 +6: D:/TrainingArena/app/test/camera/camera_bridge_test.dart: pose frames parse landmarks, timestamps and luminance
+00:00 +7: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +8: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +9: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +10: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +11: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +12: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +13: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +14: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +15: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +16: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +17: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +18: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +19: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +20: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +21: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +22: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +23: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +24: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +25: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +26: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +27: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +28: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +29: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +30: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +31: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +32: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +33: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +34: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +35: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +36: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +37: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +38: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +39: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +40: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +41: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +42: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +43: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +44: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +45: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +46: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +47: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +48: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +49: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +50: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +51: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +52: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview shows the demo label and never a fake texture
+00:00 +53: D:/TrainingArena/app/test/camera/camera_preview_test.dart: preview instruction follows tracking loss
+00:00 +54: All tests passed!

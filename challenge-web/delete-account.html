@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Delete your Fault account</title>
+  <meta name="description" content="Request deletion of your Fault account and its data without reinstalling the app.">
+  <meta name="theme-color" content="#17191A">
+  <meta name="robots" content="index">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./pages.css">
+</head>
+<body>
+  <main class="page">
+    <h1>Delete your Fault account</h1>
+    <p class="lead">
+      This page deletes the Fault account for the email address you
+      verify below. It works without the app. You can also delete in the app
+      under <strong>Profile → Settings → Delete account</strong>.
+    </p>
+
+    <p class="draft" data-arena-draft hidden>
+      <strong>Draft — not yet in force</strong>
+      This page is not connected to a hosted project yet and the support
+      address is missing, so it must not be published. The page itself is a
+      working deletion route once the owner publishes it.
+    </p>
+
+    <section class="card" id="not-configured" hidden>
+      <h2>This page is not connected yet</h2>
+      <p>
+        This build has no hosted project configured, so no deletion request
+        can be verified here. Delete in the app under
+        <strong>Profile → Settings → Delete account</strong>, or email
+        <a data-arena-field="supportEmail" data-arena-field-link="mailto:" href="mailto:">[[OWNER: support email]]</a>
+        from the account address and we will process the request.
+      </p>
+    </section>
+
+    <form class="deletion" id="deletion-form" novalidate>
+      <section class="card step" id="step-email">
+        <h2>1. Confirm the account email</h2>
+        <p>We send a six-digit code to the address on the account. The code only proves you control that address; it cannot be reused here for anything else.</p>
+        <label for="deletion-email">Account email address</label>
+        <input id="deletion-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+        <p></p>
+        <button class="btn btn--primary" id="request-code" type="submit">Email me a code</button>
+      </section>
+
+      <section class="card step" id="step-code" hidden>
+        <h2>2. Enter the code</h2>
+        <p>Enter the six-digit code from the email. The code expires quickly; request a new one if it has.</p>
+        <label for="deletion-code">Six-digit code</label>
+        <input id="deletion-code" name="code" type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="6" required>
+        <p></p>
+        <button class="btn btn--primary" id="verify-code" type="submit">Verify</button>
+        <p class="note">
+          <button class="btn btn--secondary" id="restart" type="button">Use a different email</button>
+        </p>
+      </section>
+
+      <section class="card step" id="step-confirm" hidden>
+        <h2>3. Delete the account</h2>
+        <p>
+          Verified address: <strong id="verified-email"></strong>. This
+          permanently removes the account, profile, avatar, challenge link,
+          pending requests and push tokens, and cancels anything still
+          waiting.
+        </p>
+        <p>
+          Confirmed results and rating changes already applied stay in the
+          other player's history, with the username and avatar snapshot shown
+          in that result. See the <a href="./privacy.html">privacy policy</a>
+          for the full deletion and retention description.
+        </p>
+        <p class="check">
+          <input id="deletion-confirm" type="checkbox" required>
+          <span>I understand that this deletes my Fault account and cannot be undone.</span>
+        </p>
+        <button class="btn btn--secondary" id="delete-account" type="button" disabled>Delete my account permanently</button>
+      </section>
+    </form>
+
+    <div class="status" id="deletion-status" role="status" aria-live="polite"></div>
+
+    <section class="card" id="success" hidden>
+      <h2>Deletion request processed</h2>
+      <p>
+        The account and its data were deleted. If you were signed in on a
+        device, that session no longer works. If this is not what you wanted,
+        email
+        <a data-arena-field="supportEmail" data-arena-field-link="mailto:" href="mailto:">[[OWNER: support email]]</a>
+        — deletion cannot be undone, but we can help you create a new account.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Trouble with this page?</h2>
+      <p>
+        The in-app path is under <strong>Profile → Settings → Delete account</strong>.
+        If neither works, email
+        <a data-arena-field="supportEmail" data-arena-field-link="mailto:" href="mailto:">[[OWNER: support email]]</a>
+        from the account address. A verified email request is processed with
+        the same backend deletion used by the app; nothing is deactivated or
+        frozen instead.
+      </p>
+    </section>
+
+    <nav class="footer">
+      <p>
+        <a href="./privacy.html">Privacy policy</a> ·
+        <a href="./support.html">Support</a> ·
+        <a href="./index.html">Fault</a>
+      </p>
+    </nav>
+  </main>
+  <script src="./config.js"></script>
+  <script src="./pages.js"></script>
+  <script src="./delete_account.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var client = window.ArenaDeletion.createDeletionClient(window.ARENA_WEB_CONFIG);
+      var form = document.getElementById('deletion-form');
+      var notConfigured = document.getElementById('not-configured');
+      var stepEmail = document.getElementById('step-email');
+      var stepCode = document.getElementById('step-code');
+      var stepConfirm = document.getElementById('step-confirm');
+      var success = document.getElementById('success');
+      var status = document.getElementById('deletion-status');
+      var emailInput = document.getElementById('deletion-email');
+      var codeInput = document.getElementById('deletion-code');
+      var verifiedLabel = document.getElementById('verified-email');
+      var confirmBox = document.getElementById('deletion-confirm');
+      var deleteButton = document.getElementById('delete-account');
+      var verifiedEmail = '';
+      // Every step carries a flow token. Restarting or starting a new step
+      // invalidates older completions so a stale reply cannot reveal or
+      // re-enable the confirmation for a different address.
+      var flow = 0;
+
+      function nextFlow() {
+        flow += 1;
+        return flow;
+      }
+
+      function setStatus(kind, text) {
+        status.className = 'status status--' + kind;
+        status.textContent = text;
+      }
+
+      function maskEmail(value) {
+        var parts = String(value).split('@');
+        if (parts.length !== 2 || parts[0].length === 0) {
+          return 'your account email';
+        }
+        return parts[0].charAt(0) + '***@' + parts[1];
+      }
+
+      function busy(button, isBusy, label) {
+        button.disabled = isBusy;
+        if (label) {
+          button.textContent = label;
+        }
+      }
+
+      if (!client.configured()) {
+        form.hidden = true;
+        notConfigured.hidden = false;
+        return;
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+      });
+
+      document.getElementById('request-code').addEventListener('click', function () {
+        var button = this;
+        var token = nextFlow();
+        var requestedEmail = emailInput.value.trim();
+        busy(button, true, 'Sending…');
+        setStatus('info', 'Requesting a code for ' + maskEmail(requestedEmail) + '…');
+        client.requestCode(requestedEmail).then(function (result) {
+          if (token !== flow) {
+            return;
+          }
+          busy(button, false, 'Email me a code');
+          if (!result.ok) {
+            setStatus(result.error.retryable ? 'warn' : 'bad', result.error.message);
+            return;
+          }
+          verifiedEmail = requestedEmail;
+          stepCode.hidden = false;
+          codeInput.focus();
+          setStatus('info', 'Code sent to ' + maskEmail(requestedEmail) + '. It may take a minute to arrive.');
+        });
+      });
+
+      document.getElementById('verify-code').addEventListener('click', function () {
+        var button = this;
+        var token = nextFlow();
+        var email = verifiedEmail;
+        busy(button, true, 'Checking…');
+        client.verifyCode(email, codeInput.value).then(function (result) {
+          if (token !== flow) {
+            return;
+          }
+          busy(button, false, 'Verify');
+          if (!result.ok) {
+            setStatus(result.error.retryable ? 'warn' : 'bad', result.error.message);
+            return;
+          }
+          stepEmail.hidden = true;
+          stepCode.hidden = true;
+          stepConfirm.hidden = false;
+          confirmBox.checked = false;
+          deleteButton.disabled = true;
+          verifiedLabel.textContent = maskEmail(email);
+          setStatus('good', 'Address verified. Confirm below to delete the account.');
+        });
+      });
+
+      document.getElementById('restart').addEventListener('click', function () {
+        nextFlow();
+        client.forget();
+        verifiedEmail = '';
+        codeInput.value = '';
+        confirmBox.checked = false;
+        deleteButton.disabled = true;
+        stepConfirm.hidden = true;
+        stepCode.hidden = true;
+        stepEmail.hidden = false;
+        setStatus('info', '');
+        emailInput.focus();
+      });
+
+      confirmBox.addEventListener('change', function () {
+        deleteButton.disabled = !confirmBox.checked;
+      });
+
+      deleteButton.addEventListener('click', function () {
+        var token = nextFlow();
+        busy(deleteButton, true, 'Deleting…');
+        setStatus('info', 'Submitting the deletion request…');
+        client.deleteAccount().then(function (result) {
+          if (token !== flow) {
+            return;
+          }
+          if (!result.ok) {
+            busy(deleteButton, false, 'Delete my account permanently');
+            setStatus(result.error.retryable ? 'warn' : 'bad', result.error.message);
+            return;
+          }
+          form.hidden = true;
+          success.hidden = false;
+          setStatus('good', 'The account was deleted.');
+          window.scrollTo(0, 0);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

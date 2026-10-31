@@ -1,0 +1,15 @@
+# P6 CI: the gradle wrapper IS versioned (template ignores negated below)
+# so GitHub Actions can run gradle on a clean checkout.
+# gradle-wrapper.jar
+/.gradle
+/captures/
+# /gradlew
+# /gradlew.bat
+/local.properties
+GeneratedPluginRegistrant.java
+
+# Remember to never publicly share your keystore.
+# See https://flutter.dev/to/reference-keystore
+key.properties
+**/*.keystore
+**/*.jks

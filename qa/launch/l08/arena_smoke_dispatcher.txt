@@ -1,0 +1,25 @@
+ok   - GET resolves a valid fixture link
+ok   - GET owner is the safe public profile
+ok   - GET unknown link is available:false
+ok   - GET malformed token is invalid_request
+ok   - POST rejects a bogus token
+ok   - POST rejects a token signed with another secret
+ok   - POST profile returns the fixture profile
+ok   - profile includes a durable link
+ok   - POST profile rejects a smuggled user id
+ok   - POST request_send creates a pending request
+ok   - POST duplicate request is request_exists
+ok   - POST inbox shows the pending request
+ok   - POST history returns an array
+ok   - POST analytics accepts a valid event
+ok   - POST analytics rejects a bad event name
+ok   - POST unknown action is invalid_action
+ok   - dispatcher rejects a missing bearer secret
+ok   - dispatcher rejects a wrong bearer secret
+ok   - alice still has carol's pending request
+ok   - accepting the request creates a preparing match
+ok   - both ready starts the server countdown
+ok   - the dispatcher runs maintenance with its own secret
+ok   - both clients gone closes the match as no_result
+ok   - the shared-outage reason is recorded
+ALL E2E CHECKS PASSED

@@ -1,0 +1,29 @@
+L04 build under test — 2026-09-20
+repo: D:/TrainingArena
+branch: codex/training-arena
+app source: 9d94ee4 + the L04 media-policy change (committed as the L04 commit;
+            this packet and the other L04 documents are additive and do not
+            affect the artifact)
+toolchain: Flutter 3.47.5 / Dart 3.13.4, Gradle 9.3.1, AGP 9.1.0, Kotlin 2.4.0,
+           compileSdk/targetSdk 36, minSdk 24
+build: flutter build apk --release -PallowDebugSignedRelease=true
+       --dart-define=ARENA_SUPABASE_URL=http://127.0.0.1:54321
+       --dart-define=ARENA_SUPABASE_ANON_KEY=<local anon key, not recorded>
+       --dart-define=ARENA_FEATURE_CAMERA_COUNTING=true
+       --dart-define=ARENA_FEATURE_RANKED_MATCHMAKING=false
+       --dart-define=ARENA_FEATURE_CHALLENGE_LINKS=true
+       --dart-define=ARENA_FEATURE_RESULT_SHARING=true
+       --dart-define=ARENA_FEATURE_PUSH_NOTIFICATIONS=false
+       --dart-define=ARENA_FEATURE_PREVIEW_FIXTURES=false
+apk: app/build/app/outputs/flutter-apk/app-release.apk
+bytes: 91444249
+sha256: 53d6bafb5e17a53bbd3af74e3d9d441d68d02b6d58616b9285a2a68032ec8951
+identity: app.trainingarena.mobile 1.0.0+1 minSdk 24 targetSdk 36
+          label "Training Arena" — check_artifact_identity.mjs passed
+secret scan --artifacts: clean
+kind: release-equivalent, debug-signed smoke artifact — NON-DISTRIBUTABLE (R9)
+
+Detector pins (compile-time, ArenaCameraPlugin.kt / PoseAnalyzer.kt):
+  ML Kit com.google.mlkit:pose-detection:18.0.0-beta5, base model
+  CameraX 1.4.1
+  minSdk 24

@@ -1,0 +1,45 @@
+/* Fault — Stage 4 polish corrections.
+   Additive only. Imported after globals.css and integration.css by layout (Codex).
+   Reuses existing colour/geometry/duration tokens; no new library, no shadows,
+   no transition-all, no scale, no layout animation. */
+
+/* Fluid 1100–1440px headline: anchors 58px @1100 → 104px @1440 (49px @320 stays in globals). */
+@media (min-width: 1100px) {
+  .headline { font-size: clamp(58px, -90.82px + 13.529vw, 104px); }
+  .hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .next .page { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+
+/* Remove compounded signup-slot + signup top margins. */
+.signup-slot > .signup { margin-top: 0; }
+
+/* Reinforce benefit row rhythm. */
+.benefits li { padding: 24px 0; }
+.benefits p { margin-top: 8px; }
+@media (min-width: 1100px) {
+  .benefits li { padding: 28px 0; gap: 40px; }
+  .benefits p { margin-top: 0; }
+}
+
+/* Focus is immediate; tap targets never shrink. */
+:focus-visible { transition: none; }
+.signup button[type="submit"], .secondary-button { min-height: 48px; }
+.signup input[type="email"] { min-width: 0; }
+
+/* Form state feedback driven by data-state, independent of colour alone. */
+.signup { transition: none; }
+.signup[data-state="loading"] button[type="submit"] { cursor: progress; }
+.signup[data-state="error"] button[type="submit"] { border-color: var(--danger); background: var(--surface); color: var(--danger); }
+.signup[data-state="pending"] button[type="submit"] { border-color: var(--action); background: transparent; color: var(--action); }
+.signup button[type="submit"]:disabled { opacity: 0.6; cursor: default; }
+.signup button[type="submit"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.signup input[type="email"][aria-invalid="true"] { border-color: var(--danger); }
+
+/* Reserve one status line; only one live region carries text at a time. */
+.form-status { min-height: 1.45em; }
+.signup[data-state="error"] .form-status[role="status"] { display: none; }
+
+html,body {overflow-x:clip;}
+.headline,.next-heading {font-style:normal;overflow-wrap:anywhere;min-width:0;}
+.signup button[type="submit"]:active {transform:none;}
+.masthead a,.footer-links a {white-space:nowrap;}

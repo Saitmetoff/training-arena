@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Training Arena mark on dark">
+  <title>Training Arena mark, dark background (provisional)</title>
+  <rect width="64" height="64" rx="16" fill="#17191A"/>
+  <path d="M11 51 32 13 53 51" fill="none" stroke="#D6FF3F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22 39h20" stroke="#D6FF3F" stroke-width="9" stroke-linecap="round"/>
+</svg>

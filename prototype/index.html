@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Training Arena design-preview prototype. Simulated data, no backend or camera." />
+    <title>Training Arena — design prototype</title>
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="shell">
+      <header class="preview-strip" role="note">
+        <span class="preview-strip__dot" aria-hidden="true"></span>
+        <p>
+          <strong>Design preview.</strong>
+          Simulated data only.
+          <span class="preview-strip__state" data-preview-state></span>
+        </p>
+        <button class="preview-strip__button" type="button" data-action="open-preview" aria-haspopup="dialog">
+          Preview states
+        </button>
+      </header>
+
+      <nav class="rail" aria-label="Primary">
+        <div class="rail__brand">
+          <span class="rail__mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true">
+              <path d="M11 51 32 13 53 51" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M22 39h20" stroke="currentColor" stroke-width="9" stroke-linecap="round" />
+            </svg>
+          </span>
+          Training Arena
+        </div>
+        <div class="rail__nav">
+          <a class="nav-item" href="#/leaderboard" data-nav="leaderboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+            </svg>
+            Leaderboard
+          </a>
+          <a class="nav-item" href="#/battle" data-nav="battle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+            </svg>
+            Battle
+          </a>
+          <a class="nav-item" href="#/profile" data-nav="profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+            Profile
+          </a>
+        </div>
+        <div class="rail__foot">
+          <p>Preview states and simulated data. Production owners are listed in design/arena/SCREEN_MAP.md.</p>
+        </div>
+      </nav>
+
+      <div class="layout">
+        <main id="main" class="main" tabindex="-1"></main>
+      </div>
+
+      <nav class="bottom-nav" aria-label="Primary">
+        <a class="nav-item" href="#/leaderboard" data-nav="leaderboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+          </svg>
+          Leaderboard
+        </a>
+        <a class="nav-item" href="#/battle" data-nav="battle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+          </svg>
+          Battle
+        </a>
+        <a class="nav-item" href="#/profile" data-nav="profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+          </svg>
+          Profile
+        </a>
+      </nav>
+    </div>
+
+    <p id="live-announcer" class="visually-hidden" role="status" aria-live="polite"></p>
+    <div id="overlay-root"></div>
+
+    <script src="js/fixtures.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

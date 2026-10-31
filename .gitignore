@@ -1,0 +1,53 @@
+# Personal PDF working documents stay local.
+tmp/pdfs/
+
+# Repository-level release hygiene. app/.gitignore and supabase/.gitignore
+# cover most tool output; these rules stop the remaining build, signing and
+# credential artifacts from ever being staged.
+#
+# Keystores and signing passwords come from the release environment/CI secret
+# store only (docs/release/CONFIGURATION.md).
+
+# Build and tool output
+app/build/
+app/.dart_tool/
+app/android/.gradle/
+app/android/build/
+app/android/local.properties
+app/android/key.properties
+.gradle/
+artifacts/owner-acceptance/
+artifacts/hosted-backup/
+
+# Signing and key material
+**/*.jks
+**/*.keystore
+**/*.p12
+**/*.pfx
+**/*.pem
+
+# Environment files (examples stay tracked)
+.env
+.env.*
+!.env.example
+
+# Firebase debug bootstrap files (must never ship or be committed)
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+
+# Logs and OS noise
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Fault delegation raw streams and local source snapshots
+tmp/fault-opencode/*.events.jsonl
+tmp/fault-opencode/*.zip
+tmp/fault-opencode/*.html
+
+# Local Python bytecode is not source or launch evidence.
+**/__pycache__/
+*.py[cod]

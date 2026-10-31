@@ -1,0 +1,4 @@
+﻿L05 local function-serving log scan — 2026-09-20 22:57
+logs: qa\launch\l05\serve_stdout.txt (363 bytes, 4 lines), qa\launch\l05\serve_stderr.txt (1933 bytes)
+scan pattern: JWT-looking 'eyJ...', fixture emails, 'Bearer <value>'
+result: no token, email or bearer value found

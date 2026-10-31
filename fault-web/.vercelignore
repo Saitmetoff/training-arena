@@ -1,0 +1,6 @@
+.local
+.env*
+tests
+scripts
+test-results
+*.tsbuildinfo

@@ -1,0 +1,24 @@
+Setting up Edge Functions runtime...
+2026-09-20T17:57:05.411590793Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.021508744Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.049581463Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.062203159Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.098695241Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.119828686Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.232921813Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.287134103Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.357435580Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.437774568Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.501266821Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.572120295Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.642749897Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.710334939Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.758548769Z serving the request with supabase/functions/arena
+2026-09-20T17:57:06.810749445Z serving the request with supabase/functions/arena-dispatcher
+2026-09-20T17:57:06.954272548Z serving the request with supabase/functions/arena-dispatcher
+2026-09-20T17:57:06.959825010Z serving the request with supabase/functions/arena
+2026-09-20T17:57:07.019320034Z serving the request with supabase/functions/arena
+2026-09-20T17:57:07.080546555Z serving the request with supabase/functions/arena
+2026-09-20T17:57:07.144893378Z serving the request with supabase/functions/arena
+2026-09-20T17:57:24.217303347Z serving the request with supabase/functions/arena-dispatcher
+2026-09-20T17:57:24.256086679Z serving the request with supabase/functions/arena

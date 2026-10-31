@@ -1,0 +1,5 @@
+# Solo demo slot
+
+No current solo footage or current app capture is available. The owner approved Stage 4's labelled four-poster fallback. These typographic WebP/SVG assets are illustrative, not evidence of product behavior.
+
+To enable real media, review the four matching Set / Enter / Save / Review shots and populate `src/lib/demo-media.json` with accepted source paths, build, device, rights and evidenceTake; set approved only after acceptance. Merely adding a file does not enable playback. Provide an accurate English `media/solo/solo-demo.vtt` for the video, an accessible transcript and accepted poster frames. Record manual rep entry, self-reported labeling, saving, recent history and personal best on the same Android phone and actual take. Do not substitute camera counting or historical emulator battle fixtures. Video should be understandable on mute, user-played, and carry no fabricated result. The player emits `demo_play` on its first actual playback per mounted player only when optional analytics consent is enabled. No autoplay is used; preload is none. The exact missing shots and crop requirements are in `docs/fault-website/04-polish.md`.

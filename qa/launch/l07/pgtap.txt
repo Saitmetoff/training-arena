@@ -1,0 +1,12 @@
+Connecting to local database...
+psql:/TrainingArena/supabase/tests/arena_authz_test.sql:10: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_authz_test.sql ... ok
+psql:/TrainingArena/supabase/tests/arena_flow_test.sql:10: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_flow_test.sql .... ok
+psql:/TrainingArena/supabase/tests/arena_ops_test.sql:8: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_ops_test.sql ..... ok
+psql:/TrainingArena/supabase/tests/arena_schema_test.sql:7: NOTICE:  extension "pgtap" already exists, skipping
+/TrainingArena/supabase/tests/arena_schema_test.sql .. ok
+All tests successful.
+Files=4, Tests=184,  2 wallclock secs ( 0.09 usr  0.03 sys +  0.06 cusr  0.04 csys =  0.22 CPU)
+Result: PASS

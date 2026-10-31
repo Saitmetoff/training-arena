@@ -1,0 +1,4 @@
+{
+ "$description":"Subset of motion-design W3C DTCG tokens, Material 3 baseline; no live timer interpolation.",
+ "motion":{"duration":{"short-3":{"$value":"150ms","$type":"duration"},"medium-1":{"$value":"250ms","$type":"duration"},"medium-4":{"$value":"400ms","$type":"duration"},"cut":{"$value":"0ms","$type":"duration"}},"easing":{"standard":{"$value":[0.2,0,0,1],"$type":"cubicBezier"},"enter":{"$value":[0.05,0.7,0.1,1],"$type":"cubicBezier"}},"sequencing":{"small":{"$value":"50ms","$type":"duration"}}}
+}

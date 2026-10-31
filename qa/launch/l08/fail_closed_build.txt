@@ -1,0 +1,20 @@
+Running Gradle task 'bundleRelease'...                          
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'D:\TrainingArena\app\android\app\build.gradle' line: 70
+
+* What went wrong:
+A problem occurred evaluating project ':app'.
+> Release signing is not configured: android/key.properties is missing (storeFile, storePassword, keyAlias, keyPassword). Set it up per docs/release/CONFIGURATION.md, or pass -PallowDebugSignedRelease=true for a non-distributable smoke build or -PallowUnsignedRelease=true for unsigned compatibility inspection.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2s
+Running Gradle task 'bundleRelease'...                           2,958ms
+Gradle task bundleRelease failed with exit code 1

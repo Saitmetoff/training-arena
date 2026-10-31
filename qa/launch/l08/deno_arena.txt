@@ -1,0 +1,56 @@
+[0m[38;5;245mrunning 12 tests from ./tests/actions_test.ts[0m
+the action registry matches docs/API.md exactly ... [0m[32mok[0m [0m[38;5;245m(732µs)[0m
+unknown actions fail closed ... [0m[32mok[0m [0m[38;5;245m(629µs)[0m
+actor and session always come from the verified JWT ... [0m[32mok[0m [0m[38;5;245m(396µs)[0m
+profile rejects smuggled user ids ... [0m[32mok[0m [0m[38;5;245m(875µs)[0m
+rep parses and forwards the documented event fields ... [0m[32mok[0m [0m[38;5;245m(5ms)[0m
+rep rejects a zero sequence and a non-uuid event id ... [0m[32mok[0m [0m[38;5;245m(798µs)[0m
+request_respond only accepts decline or cancel ... [0m[32mok[0m [0m[38;5;245m(547µs)[0m
+report treats match_id as optional and validates the reason ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+device_register defaults to android and caps the token ... [0m[32mok[0m [0m[38;5;245m(772µs)[0m
+analytics rejects oversized properties ... [0m[32mok[0m [0m[38;5;245m(12ms)[0m
+profile_update validates the username server-side shape ... [0m[32mok[0m [0m[38;5;245m(454µs)[0m
+rpc failures map through the error catalogue ... [0m[32mok[0m [0m[38;5;245m(369µs)[0m
+[0m[38;5;245mrunning 13 tests from ./tests/app_test.ts[0m
+CORS preflight is answered for allowed origins only ... [0m[32mok[0m [0m[38;5;245m(27ms)[0m
+GET resolves a link anonymously and normalizes the token ... [0m[32mok[0m [0m[38;5;245m(3ms)[0m
+GET never creates anything and fails closed on bad input ... [0m[32mok[0m [0m[38;5;245m(2ms)[0m
+POST without a bearer token is unauthorized ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+POST with a token Auth rejects is unauthorized ... [0m[32mok[0m [0m[38;5;245m(915µs)[0m
+malformed envelopes and unknown actions fail closed ... [0m[32mok[0m [0m[38;5;245m(2ms)[0m
+valid POSTs are dispatched with the JWT actor and session ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+RPC failures map to documented error codes and statuses ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+avatar_update uploads, records and removes the previous object ... [0m[32mok[0m [0m[38;5;245m(2ms)[0m
+avatar_update rejects non-image payloads before uploading ... [0m[32mok[0m [0m[38;5;245m(984µs)[0m
+avatar_update cleans up the new object when the RPC fails ... [0m[32mok[0m [0m[38;5;245m(755µs)[0m
+delete_account removes storage, deletes the auth user and stays idempotent ... [0m[32mok[0m [0m[38;5;245m(721µs)[0m
+unsupported methods are rejected ... [0m[32mok[0m [0m[38;5;245m(361µs)[0m
+[0m[38;5;245mrunning 10 tests from ./tests/avatar_test.ts[0m
+sniffing accepts only JPEG, PNG and WebP signatures ... [0m[32mok[0m [0m[38;5;245m(792µs)[0m
+decodeAvatar accepts a PNG payload ... [0m[32mok[0m [0m[38;5;245m(838µs)[0m
+decodeAvatar accepts JPEG and WebP payloads ... [0m[32mok[0m [0m[38;5;245m(312µs)[0m
+decodeAvatar accepts a matching data URL ... [0m[32mok[0m [0m[38;5;245m(246µs)[0m
+decodeAvatar rejects a data URL whose mime type differs ... [0m[32mok[0m [0m[38;5;245m(680µs)[0m
+decodeAvatar rejects a declared type that does not match the signature ... [0m[32mok[0m [0m[38;5;245m(298µs)[0m
+decodeAvatar rejects text smuggled as an image ... [0m[32mok[0m [0m[38;5;245m(201µs)[0m
+decodeAvatar rejects unsupported mime types ... [0m[32mok[0m [0m[38;5;245m(232µs)[0m
+decodeAvatar rejects empty and malformed data ... [0m[32mok[0m [0m[38;5;245m(174µs)[0m
+decodeAvatar enforces the 2 MiB cap before decoding ... [0m[32mok[0m [0m[38;5;245m(121ms)[0m
+[0m[38;5;245mrunning 5 tests from ./tests/errors_test.ts[0m
+SQLSTATE errors map to the documented catalogue ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+unauthorized and internal SQLSTATEs carry the right HTTP status ... [0m[32mok[0m [0m[38;5;245m(233µs)[0m
+unknown database failures never leak SQL details ... [0m[32mok[0m [0m[38;5;245m(348µs)[0m
+ArenaError defaults its message and status ... [0m[32mok[0m [0m[38;5;245m(398µs)[0m
+invalid SQLSTATE strings are internal errors ... [0m[32mok[0m [0m[38;5;245m(453µs)[0m
+[0m[38;5;245mrunning 8 tests from ./tests/validate_test.ts[0m
+asObject rejects arrays, scalars and null ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+onlyKeys rejects unknown parameters ... [0m[32mok[0m [0m[38;5;245m(302µs)[0m
+str enforces bounds and patterns ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+uuid, token and username validate their shapes ... [0m[32mok[0m [0m[38;5;245m(985µs)[0m
+bool and int reject non-types ... [0m[32mok[0m [0m[38;5;245m(475µs)[0m
+isoTimestamp rejects implausible clocks ... [0m[32mok[0m [0m[38;5;245m(822µs)[0m
+event names are lowercased and constrained ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+jsonSizeBytes detects oversized analytics payloads ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+
+[0m[32mok[0m | 48 passed | 0 failed [0m[38;5;245m(557ms)[0m
+

@@ -1,0 +1,4 @@
+challenge-web check failed:
+ - --release requires owner values in config.js; still pending: legalEntity, legalAddress, privacyEmail, supportEmail, supportResponseTime, effectiveDate, childrenPolicy, emailProvider, retentionMatchHistory, retentionAnalytics, retentionModeration, retentionBackups
+ - --release requires a real apiBase in config.js
+ - --release requires the project anon key in config.js

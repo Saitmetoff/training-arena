@@ -1,0 +1,4 @@
+﻿L08 raw logcat dumps moved to the gitignored qa/integration/logs/ path (commit-safe).
+qa\integration\logs\l08_logcat_cold_start.txt  bytes=254600 sha256=089582BA976DBEEA692F40DABD090E2AF418EA9EBE4F2E54CB91FF952610C500
+qa\integration\logs\l08_logcat_cold_start_16k.txt  bytes=2437770 sha256=23448B4A3F614C5F7E4E203DCDA32D8CC211263DE0C7F78A6201DDE90D52435A
+qa\integration\logs\l08_logcat_process_death.txt  bytes=298818 sha256=E9513F742B1B6A0930FC05B4A8F50A27B63719736FD22364272390C92B19D1DD

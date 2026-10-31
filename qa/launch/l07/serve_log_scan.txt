@@ -1,0 +1,5 @@
+﻿L07 serve-log scan
+file: functions serve log (local, gitignored path D:\ta-tmp\l07_functions_serve.log)
+lines: 30
+token/email pattern hits: 0
+result: PASS - no token, bearer value or email in the served-function log

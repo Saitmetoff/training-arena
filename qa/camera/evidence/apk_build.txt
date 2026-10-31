@@ -1,0 +1,9 @@
+﻿# Task 03 APK evidence - Toolchain: Flutter 3.47.5 stable / Dart 3.13.4, Android build-tools 36.0.0
+# Date: 2026-09-22 · Base commit 15616739b57b4ea05dc4fa65cd764fe100d8854a
+# Command: flutter build apk --debug
+# Artifact: build\app\outputs\flutter-apk\app-debug.apk
+# Bytes: 222290969
+# SHA-256: 133207CDEA039FE9B046FEC5815409048C5681FE7575BE2046E84B1C2C3E4E4D
+
+Running Gradle task 'assembleDebug'...                          114.8s
+✓ Built build\app\outputs\flutter-apk\app-debug.apk

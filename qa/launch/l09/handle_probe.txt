@@ -1,0 +1,24 @@
+L09 handle availability probe — 2026-09-21
+Method: HTTP fetch tool (webfetch), NOT a browser: no JavaScript execution,
+no guaranteed signed-out profile rendering. This is not an in-platform check
+and no availability conclusion may be drawn from it.
+
+Attempt 1  GET https://www.tiktok.com/@trainingarena
+Result: transport error (request refused); no content returned.
+
+Attempt 2  GET https://www.tiktok.com/@playtrainingarena
+Result: transport error (request refused); no content returned.
+
+Attempt 3  GET https://www.instagram.com/trainingarena/
+Result: only the page shell text "Instagram" returned; profile state not
+readable (login wall / JS shell).
+
+Not attempted: @trainingarena.app on TikTok/Instagram — the two probe types
+above failed systematically, so further fetches add no information.
+
+Conclusion: handle availability for @trainingarena, @playtrainingarena and
+@trainingarena.app remains NOT VERIFIED on both platforms.
+
+Authoritative check: the live handle field during signup plus the signed-out
+profile URL in a real browser. L09 has no browser tool, created no account and
+reserved no handle.
